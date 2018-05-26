@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import ExtMathLib
-import CComplex
-import NumCodeSettings
+import HPAKit
+import Settings
 
 // MARK: SInterpreterDelegate protocol
 public protocol SInterpreterDelegate: class {
@@ -88,7 +87,7 @@ public class SInterpreter: NSObject {
         guard tokensAvailable, case let SLexer.Token.value(value) = popCurrentToken() else {
             throw ParseError.expectedNumber
         }
-        return SValue(value: CComplex(real: value, imaginary: 0))
+        return SValue(value: HPAComplex(floatLiteral: value))
     }
     
     private func interpretUnit() throws -> SCompoundUnit {
@@ -111,11 +110,11 @@ public class SInterpreter: NSObject {
                 
                 let power = value.value
                 
-                guard power.isReal, power.real == floor(power.real) else {
+                guard power.isReal, power.re == power.re.floor else {
                     throw ParseError.expectedInteger
                 }
                 
-                compoundUnit = compoundUnit.adding(other: unit, by: Int(power.real))
+                compoundUnit = compoundUnit.adding(other: unit, by: Int(power.re.toDouble))
             }
             else {
                 compoundUnit = compoundUnit.adding(other: unit)
@@ -179,10 +178,10 @@ public class SInterpreter: NSObject {
             index += 1
             return try getVariable(forId: variableId)
         case .unit:
-            return SValue(value: CComplex(real: 1, imaginary: 0), unit: try interpretUnit())
+            return SValue(value: HPAComplex(re: 1, im: 0), unit: try interpretUnit())
         case .imaginaryUnit:
             index += 1
-            return SValue(value: CComplex(real: 0, imaginary: 1))
+            return SValue(value: HPAComplex(re: 0, im: 1))
         default:
             throw ParseError.expectedExpression
         }

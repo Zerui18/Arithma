@@ -53,19 +53,4 @@ const struct xpr xE2max = { {0x400c, 0xfffb} };	/* +16382.75 */
 /* static struct xpr xpzero = { {0x0, 0x0} }; */
 /* static struct xpr xnzero = { {0x0, 0x0} }; */
 
-#if XDIM == 11
-#include"mp/const11.h"
-#elif XDIM == 15
-#include"mp/const15.h"
-#elif XDIM == 19
-#include"mp/const19.h"
-#elif XDIM == 23
-#include"mp/const23.h"
-#elif XDIM == 27
-#include"mp/const27.h"
-#elif XDIM == 31
-#include"mp/const31.h"
-#else
-/* We assume XDIM == 7 (default) */
-#include"mp/const07.h"
-#endif
+#include "const31.h"

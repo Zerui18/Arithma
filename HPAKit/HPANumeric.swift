@@ -20,8 +20,12 @@ public protocol HPANumeric: Equatable, ExpressibleByFloatLiteral, ExpressibleByI
     var acos: Self {get}
     var atan: Self {get}
     
+    var lg: Self {get}
+    var ln: Self {get}
+    
     var abs: HPAReal {get}
     var sqrt: Self {get}
+    var floor: Self {get}
     
     func pow(e: Self)-> Self
     

@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import ExtMathLib
-import CComplex
-import NumCodeSettings
+import HPAKit
+import Settings
 
 public class SValue: Equatable, CustomStringConvertible {
     
-    public var value: CComplex
+    public var value: HPAComplex
     public var unit: SCompoundUnit
     public weak var boundLabel: UIView? {
         didSet {
@@ -24,7 +23,7 @@ public class SValue: Equatable, CustomStringConvertible {
     /**
      Initializes a SValue instance with a scalar value and a unit
      */
-    public init(value: CComplex, unit: SCompoundUnit = .init()) {
+    public init(value: HPAComplex, unit: SCompoundUnit = .init()) {
         self.value = value
         self.unit = unit
         
@@ -37,7 +36,7 @@ public class SValue: Equatable, CustomStringConvertible {
         return !unit.unitToPower.isEmpty
     }
     
-    func valueInBaseUnit() -> CComplex {
+    func valueInBaseUnit() -> HPAComplex {
         return unit.convertToBase(value: value)
     }
     
@@ -68,7 +67,7 @@ public class SValue: Equatable, CustomStringConvertible {
      Debug description of the receiver's value in base units.
      */
     public var description: String {
-        return valueInBaseUnit().description + unit.description
+        return valueInBaseUnit().description(sf: 5) + unit.description
     }
     
     /**

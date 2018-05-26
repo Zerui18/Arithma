@@ -218,7 +218,7 @@ public struct HPAPolynomial: Equatable {
             let squares = HPAPolynomial(1.0, p, r).roots()
             return squares.flatMap { (square: HPAComplex) -> [HPAComplex] in
                 let x = square.sqrt
-                return [x - aOn4, -x - aOn4]
+                return [x - aOn4.toComplex, -x - aOn4.toComplex]
             }
         }
         
@@ -242,11 +242,12 @@ public struct HPAPolynomial: Equatable {
         let u2 = 0.5*(-sqrtPPlus2y + (-(p3Plus2y - fraction)).sqrt)
         let u3 = 0.5*(sqrtPPlus2y - (-(p3Plus2y + fraction)).sqrt)
         let u4 = 0.5*(-sqrtPPlus2y - (-(p3Plus2y - fraction)).sqrt)
+        let aOn4C = aOn4.toComplex
         return [
-            u1 - aOn4,
-            u2 - aOn4,
-            u3 - aOn4,
-            u4 - aOn4
+            u1 - aOn4C,
+            u2 - aOn4C,
+            u3 - aOn4C,
+            u4 - aOn4C
         ]
     }
     
@@ -264,7 +265,7 @@ public struct HPAPolynomial: Equatable {
         
         var a0 = [one]
         for _ in 1..<coefficients.count-1 {
-            a0.append(a0.last! * HPAComplex(re: HPAReal(0.4), im: HPAReal(0.9)))
+            a0.append(a0.last! * HPAComplex(re: 0.4, im: 0.9))
         }
         
         var count = 0

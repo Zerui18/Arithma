@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NumCodeSettings
+import Settings
 
 
 // MARK: TrigoToggleButton class
@@ -18,10 +18,10 @@ class ToggleButton: UIButton {
     private let borderLayer = CALayer()
     private let colors: (UIColor, UIColor)
     private let labels: (String, String)
-    private let propertyPath: ReferenceWritableKeyPath<NCSettings, Bool>
+    private let propertyPath: ReferenceWritableKeyPath<SSettings, Bool>
     
     // MARK: Methods
-    init(colors: (UIColor, UIColor), labels: (String, String), propertyPath: ReferenceWritableKeyPath<NCSettings, Bool>) {
+    init(colors: (UIColor, UIColor), labels: (String, String), propertyPath: ReferenceWritableKeyPath<SSettings, Bool>) {
         
         self.colors = colors
         self.labels = labels
@@ -55,7 +55,7 @@ class ToggleButton: UIButton {
     @objc private func buttonToggled() {
         darkenTimer?.invalidate()
     
-        NCSettings.shared[keyPath: propertyPath] = !NCSettings.shared[keyPath: propertyPath]
+        SSettings.shared[keyPath: propertyPath] = !SSettings.shared[keyPath: propertyPath]
         
         CATransaction.flush()
         CATransaction.begin()
@@ -86,11 +86,11 @@ class ToggleButton: UIButton {
     
     // Private functions
     private func getTintColor()-> UIColor {
-        return NCSettings.shared[keyPath: propertyPath] ? colors.0:colors.1
+        return SSettings.shared[keyPath: propertyPath] ? colors.0:colors.1
     }
     
     private func getTitle()-> String {
-        return NCSettings.shared[keyPath: propertyPath] ? labels.0:labels.1
+        return SSettings.shared[keyPath: propertyPath] ? labels.0:labels.1
     }
 
 }

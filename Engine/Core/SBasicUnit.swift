@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import ExtMathLib
-import CComplex
+import HPAKit
 
 public class SBasicUnit: SUnitRepresentable, Hashable {
     
@@ -45,12 +44,12 @@ public class SBasicUnit: SUnitRepresentable, Hashable {
         return false
     }
     
-    public func convertToBase(value: CComplex) -> CComplex {
-        return relativeWorth * value
+    public func convertToBase(value: HPAComplex) -> HPAComplex {
+        return HPAComplex(floatLiteral: relativeWorth) * value
     }
     
-    public func convertFromBase(value: CComplex) -> CComplex {
-        return  value / relativeWorth
+    public func convertFromBase(value: HPAComplex) -> HPAComplex {
+        return  value / HPAComplex(floatLiteral: relativeWorth)
     }
     
     public static func ==(_ lhs: SBasicUnit, _ rhs: SBasicUnit)-> Bool {

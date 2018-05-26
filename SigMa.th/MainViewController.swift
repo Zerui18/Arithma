@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import NumCodeBackend
-import NumCodeKeyboard
-import NumCodeSettings
+import Engine
+import Keyboard
+import Settings
 
 // TODO: Auto-scaling of UI components & fonts
 
 //Private Input-components
-fileprivate let keyboard = NCKeyboardView(size: CGSize(width: UIScreen.main.bounds.width,
+fileprivate let keyboard = SKeyboardView(size: CGSize(width: UIScreen.main.bounds.width,
                                                        height: UIScreen.main.bounds.height*0.6))
-fileprivate let unitSelector = NCUnitSelectorView(keyboard: keyboard)
+fileprivate let unitSelector = SUnitSelectorView(keyboard: keyboard)
 
 // MARK: MainViewController class
 class MainViewController: UIViewController {
@@ -29,13 +29,13 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Private Properties
-    private let trigoModeButton = ToggleButton(colors: (#colorLiteral(red: 0.7163728282, green: 0.9372549057, blue: 0.8692806858, alpha: 1), #colorLiteral(red: 0.4371609821, green: 0.5123683887, blue: 0.9686274529, alpha: 1)), labels: ("D", "R"), propertyPath: \NCSettings.isDegreeMode)
-    private let scientificModeButton = ToggleButton(colors: (#colorLiteral(red: 0.5568627715, green: 0.4501634074, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), labels: ("S", "N"), propertyPath: \NCSettings.isScientificMode)
+    private let trigoModeButton = ToggleButton(colors: (#colorLiteral(red: 0.7163728282, green: 0.9372549057, blue: 0.8692806858, alpha: 1), #colorLiteral(red: 0.4371609821, green: 0.5123683887, blue: 0.9686274529, alpha: 1)), labels: ("D", "R"), propertyPath: \SSettings.isDegreeMode)
+    private let scientificModeButton = ToggleButton(colors: (#colorLiteral(red: 0.5568627715, green: 0.4501634074, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), labels: ("S", "N"), propertyPath: \SSettings.isScientificMode)
     
     private let resultLabel = UITextView(frame: .zero)
     private lazy var resultScrollView = ContainerScrollView(wrapping: resultLabel)
     
-    private let inputTextView = NCInputTextView(frame: .zero, keyboard: keyboard)
+    private let inputTextView = SInputTextView(frame: .zero, keyboard: keyboard)
     private lazy var inputScrollView = ContainerScrollView(wrapping: inputTextView)
     
     // MARK: View Lifecycle Methods
@@ -168,10 +168,10 @@ class MainViewController: UIViewController {
 
 }
 
-// MARK: NCKeyboardViewDelegate Conformance
-extension MainViewController: NCKeyboardViewDelegate {
+// MARK: SKeyboardViewDelegate Conformance
+extension MainViewController: SKeyboardViewDelegate {
     
-    var textViewForInput: NCInputTextView? {
+    var textViewForInput: SInputTextView? {
         return inputTextView
     }
     

@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import ExtMathLib
-import CComplex
+import HPAKit
 
 public struct SCompoundUnit: SUnitRepresentable {
     
@@ -90,7 +89,7 @@ public struct SCompoundUnit: SUnitRepresentable {
         return baseUnitToPower == targetUnit.baseUnitToPower
     }
     
-    public func convertToBase(value: CComplex) -> CComplex {
+    public func convertToBase(value: HPAComplex) -> HPAComplex {
         var finalValue = value
         
         for (unit, power) in unitToPower {
@@ -109,7 +108,7 @@ public struct SCompoundUnit: SUnitRepresentable {
         return finalValue
     }
     
-    public func convertFromBase(value: CComplex) -> CComplex {
+    public func convertFromBase(value: HPAComplex) -> HPAComplex {
         var finalValue = value
         
         for (unit, power) in unitToPower {

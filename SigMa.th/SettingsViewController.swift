@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import NumCodeBackend
-import NumCodeSettings
+import Engine
+import Settings
 
 class SettingsViewController: UIViewController {
     
@@ -46,7 +46,7 @@ class SettingsViewController: UIViewController {
         
         
         trigoModeControl.translatesAutoresizingMaskIntoConstraints = false
-        trigoModeControl.selectedSegmentIndex = NCSettings.shared.trigoModeRaw
+        trigoModeControl.selectedSegmentIndex = SSettings.shared.trigoModeRaw
         trigoModeControl.setTitleTextAttributes([NSAttributedStringKey.font: labelFont], for: UIControlState())
         trigoModeControl.tintColor = .white
         
@@ -60,7 +60,7 @@ class SettingsViewController: UIViewController {
     
     @objc private func trigoModeChanged() {
         UISelectionFeedbackGenerator().selectionChanged()
-        NCSettings.shared.trigoModeRaw = trigoModeControl.selectedSegmentIndex
+        SSettings.shared.trigoModeRaw = trigoModeControl.selectedSegmentIndex
     }
     
     @objc private func dismissAnimated() {

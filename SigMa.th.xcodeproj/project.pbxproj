@@ -60,7 +60,6 @@
 		01C5E4EE20B9380E0022A871 /* xsqrt.c in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E4C320B9380E0022A871 /* xsqrt.c */; };
 		01C5E4EF20B9380E0022A871 /* cxpre.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C5E4C420B9380E0022A871 /* cxpre.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01C5E4F020B9380E0022A871 /* xpwr.c in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E4C520B9380E0022A871 /* xpwr.c */; };
-		01C5E4F120B9380E0022A871 /* mp in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E4C620B9380E0022A871 /* mp */; };
 		01C5E4F220B9380E0022A871 /* sfmod.c in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E4C720B9380E0022A871 /* sfmod.c */; };
 		01C5E52A20B939E20022A871 /* Keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C5E52820B939E20022A871 /* Keyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01C5E52D20B939E20022A871 /* Keyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E52620B939E20022A871 /* Keyboard.framework */; };
@@ -84,12 +83,7 @@
 		01C5E56F20B945160022A871 /* SBasicUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E56B20B945160022A871 /* SBasicUnit.swift */; };
 		01C5E57020B945160022A871 /* SValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E56C20B945160022A871 /* SValue.swift */; };
 		01C5E57120B945160022A871 /* SCompoundUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E56D20B945160022A871 /* SCompoundUnit.swift */; };
-		01C5E57A20B945200022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E57220B9451F0022A871 /* SCompoundUnit+NSMutableAttributedString.swift */; };
-		01C5E57B20B945200022A871 /* Token+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E57320B9451F0022A871 /* Token+Highlight.swift */; };
-		01C5E57C20B945200022A871 /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E57420B9451F0022A871 /* Character+Extension.swift */; };
-		01C5E57D20B945200022A871 /* Complex+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E57520B9451F0022A871 /* Complex+NSMutableAttributedString.swift */; };
 		01C5E57E20B945200022A871 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E57620B9451F0022A871 /* Errors.swift */; };
-		01C5E57F20B945200022A871 /* Double+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E57720B945200022A871 /* Double+Scaled.swift */; };
 		01C5E58020B945200022A871 /* SValue+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E57820B945200022A871 /* SValue+Operations.swift */; };
 		01C5E58620B947620022A871 /* SUnitSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58420B947620022A871 /* SUnitSelectorView.swift */; };
 		01C5E58720B947620022A871 /* SUnitSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58520B947620022A871 /* SUnitSelectorCell.swift */; };
@@ -107,6 +101,11 @@
 		01C5E5A120B955BA0022A871 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
 		01C5E5A220B955BF0022A871 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
 		01C5E5A320B955C30022A871 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; };
+		01C5E5B120B985C10022A871 /* Complex+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AC20B985C10022A871 /* Complex+NSMutableAttributedString.swift */; };
+		01C5E5B220B985C10022A871 /* Double+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AD20B985C10022A871 /* Double+Scaled.swift */; };
+		01C5E5B320B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */; };
+		01C5E5B420B985C10022A871 /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AF20B985C10022A871 /* Character+Extension.swift */; };
+		01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5B020B985C10022A871 /* Token+Highlight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,7 +220,6 @@
 		01C5E4C320B9380E0022A871 /* xsqrt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xsqrt.c; sourceTree = "<group>"; };
 		01C5E4C420B9380E0022A871 /* cxpre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cxpre.h; sourceTree = "<group>"; };
 		01C5E4C520B9380E0022A871 /* xpwr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xpwr.c; sourceTree = "<group>"; };
-		01C5E4C620B9380E0022A871 /* mp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mp; sourceTree = "<group>"; };
 		01C5E4C720B9380E0022A871 /* sfmod.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sfmod.c; sourceTree = "<group>"; };
 		01C5E52620B939E20022A871 /* Keyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Keyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C5E52820B939E20022A871 /* Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
@@ -245,12 +243,7 @@
 		01C5E56B20B945160022A871 /* SBasicUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBasicUnit.swift; sourceTree = "<group>"; };
 		01C5E56C20B945160022A871 /* SValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SValue.swift; sourceTree = "<group>"; };
 		01C5E56D20B945160022A871 /* SCompoundUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCompoundUnit.swift; sourceTree = "<group>"; };
-		01C5E57220B9451F0022A871 /* SCompoundUnit+NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCompoundUnit+NSMutableAttributedString.swift"; sourceTree = "<group>"; };
-		01C5E57320B9451F0022A871 /* Token+Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token+Highlight.swift"; sourceTree = "<group>"; };
-		01C5E57420B9451F0022A871 /* Character+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extension.swift"; sourceTree = "<group>"; };
-		01C5E57520B9451F0022A871 /* Complex+NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Complex+NSMutableAttributedString.swift"; sourceTree = "<group>"; };
 		01C5E57620B9451F0022A871 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		01C5E57720B945200022A871 /* Double+Scaled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Scaled.swift"; sourceTree = "<group>"; };
 		01C5E57820B945200022A871 /* SValue+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SValue+Operations.swift"; sourceTree = "<group>"; };
 		01C5E58420B947620022A871 /* SUnitSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUnitSelectorView.swift; sourceTree = "<group>"; };
 		01C5E58520B947620022A871 /* SUnitSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUnitSelectorCell.swift; sourceTree = "<group>"; };
@@ -263,6 +256,12 @@
 		01C5E59620B947DF0022A871 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01C5E59820B948D10022A871 /* HPAReal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPAReal+Extension.swift"; sourceTree = "<group>"; };
 		01C5E59C20B952DF0022A871 /* HPAComplex+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPAComplex+Extension.swift"; sourceTree = "<group>"; };
+		01C5E5AB20B9856B0022A871 /* const31.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const31.h; sourceTree = "<group>"; };
+		01C5E5AC20B985C10022A871 /* Complex+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Complex+NSMutableAttributedString.swift"; path = "Engine/Extensions/Complex+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
+		01C5E5AD20B985C10022A871 /* Double+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Double+Scaled.swift"; path = "Engine/Extensions/Double+Scaled.swift"; sourceTree = SOURCE_ROOT; };
+		01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCompoundUnit+NSMutableAttributedString.swift"; path = "Engine/Extensions/SCompoundUnit+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
+		01C5E5AF20B985C10022A871 /* Character+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+Extension.swift"; path = "Engine/Extensions/Character+Extension.swift"; sourceTree = SOURCE_ROOT; };
+		01C5E5B020B985C10022A871 /* Token+Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Token+Highlight.swift"; path = "Engine/Extensions/Token+Highlight.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,7 +376,6 @@
 			children = (
 				01C5E5A620B9840A0022A871 /* Sources */,
 				01C5E5A720B9841F0022A871 /* Headers */,
-				01C5E4C620B9380E0022A871 /* mp */,
 				01C5E49420B937BA0022A871 /* Info.plist */,
 			);
 			path = HPA;
@@ -422,11 +420,11 @@
 		01C5E58220B945280022A871 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				01C5E57420B9451F0022A871 /* Character+Extension.swift */,
-				01C5E57520B9451F0022A871 /* Complex+NSMutableAttributedString.swift */,
-				01C5E57720B945200022A871 /* Double+Scaled.swift */,
-				01C5E57220B9451F0022A871 /* SCompoundUnit+NSMutableAttributedString.swift */,
-				01C5E57320B9451F0022A871 /* Token+Highlight.swift */,
+				01C5E5AF20B985C10022A871 /* Character+Extension.swift */,
+				01C5E5AC20B985C10022A871 /* Complex+NSMutableAttributedString.swift */,
+				01C5E5AD20B985C10022A871 /* Double+Scaled.swift */,
+				01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */,
+				01C5E5B020B985C10022A871 /* Token+Highlight.swift */,
 			);
 			name = Extensions;
 			path = "New Group";
@@ -541,6 +539,7 @@
 		01C5E5A720B9841F0022A871 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				01C5E5AB20B9856B0022A871 /* const31.h */,
 				01C5E4B720B9380D0022A871 /* HPA.h */,
 				01C5E4C420B9380E0022A871 /* cxpre.h */,
 				01C5E49D20B9380B0022A871 /* hpaconf.h */,
@@ -817,7 +816,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C5E4F120B9380E0022A871 /* mp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,18 +861,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C5E57A20B945200022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */,
+				01C5E5B320B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */,
+				01C5E5B420B985C10022A871 /* Character+Extension.swift in Sources */,
 				01C5E56F20B945160022A871 /* SBasicUnit.swift in Sources */,
+				01C5E5B120B985C10022A871 /* Complex+NSMutableAttributedString.swift in Sources */,
+				01C5E5B220B985C10022A871 /* Double+Scaled.swift in Sources */,
 				01C5E48820B937610022A871 /* SLexer.swift in Sources */,
 				01C5E57020B945160022A871 /* SValue.swift in Sources */,
+				01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */,
 				01C5E58020B945200022A871 /* SValue+Operations.swift in Sources */,
-				01C5E57B20B945200022A871 /* Token+Highlight.swift in Sources */,
-				01C5E57D20B945200022A871 /* Complex+NSMutableAttributedString.swift in Sources */,
 				01C5E48920B937610022A871 /* SInterpreter.swift in Sources */,
 				01C5E57E20B945200022A871 /* Errors.swift in Sources */,
-				01C5E57F20B945200022A871 /* Double+Scaled.swift in Sources */,
 				01C5E57120B945160022A871 /* SCompoundUnit.swift in Sources */,
-				01C5E57C20B945200022A871 /* Character+Extension.swift in Sources */,
 				01C5E56E20B945160022A871 /* SUnitRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1115,7 +1113,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 789MW96BQB;
-				INFOPLIST_FILE = SigMa.th/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SigMa.th/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1137,7 +1135,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 789MW96BQB;
-				INFOPLIST_FILE = SigMa.th/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SigMa.th/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1162,7 +1160,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Engine/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Engine/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1193,7 +1191,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Engine/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Engine/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1281,7 +1279,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Keyboard/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Keyboard/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1312,7 +1310,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Keyboard/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Keyboard/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1342,7 +1340,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Settings/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Settings/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1373,7 +1371,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Settings/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Settings/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1403,7 +1401,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HPAKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/HPAKit/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1434,7 +1432,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HPAKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/HPAKit/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

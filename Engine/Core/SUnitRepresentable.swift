@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import ExtMathLib
-import CComplex
+import HPAKit
 
 public protocol SUnitRepresentable: Equatable, CustomStringConvertible {
     
     func canConvert(to unit: Self) -> Bool
     
-    func convertToBase(value: CComplex) -> CComplex
+    func convertToBase(value: HPAComplex) -> HPAComplex
     
-    func convertFromBase(value: CComplex) -> CComplex
+    func convertFromBase(value: HPAComplex) -> HPAComplex
     
 }

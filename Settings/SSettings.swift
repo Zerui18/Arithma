@@ -23,7 +23,7 @@ public class SSettings {
         }
     }
     
-    private var trigoModeRaw: Int {
+    public var trigoModeRaw: Int {
         get {
             return UserDefaults.standard.integer(forKey: "trigoMode")
         }

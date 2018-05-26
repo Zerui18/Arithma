@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import NumCodeBackend
-import ExtMathLib
-import CComplex
+import Engine
+import HPAKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var hasSetupUnits = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        NCInterpreter.setup()
+        SInterpreter.setup()
         UITextView.appearance().tintColor = .white
         setupWindow()
         addUnits()

@@ -10,7 +10,7 @@ import HPA
 
 public typealias HPAReal = xpr
 
-extension HPAReal: HPANumeric {
+extension HPAReal: HPANumeric, Comparable{
     
     // MARK: Expressibles Conformances
     public typealias IntegerLiteralType = Int
@@ -67,12 +67,24 @@ extension HPAReal: HPANumeric {
         return xatan(self)
     }
     
+    public var lg: HPAReal {
+        return xlog10(self)
+    }
+    
+    public var ln: HPAReal {
+        return xlog(self)
+    }
+    
     public var abs: HPAReal {
         return xabs(self)
     }
     
     public var sqrt: HPAReal {
         return xsqrt(self)
+    }
+    
+    public var floor: HPAReal {
+        return xfloor(self)
     }
     
     @inline(__always)
@@ -83,17 +95,17 @@ extension HPAReal: HPANumeric {
         }
         return xpow(self, e)
     }
-    
-    public var toComplex: HPAComplex {
-        return HPAComplex(re: self, im: .zero)
-    }
-    
 }
 
 // MARK: Operator Overloads
 @inline(__always)
 public func == (lhs: xpr, rhs: xpr) -> Bool {
     return xeq(lhs, rhs) != 0
+}
+
+@inline(__always)
+public func < (lhs: xpr, rhs: xpr) -> Bool {
+    return xlt(lhs, rhs) != 0
 }
 
 @inline(__always)

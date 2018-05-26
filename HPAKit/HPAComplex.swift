@@ -38,6 +38,10 @@ extension HPAComplex: HPANumeric {
         return cxeq(self, .zero) != 0
     }
     
+    public var isReal: Bool {
+        return xeq(im, xZero) != 0
+    }
+    
     // MARK: Math Functions
     public var sin: HPAComplex {
         return cxsin(self)
@@ -63,16 +67,24 @@ extension HPAComplex: HPANumeric {
         return cxatan(self)
     }
     
+    public var lg: HPAComplex {
+        return cxlog10(self)
+    }
+    
+    public var ln: HPAComplex {
+        return cxlog(self)
+    }
+    
     public var abs: HPAReal {
         return cxabs(self)
     }
     
-    public var sqrt: cxpr {
+    public var sqrt: HPAComplex {
         return cxsqrt(self)
     }
     
-    public var isReal: Bool {
-        return xeq(im, xZero) != 0
+    public var floor: HPAComplex {
+        return cxfloor(self)
     }
     
     @inline(__always)
