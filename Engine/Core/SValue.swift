@@ -67,7 +67,7 @@ public class SValue: Equatable, CustomStringConvertible {
      Debug description of the receiver's value in base units.
      */
     public var description: String {
-        return valueInBaseUnit().description(sf: 5) + unit.description
+        return valueInBaseUnit().description(sf: 10) + unit.description
     }
     
     /**

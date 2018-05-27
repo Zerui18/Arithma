@@ -25,7 +25,7 @@ class SKeyViewDelete: UICollectionViewCell, SKeyboardKey{
         imageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(imageView)
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         setupRings()
@@ -90,8 +90,8 @@ class SKeyViewDelete: UICollectionViewCell, SKeyboardKey{
         CATransaction.setAnimationDuration(0.2)
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
         
-        innerRingLayer.borderWidth = CGFloat(2).scaled
-        outerRingLayer.borderWidth = CGFloat(3.5).scaled
+        innerRingLayer.borderWidth = scaled(2)
+        outerRingLayer.borderWidth = scaled(3.5)
         
         CATransaction.commit()
     }

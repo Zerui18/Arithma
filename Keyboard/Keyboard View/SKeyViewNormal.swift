@@ -110,8 +110,8 @@ class SKeyViewNormal: UICollectionViewCell, SKeyboardKey{
             }
         }
         
-        innerRingLayer.borderWidth = CGFloat(2).scaled
-        outerRingLayer.borderWidth = CGFloat(3.5).scaled
+        innerRingLayer.borderWidth = scaled(2)
+        outerRingLayer.borderWidth = scaled(3.5)
         label.textColor = keyDescription.style.highlightedTextColor
         
         CATransaction.commit()
@@ -144,5 +144,5 @@ class SKeyViewNormal: UICollectionViewCell, SKeyboardKey{
     
 }
 
-fileprivate let keyFont = UIFont(name: "CourierNewPSMT", size: CGFloat(46).scaled)!
-fileprivate let smallerKeyFont = UIFont(name: "CourierNewPSMT", size: CGFloat(30).scaled)!
+fileprivate let keyFont = UIFont(name: "CourierNewPSMT", size: scaled(46))!
+fileprivate let smallerKeyFont = UIFont(name: "CourierNewPSMT", size: scaled(30))!

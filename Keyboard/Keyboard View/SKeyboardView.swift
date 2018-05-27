@@ -68,7 +68,7 @@ public class SKeyboardView: UIView {
     public override func didMoveToWindow() {
         bottomConstraint.constant = -(delegate?.bottomInset ?? 0)
         constraints.filter({$0.firstAttribute == .height}).forEach {
-            $0.constant = self.scrollView.contentSize.height + (delegate?.bottomInset ?? 0) + CGFloat(10).scaled
+            $0.constant = self.scrollView.contentSize.height + (delegate?.bottomInset ?? 0) + scaled(10)
         }
     }
     

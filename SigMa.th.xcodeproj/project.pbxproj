@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46420B936A70022A871 /* AppDelegate.swift */; };
 		01C5E46C20B936A80022A871 /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
-		01C5E46D20B936A80022A871 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46620B936A70022A871 /* SettingsViewController.swift */; };
 		01C5E46E20B936A80022A871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E46720B936A70022A871 /* Assets.xcassets */; };
 		01C5E46F20B936A80022A871 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46820B936A70022A871 /* MainViewController.swift */; };
 		01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46920B936A70022A871 /* ToggleButton.swift */; };
@@ -66,7 +66,7 @@
 		01C5E52E20B939E20022A871 /* Keyboard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E52620B939E20022A871 /* Keyboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01C5E53720B939F70022A871 /* SInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53220B939F60022A871 /* SInputTextView.swift */; };
 		01C5E53820B939F70022A871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E53320B939F60022A871 /* Assets.xcassets */; };
-		01C5E53A20B939F70022A871 /* Double+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Double+Scaled.swift */; };
+		01C5E53A20B939F70022A871 /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		01C5E54520B93A0F0022A871 /* Settings.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C5E54320B93A0F0022A871 /* Settings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01C5E54820B93A0F0022A871 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; };
 		01C5E54920B93A0F0022A871 /* Settings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -96,7 +96,7 @@
 		01C5E59720B947DF0022A871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E59620B947DF0022A871 /* LaunchScreen.storyboard */; };
 		01C5E59920B948D10022A871 /* HPAReal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E59820B948D10022A871 /* HPAReal+Extension.swift */; };
 		01C5E59D20B952DF0022A871 /* HPAComplex+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E59C20B952DF0022A871 /* HPAComplex+Extension.swift */; };
-		01C5E59E20B9555B0022A871 /* Double+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Double+Scaled.swift */; };
+		01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		01C5E5A020B955A30022A871 /* HPA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E49120B937BA0022A871 /* HPA.framework */; };
 		01C5E5A120B955BA0022A871 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
 		01C5E5A220B955BF0022A871 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
@@ -169,7 +169,6 @@
 		01C5E45E20B936560022A871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01C5E46420B936A70022A871 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01C5E46520B936A70022A871 /* ContainerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerScrollView.swift; sourceTree = "<group>"; };
-		01C5E46620B936A70022A871 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		01C5E46720B936A70022A871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01C5E46820B936A70022A871 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01C5E46920B936A70022A871 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
@@ -226,7 +225,7 @@
 		01C5E52920B939E20022A871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01C5E53220B939F60022A871 /* SInputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SInputTextView.swift; sourceTree = "<group>"; };
 		01C5E53320B939F60022A871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		01C5E53520B939F70022A871 /* Double+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Scaled.swift"; sourceTree = "<group>"; };
+		01C5E53520B939F70022A871 /* Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scaled.swift; sourceTree = "<group>"; };
 		01C5E54120B93A0F0022A871 /* Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C5E54320B93A0F0022A871 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		01C5E54420B93A0F0022A871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -322,6 +321,7 @@
 		01C5E44620B936550022A871 = {
 			isa = PBXGroup;
 			children = (
+				01C5E53520B939F70022A871 /* Scaled.swift */,
 				01C5E45120B936550022A871 /* SigMa.th */,
 				01C5E49220B937BA0022A871 /* HPA */,
 				01C5E55720B93C320022A871 /* HPAKit */,
@@ -352,7 +352,6 @@
 				01C5E46420B936A70022A871 /* AppDelegate.swift */,
 				01C5E46520B936A70022A871 /* ContainerScrollView.swift */,
 				01C5E46820B936A70022A871 /* MainViewController.swift */,
-				01C5E46620B936A70022A871 /* SettingsViewController.swift */,
 				01C5E46920B936A70022A871 /* ToggleButton.swift */,
 				01C5E5A420B983C60022A871 /* Others */,
 			);
@@ -384,7 +383,6 @@
 		01C5E52720B939E20022A871 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				01C5E53520B939F70022A871 /* Double+Scaled.swift */,
 				01C5E53220B939F60022A871 /* SInputTextView.swift */,
 				01C5E58820B9478A0022A871 /* Accessory View */,
 				01C5E59520B947AE0022A871 /* Keyboard View */,
@@ -850,9 +848,8 @@
 			files = (
 				01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */,
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,
-				01C5E59E20B9555B0022A871 /* Double+Scaled.swift in Sources */,
+				01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */,
 				01C5E46C20B936A80022A871 /* ContainerScrollView.swift in Sources */,
-				01C5E46D20B936A80022A871 /* SettingsViewController.swift in Sources */,
 				01C5E46F20B936A80022A871 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,6 +871,7 @@
 				01C5E57E20B945200022A871 /* Errors.swift in Sources */,
 				01C5E57120B945160022A871 /* SCompoundUnit.swift in Sources */,
 				01C5E56E20B945160022A871 /* SUnitRepresentable.swift in Sources */,
+				01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,7 +923,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C5E53A20B939F70022A871 /* Double+Scaled.swift in Sources */,
+				01C5E53A20B939F70022A871 /* Scaled.swift in Sources */,
 				01C5E53720B939F70022A871 /* SInputTextView.swift in Sources */,
 				01C5E58720B947620022A871 /* SUnitSelectorCell.swift in Sources */,
 				01C5E59120B947A20022A871 /* SKeyboardGridView.swift in Sources */,
@@ -1113,6 +1111,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 789MW96BQB;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/SigMa.th/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1160,6 +1159,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/Engine/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1171,7 +1171,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Engine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1220,6 +1220,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = HPA/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1249,6 +1250,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = HPA/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1401,6 +1403,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = "$(SRCROOT)/HPAKit/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1412,7 +1415,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.HPAKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1432,6 +1435,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = "$(SRCROOT)/HPAKit/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

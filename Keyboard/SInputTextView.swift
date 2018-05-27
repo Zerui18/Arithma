@@ -109,7 +109,7 @@ extension SInputTextView {
             let attributesToSet: [NSAttributedStringKey: Any]
             
             if typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double == 0.0 {
-                attributesToSet = [.font: smallFont, .baselineOffset: Double(CGFloat(13.5).scaled)]
+                attributesToSet = [.font: smallFont, .baselineOffset: Double(scaled(13.5))]
             }
             else {
                 attributesToSet = [.font: normalFont, .baselineOffset: 0.0]
@@ -161,6 +161,6 @@ extension UITextPosition {
     
 }
 
-fileprivate let normalFont = UIFont(name: "CourierNewPSMT", size: CGFloat(36).scaled)!
-fileprivate let smallFont = normalFont.withSize(CGFloat(27).scaled)
+fileprivate let normalFont = UIFont(name: "CourierNewPSMT", size: scaled(40))!
+fileprivate let smallFont = normalFont.withSize(scaled(30))
 

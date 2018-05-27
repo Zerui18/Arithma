@@ -25,7 +25,7 @@ extension Formatter {
 extension HPAComplex {
     
     func formatted()-> NSMutableAttributedString {
-        return NSMutableAttributedString(string: description(sf: 5), attributes: [.font: resultFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), .baselineOffset: 0])
+        return NSMutableAttributedString(string: description(sf: 10), attributes: [.font: resultFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), .baselineOffset: 0])
 //        Formatter.scientific.maximumSignificantDigits = 4
 //
 //        if !SSettings.shared.isScientificMode || !isReal {
@@ -44,7 +44,7 @@ extension HPAComplex {
 //
 //        if power != 0 {
 //            str.append(NSAttributedString(string: "×10", attributes: [.font: resultFont, .foregroundColor: #colorLiteral(red: 0.1829208135, green: 0.5398121641, blue: 0.831140706, alpha: 1)]))
-//            str.append(NSAttributedString(string: components[1], attributes: [.font: smallerResultFont, .baselineOffset: CGFloat(22.5).scaled, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)]))
+//            str.append(NSAttributedString(string: components[1], attributes: [.font: smallerResultFont, .baselineOffset: scaled(), .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)]))
 //        }
 //
 //        return str

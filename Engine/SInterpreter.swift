@@ -87,7 +87,7 @@ public class SInterpreter: NSObject {
         guard tokensAvailable, case let SLexer.Token.value(value) = popCurrentToken() else {
             throw ParseError.expectedNumber
         }
-        return SValue(value: HPAComplex(floatLiteral: value))
+        return SValue(value: value.toComplex)
     }
     
     private func interpretUnit() throws -> SCompoundUnit {

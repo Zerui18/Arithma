@@ -240,18 +240,19 @@ xpr_asprint (struct xpr u, int sc_not, int sign, int lim)
 	  *pa ^= xM_sgn;
 	  xstrputc ('-', buffer);
 	}
-      else
-	{
-	  if ((sign))
-	  xstrputc ('+', buffer);
-	}
+//      else
+//    {
+//      if ((sign))
+//      xstrputc ('+', buffer);
+//    }
       if ((xis0(&u)))
 	{
-	  xsprintfmt (buffer, "0.");
-	  for (k = 0; k < lim; ++k)
-	    xstrputc ('0', buffer);
-	  if ((sc_not))
-	    xsprintfmt (buffer, "e+0");
+	  xsprintfmt (buffer, "0");
+//    xsprintfmt (buffer, ".");
+//      for (k = 0; k < lim; ++k)
+//        xstrputc ('0', buffer);
+//      if ((sc_not))
+//        xsprintfmt (buffer, "e0");
 	}
       else
 	{
@@ -293,33 +294,28 @@ xpr_asprint (struct xpr u, int sc_not, int sign, int lim)
 	  /* Now has come the moment to print */
 	  if (m > XMAX_10EX)
 	    xsprintfmt (buffer, "Inf");
-	  else if ((sc_not))
+	  else if ((sc_not) || m>=10 || m<=-10)
 	    {
-	      xsprintfmt (buffer, "%c.", '0' + *p++);
-	      for (k = 0; k < lim; ++k)
-		xstrputc ('0' + *p++, buffer);
-	      if (m >= 0)
-		xsprintfmt (buffer, "e+%d", m);
-	      else
-		xsprintfmt (buffer, "e%d", m);
+	      xsprintfmt (buffer, "%c", '0' + *p++);
+            if(*p) {
+                xstrputc('.', buffer);
+                for (k = 0; k < lim && *p; ++k)
+                    xstrputc ('0' + *p++, buffer);
+            }
+          if(m != 0)
+        xsprintfmt (buffer, "e%d", m);
 	    }
 	  else
 	    {
 	      if (m >= 0)
 		{
 		  for (k = 0; k <= m; k++)
-		    {
-		      if (k <= lim)
-			xstrputc ('0' + p[k], buffer);
-		      else
-			xstrputc ('0', buffer);
-		    }
-		  if (k <= lim)
-		    {
-		      xstrputc ('.', buffer);
-		      for (; k <= lim; k++)
-			xstrputc ('0' + p[k], buffer);
-		    }
+        xstrputc ('0' + p[k], buffer);
+            if(p[k]) {
+                xstrputc ('.', buffer);
+                for (;k-1-m <= lim && p[k]; k++)
+                    xstrputc ('0' + p[k], buffer);
+            }
 		}
 	      else
 		{

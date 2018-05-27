@@ -29,9 +29,12 @@ extension HPAComplex: HPANumeric {
     public static let i = cxIU
     
     // MARK: Description
-    @inline(__always)
     public func description(sf: Int32)-> String {
-        return String(cString: cxpr_asprint(self, 0, 0, sf))
+        var imcopy = im
+        let connector = (imcopy.sign() == .plus && !re.isZero && !im.isZero) ? "+":""
+        let real = re.isZero && !im.isZero ? "":re.description(sf: sf)
+        let imaginary = im.isZero ? "":"\(im.description(sf: sf))i"
+        return real + connector + imaginary
     }
     
     public var isZero: Bool {

@@ -20,7 +20,7 @@ class SUnitSelectorCell: UICollectionViewCell {
         label.textColor = .white
         
         contentView.addSubview(label)
-        layer.cornerRadius = CGFloat(10).scaled
+        layer.cornerRadius = scaled(10)
         backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
         
     }
@@ -63,4 +63,4 @@ class SUnitSelectorCell: UICollectionViewCell {
     
 }
 
-fileprivate let unitLabelFont = UIFont(name: "CourierNewPSMT", size: CGFloat(28).scaled)!
+fileprivate let unitLabelFont = UIFont(name: "CourierNewPSMT", size: scaled(28))!

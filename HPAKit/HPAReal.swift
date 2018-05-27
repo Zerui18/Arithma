@@ -6,7 +6,9 @@
 //  Copyright © 2018 Chen Zerui. All rights reserved.
 //
 
+import Foundation
 import HPA
+import Settings
 
 public typealias HPAReal = xpr
 
@@ -24,6 +26,18 @@ extension HPAReal: HPANumeric, Comparable{
         self = dbltox(value)
     }
     
+    public init?(_ string: String) {
+        var value = string.cString(using: .ascii)!.withUnsafeBufferPointer {
+            strtox($0.baseAddress!, nil)
+        }
+        if xisNaN(&value) != 0 {
+            return nil
+        }
+        else {
+            self = value
+        }
+    }
+    
     // MARK: Static Variables
     public static let zero = xZero
     public static let epsilon: HPAReal = 1e-30
@@ -31,7 +45,9 @@ extension HPAReal: HPANumeric, Comparable{
     // MARK: Description
     @inline(__always)
     public func description(sf: Int32)-> String {
-        return String(cString: xpr_asprint(self, 0, 0, sf))
+        return String(cString:
+            xpr_asprint(self, SSettings.shared.isScientificMode ? 1:0, 0, sf)
+        )
     }
     
     public var isZero: Bool {

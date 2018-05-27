@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import HPAKit
 
 // MARK: SLexer class
 public class SLexer {
     
     enum Token {
-        case value(Double), unit(SBasicUnit), parensOpen, parensClose, `operator`(SValue.Operator), function(SValue.Function), identifier(String), imaginaryUnit
+        case value(HPAReal), unit(SBasicUnit), parensOpen, parensClose, `operator`(SValue.Operator), function(SValue.Function), identifier(String), imaginaryUnit
     }
     
     // MARK: Private Properties
@@ -142,7 +143,7 @@ public class SLexer {
             let str = readNumberOrIdentifier()
             let token: SLexer.Token
             
-            if let dblVal = Double(str) {
+            if let dblVal = HPAReal(str) {
                 token = .value(dblVal)
             }
 

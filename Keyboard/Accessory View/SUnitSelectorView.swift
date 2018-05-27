@@ -50,10 +50,10 @@ public class SUnitSelectorView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        let val = CGFloat(8).scaled
+        let val = scaled(8)
         layout.sectionInset = UIEdgeInsets(top: val, left: val, bottom: val, right: val)
         
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: CGFloat(46).scaled), collectionViewLayout: layout)
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: scaled(46)), collectionViewLayout: layout)
         self.keyboard = keyboard
         setup()
     }
@@ -148,8 +148,8 @@ extension SUnitSelectorView: UICollectionViewDataSource, UICollectionViewDelegat
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let n = CGFloat(numberOfItems(inSection: 0)+1)
-        let width = (bounds.width - n*CGFloat(10).scaled) / (n-1)
-        return CGSize(width: width, height: CGFloat(46-2*8).scaled)
+        let width = (bounds.width - n*scaled(10)) / (n-1)
+        return CGSize(width: width, height: scaled(46-2*8))
     }
     
 }

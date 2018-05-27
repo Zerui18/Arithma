@@ -10,10 +10,6 @@ import UIKit
 
 fileprivate let scale = min(UIScreen.main.bounds.width/375, UIScreen.main.bounds.height/812)
 
-extension CGFloat {
-    
-    var scaled: CGFloat {
-        return self * scale
-    }
-    
+public func scaled(_ v: CGFloat)-> CGFloat {
+    return v * scale
 }

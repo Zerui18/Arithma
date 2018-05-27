@@ -30,12 +30,12 @@ class ToggleButton: UIButton {
         super.init(frame: .zero)
         alpha = 0.65
         borderLayer.frame = layer.bounds
-        borderLayer.cornerRadius = CGFloat(8).scaled
-        borderLayer.borderWidth = CGFloat(2).scaled
+        borderLayer.cornerRadius = scaled(8)
+        borderLayer.borderWidth = scaled(2)
         borderLayer.borderColor = getTintColor().cgColor
         layer.addSublayer(borderLayer)
         
-        titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(30).scaled)
+        titleLabel?.font = UIFont.systemFont(ofSize: scaled(30))
         setTitle(getTitle(), for: UIControlState())
         setTitleColor(getTintColor(), for: UIControlState())
         
