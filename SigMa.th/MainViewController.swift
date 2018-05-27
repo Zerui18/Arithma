@@ -113,8 +113,8 @@ class MainViewController: UIViewController {
         inputScrollView.showsVerticalScrollIndicator = false
         
         view.addSubview(inputScrollView)
-        inputScrollView.bottomAnchor.constraint(equalTo: view.topAnchor, constant:
-            view.bounds.height - keyboard.bounds.height - unitSelector.bounds.height - 8
+        inputScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
+            -keyboard.bounds.height - unitSelector.bounds.height - 8
         ).isActive = true
         inputScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         inputScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
