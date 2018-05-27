@@ -104,7 +104,12 @@ extension HPAComplex: HPANumeric {
     
     public func pow(e: HPAComplex)-> HPAComplex {
         // short-cut if e is real & e is integer
+        ShortCut:
         if e.isReal && xfloor(e.re) == e.re {
+            let double = xtodbl(e.re)
+            if double > Double(Int32.max) {
+                break ShortCut
+            }
             return cxpwr(self, Int32(xtodbl(e.re)))
         }
         return cxpow(self, e)
