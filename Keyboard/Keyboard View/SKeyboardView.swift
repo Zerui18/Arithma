@@ -113,9 +113,9 @@ fileprivate let mainKeys = zip(["Dl", "(", ")", "+",
                     .number, .number, .operator, .operator])
                     .map(SKeyDescription.init)
 fileprivate let functionKeys = zip(["Dl", "ln", "lg",
+                                    "abs", "exp", "sqrt",
                                     "sin", "cos", "tan",
-                                    "asin", "acos", "atan",
-                                    "sqrt", "cbrt", "abs"],
+                                    "asin", "acos", "atan"],
                        [.delete, .function, .function,
                         .function, .function, .function,
                         .function, .function, .function,

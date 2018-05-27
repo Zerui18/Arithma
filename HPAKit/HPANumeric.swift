@@ -6,7 +6,7 @@
 //  Copyright © 2018 Chen Zerui. All rights reserved.
 //
 
-public protocol HPANumeric: Equatable, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+public protocol HPANumeric: Equatable, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, CustomStringConvertible, CustomDebugStringConvertible {
     
     func description(sf: Int32)-> String
     
@@ -22,6 +22,7 @@ public protocol HPANumeric: Equatable, ExpressibleByFloatLiteral, ExpressibleByI
     
     var lg: Self {get}
     var ln: Self {get}
+    var exp: Self {get}
     
     var abs: HPAReal {get}
     var sqrt: Self {get}

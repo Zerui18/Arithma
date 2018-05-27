@@ -74,7 +74,8 @@ public class SValue: Equatable, CustomStringConvertible {
      Create a NSMutableAttributedString for UI display of the receiver's value.
      */
     public var attributedDescription: NSMutableAttributedString {
-        let str = valueInBaseUnit().formatted()
+        var value = valueInBaseUnit()
+        let str = value.formatted()
         unit.addUnitDescription(to: str)
         return str
     }

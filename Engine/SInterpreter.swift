@@ -236,6 +236,7 @@ public class SInterpreter: NSObject {
     
     private func interpretCurrentExpression(outerExprPrecedence: Int = 0) throws -> SValue {
         
+        lastValue = nil
         var currentValue = try interpretPrimaryTokenType()
         
         while tokensAvailable {

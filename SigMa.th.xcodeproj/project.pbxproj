@@ -101,11 +101,13 @@
 		01C5E5A120B955BA0022A871 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
 		01C5E5A220B955BF0022A871 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
 		01C5E5A320B955C30022A871 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; };
-		01C5E5B120B985C10022A871 /* Complex+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AC20B985C10022A871 /* Complex+NSMutableAttributedString.swift */; };
-		01C5E5B220B985C10022A871 /* Double+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AD20B985C10022A871 /* Double+Scaled.swift */; };
+		01C5E5B120B985C10022A871 /* HPA+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AC20B985C10022A871 /* HPA+NSMutableAttributedString.swift */; };
 		01C5E5B320B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */; };
 		01C5E5B420B985C10022A871 /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AF20B985C10022A871 /* Character+Extension.swift */; };
 		01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5B020B985C10022A871 /* Token+Highlight.swift */; };
+		01E5BAFF20BACE7F00FEE362 /* HPAKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BAFE20BACE7F00FEE362 /* HPAKitTests.swift */; };
+		01E5BB0120BACE7F00FEE362 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
+		01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,13 @@
 			remoteInfo = Settings;
 		};
 		01C5E55B20B93C320022A871 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01C5E44720B936550022A871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01C5E55520B93C320022A871;
+			remoteInfo = HPAKit;
+		};
+		01E5BB0220BACE7F00FEE362 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 01C5E44720B936550022A871 /* Project object */;
 			proxyType = 1;
@@ -256,11 +265,14 @@
 		01C5E59820B948D10022A871 /* HPAReal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPAReal+Extension.swift"; sourceTree = "<group>"; };
 		01C5E59C20B952DF0022A871 /* HPAComplex+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPAComplex+Extension.swift"; sourceTree = "<group>"; };
 		01C5E5AB20B9856B0022A871 /* const31.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const31.h; sourceTree = "<group>"; };
-		01C5E5AC20B985C10022A871 /* Complex+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Complex+NSMutableAttributedString.swift"; path = "Engine/Extensions/Complex+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
-		01C5E5AD20B985C10022A871 /* Double+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Double+Scaled.swift"; path = "Engine/Extensions/Double+Scaled.swift"; sourceTree = SOURCE_ROOT; };
+		01C5E5AC20B985C10022A871 /* HPA+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HPA+NSMutableAttributedString.swift"; path = "Engine/Extensions/HPA+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
 		01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCompoundUnit+NSMutableAttributedString.swift"; path = "Engine/Extensions/SCompoundUnit+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
 		01C5E5AF20B985C10022A871 /* Character+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+Extension.swift"; path = "Engine/Extensions/Character+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		01C5E5B020B985C10022A871 /* Token+Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Token+Highlight.swift"; path = "Engine/Extensions/Token+Highlight.swift"; sourceTree = SOURCE_ROOT; };
+		01E5BAFC20BACE7F00FEE362 /* HPAKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HPAKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01E5BAFE20BACE7F00FEE362 /* HPAKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPAKitTests.swift; sourceTree = "<group>"; };
+		01E5BB0020BACE7F00FEE362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +327,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		01E5BAF920BACE7F00FEE362 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E5BB0120BACE7F00FEE362 /* HPAKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -325,6 +345,7 @@
 				01C5E45120B936550022A871 /* SigMa.th */,
 				01C5E49220B937BA0022A871 /* HPA */,
 				01C5E55720B93C320022A871 /* HPAKit */,
+				01E5BAFD20BACE7F00FEE362 /* HPAKitTests */,
 				01C5E47820B9373B0022A871 /* Engine */,
 				01C5E52720B939E20022A871 /* Keyboard */,
 				01C5E54220B93A0F0022A871 /* Settings */,
@@ -342,6 +363,7 @@
 				01C5E52620B939E20022A871 /* Keyboard.framework */,
 				01C5E54120B93A0F0022A871 /* Settings.framework */,
 				01C5E55620B93C320022A871 /* HPAKit.framework */,
+				01E5BAFC20BACE7F00FEE362 /* HPAKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,8 +372,9 @@
 			isa = PBXGroup;
 			children = (
 				01C5E46420B936A70022A871 /* AppDelegate.swift */,
-				01C5E46520B936A70022A871 /* ContainerScrollView.swift */,
 				01C5E46820B936A70022A871 /* MainViewController.swift */,
+				01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */,
+				01C5E46520B936A70022A871 /* ContainerScrollView.swift */,
 				01C5E46920B936A70022A871 /* ToggleButton.swift */,
 				01C5E5A420B983C60022A871 /* Others */,
 			);
@@ -419,8 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				01C5E5AF20B985C10022A871 /* Character+Extension.swift */,
-				01C5E5AC20B985C10022A871 /* Complex+NSMutableAttributedString.swift */,
-				01C5E5AD20B985C10022A871 /* Double+Scaled.swift */,
+				01C5E5AC20B985C10022A871 /* HPA+NSMutableAttributedString.swift */,
 				01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */,
 				01C5E5B020B985C10022A871 /* Token+Highlight.swift */,
 			);
@@ -571,6 +593,15 @@
 				01C5E54420B93A0F0022A871 /* Info.plist */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		01E5BAFD20BACE7F00FEE362 /* HPAKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				01E5BAFE20BACE7F00FEE362 /* HPAKitTests.swift */,
+				01E5BB0020BACE7F00FEE362 /* Info.plist */,
+			);
+			path = HPAKitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -735,6 +766,24 @@
 			productReference = 01C5E55620B93C320022A871 /* HPAKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		01E5BAFB20BACE7F00FEE362 /* HPAKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01E5BB0620BACE7F00FEE362 /* Build configuration list for PBXNativeTarget "HPAKitTests" */;
+			buildPhases = (
+				01E5BAF820BACE7F00FEE362 /* Sources */,
+				01E5BAF920BACE7F00FEE362 /* Frameworks */,
+				01E5BAFA20BACE7F00FEE362 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01E5BB0320BACE7F00FEE362 /* PBXTargetDependency */,
+			);
+			name = HPAKitTests;
+			productName = HPAKitTests;
+			productReference = 01E5BAFC20BACE7F00FEE362 /* HPAKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -768,6 +817,9 @@
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 0940;
 					};
+					01E5BAFB20BACE7F00FEE362 = {
+						CreatedOnToolsVersion = 9.4;
+					};
 				};
 			};
 			buildConfigurationList = 01C5E44A20B936550022A871 /* Build configuration list for PBXProject "SigMa.th" */;
@@ -789,6 +841,7 @@
 				01C5E52520B939E20022A871 /* Keyboard */,
 				01C5E54020B93A0F0022A871 /* Settings */,
 				01C5E55520B93C320022A871 /* HPAKit */,
+				01E5BAFB20BACE7F00FEE362 /* HPAKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -839,6 +892,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		01E5BAFA20BACE7F00FEE362 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -846,6 +906,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */,
 				01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */,
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,
 				01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */,
@@ -861,8 +922,7 @@
 				01C5E5B320B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */,
 				01C5E5B420B985C10022A871 /* Character+Extension.swift in Sources */,
 				01C5E56F20B945160022A871 /* SBasicUnit.swift in Sources */,
-				01C5E5B120B985C10022A871 /* Complex+NSMutableAttributedString.swift in Sources */,
-				01C5E5B220B985C10022A871 /* Double+Scaled.swift in Sources */,
+				01C5E5B120B985C10022A871 /* HPA+NSMutableAttributedString.swift in Sources */,
 				01C5E48820B937610022A871 /* SLexer.swift in Sources */,
 				01C5E57020B945160022A871 /* SValue.swift in Sources */,
 				01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */,
@@ -958,6 +1018,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		01E5BAF820BACE7F00FEE362 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E5BAFF20BACE7F00FEE362 /* HPAKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -985,6 +1053,11 @@
 			isa = PBXTargetDependency;
 			target = 01C5E55520B93C320022A871 /* HPAKit */;
 			targetProxy = 01C5E55B20B93C320022A871 /* PBXContainerItemProxy */;
+		};
+		01E5BB0320BACE7F00FEE362 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01C5E55520B93C320022A871 /* HPAKit */;
+			targetProxy = 01E5BB0220BACE7F00FEE362 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1454,6 +1527,42 @@
 			};
 			name = Release;
 		};
+		01E5BB0420BACE7F00FEE362 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 789MW96BQB;
+				INFOPLIST_FILE = HPAKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.HPAKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01E5BB0520BACE7F00FEE362 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 789MW96BQB;
+				INFOPLIST_FILE = HPAKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.HPAKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1516,6 +1625,15 @@
 			buildConfigurations = (
 				01C5E56020B93C320022A871 /* Debug */,
 				01C5E56120B93C320022A871 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01E5BB0620BACE7F00FEE362 /* Build configuration list for PBXNativeTarget "HPAKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01E5BB0420BACE7F00FEE362 /* Debug */,
+				01E5BB0520BACE7F00FEE362 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

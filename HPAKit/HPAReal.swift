@@ -50,11 +50,19 @@ extension HPAReal: HPANumeric, Comparable{
         )
     }
     
+    public var description: String {
+        return description(sf: 100000)
+    }
+    
+    public var debugDescription: String {
+        return description
+    }
+    
     public var isZero: Bool {
         return xeq(self, .zero) != 0
     }
     
-    mutating func sign()-> FloatingPointSign {
+    public mutating func sign()-> FloatingPointSign {
         return xsgn(&self) != -1 ? .plus:.minus
     }
     
@@ -89,6 +97,10 @@ extension HPAReal: HPANumeric, Comparable{
     
     public var ln: HPAReal {
         return xlog(self)
+    }
+    
+    public var exp: HPAReal {
+        return xexp(self)
     }
     
     public var abs: HPAReal {

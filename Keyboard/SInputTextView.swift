@@ -53,7 +53,7 @@ public class SInputTextView: UITextView {
     }
     
     public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(select(_:))
+        return action == #selector(selectAll(_:))
     }
     
     func textDidChange() {
@@ -109,7 +109,7 @@ extension SInputTextView {
             let attributesToSet: [NSAttributedStringKey: Any]
             
             if typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double == 0.0 {
-                attributesToSet = [.font: smallFont, .baselineOffset: Double(scaled(13.5))]
+                attributesToSet = [.font: smallFont, .baselineOffset: Double(scaled(26))]
             }
             else {
                 attributesToSet = [.font: normalFont, .baselineOffset: 0.0]
@@ -161,6 +161,6 @@ extension UITextPosition {
     
 }
 
-fileprivate let normalFont = UIFont(name: "CourierNewPSMT", size: scaled(40))!
-fileprivate let smallFont = normalFont.withSize(scaled(30))
+fileprivate let normalFont = UIFont(name: "CourierNewPSMT", size: scaled(52))!
+fileprivate let smallFont = normalFont.withSize(scaled(39))
 

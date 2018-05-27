@@ -25,7 +25,7 @@ class SKeyViewDelete: UICollectionViewCell, SKeyboardKey{
         imageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(imageView)
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: scaled(55)).isActive = true
         imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         setupRings()

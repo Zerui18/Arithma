@@ -35,7 +35,7 @@ extension SValue {
     }
     
     enum Function: String, OperationRepresentable {
-        case sin, cos, tan, asin, acos, atan, ln, lg, sqrt, cbrt, abs
+        case sin, cos, tan, asin, acos, atan, ln, lg, sqrt, exp, abs
         
         func run(on values: [HPAComplex])-> HPAComplex {
             let value = values[0]
@@ -59,8 +59,8 @@ extension SValue {
                 return value.lg
             case .sqrt:
                 return value.sqrt
-            case .cbrt:
-                return value.pow(e: 1.0/3.0)
+            case .exp:
+                return value.exp
             case .abs:
                 return HPAComplex(re: value.abs, im: 0)
             }

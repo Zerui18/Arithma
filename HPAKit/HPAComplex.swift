@@ -37,6 +37,14 @@ extension HPAComplex: HPANumeric {
         return real + connector + imaginary
     }
     
+    public var description: String {
+        return description(sf: 100000)
+    }
+    
+    public var debugDescription: String {
+        return description
+    }
+    
     public var isZero: Bool {
         return cxeq(self, .zero) != 0
     }
@@ -78,6 +86,10 @@ extension HPAComplex: HPANumeric {
         return cxlog(self)
     }
     
+    public var exp: HPAComplex {
+        return cxexp(self)
+    }
+    
     public var abs: HPAReal {
         return cxabs(self)
     }
@@ -90,7 +102,6 @@ extension HPAComplex: HPANumeric {
         return cxfloor(self)
     }
     
-    @inline(__always)
     public func pow(e: HPAComplex)-> HPAComplex {
         // short-cut if e is real & e is integer
         if e.isReal && xfloor(e.re) == e.re {
@@ -100,6 +111,7 @@ extension HPAComplex: HPANumeric {
     }
     
 }
+
 
 // MARK: Operator Overloads
 
