@@ -144,5 +144,6 @@ class SKeyViewNormal: UICollectionViewCell, SKeyboardKey{
     
 }
 
+// MAR: Key Fonts
 fileprivate let keyFont = UIFont(name: "CourierNewPSMT", size: scaled(46))!
 fileprivate let smallerKeyFont = UIFont(name: "CourierNewPSMT", size: scaled(30))!

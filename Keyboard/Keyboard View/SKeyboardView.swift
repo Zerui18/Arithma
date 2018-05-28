@@ -14,12 +14,13 @@ public protocol SKeyboardViewDelegate: class {
     var bottomInset: CGFloat {get}
 }
 
+/// Embeds a paging UIScrollView which contains the keyboard grids.
 public class SKeyboardView: UIView {
     
     private let scrollView = UIScrollView(frame: .zero)
     let pages: [SKeyboardGridView]
     
-    private var bottomConstraint: NSLayoutConstraint!
+    private weak var bottomConstraint: NSLayoutConstraint!
     
     public weak var delegate: SKeyboardViewDelegate?
     
@@ -65,6 +66,7 @@ public class SKeyboardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Hacks to fix layout issue with bottom safe-area insets on iPhone X.
     public override func didMoveToWindow() {
         bottomConstraint.constant = -(delegate?.bottomInset ?? 0)
         constraints.filter({$0.firstAttribute == .height}).forEach {
@@ -72,6 +74,7 @@ public class SKeyboardView: UIView {
         }
     }
     
+    /// Update the exponent key's appearance. Only call this on the "main" keyboard.
     func setIsIndenting(_ flag: Bool) {
         let cell = pages[0].cellForItem(at: IndexPath(item: 18, section: 0)) as! SKeyViewNormal
         
@@ -89,6 +92,7 @@ public class SKeyboardView: UIView {
 
 }
 
+// MARK: On Key Click
 extension SKeyboardView: UIInputViewAudioFeedback {
     
     func didPress(_ key: SKeyDescription) {
@@ -101,6 +105,7 @@ extension SKeyboardView: UIInputViewAudioFeedback {
     
 }
 
+// MARK: Key Arrangements
 fileprivate let mainKeys = zip(["Dl", "(", ")", "+",
                                 "7", "8", "9", "-",
                                 "4", "5", "6", "×",

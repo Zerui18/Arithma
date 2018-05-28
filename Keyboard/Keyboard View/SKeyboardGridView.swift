@@ -38,7 +38,7 @@ class SKeyboardGridView: UICollectionView, UICollectionViewDataSource, UICollect
         layout.minimumLineSpacing = (size.height - CGFloat(rows)*minDim) / CGFloat(rows+1)
         layout.minimumInteritemSpacing = (size.width - CGFloat(columns)*minDim) / CGFloat(columns+1)
         
-        // for sysmetry, set edge insets to the corresponding minimum spacing (-0.25 as buffer space)
+        // for symmetry, set edge insets to the corresponding minimum spacing (-0.25 as buffer space)
         layout.sectionInset = UIEdgeInsets(top: layout.minimumLineSpacing-0.25, left: layout.minimumInteritemSpacing-0.25, bottom: layout.minimumLineSpacing-0.25, right: layout.minimumInteritemSpacing-0.25)
         
         // set finalised item size

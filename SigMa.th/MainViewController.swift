@@ -176,11 +176,12 @@ class MainViewController: UIViewController {
     
     private func applyAnimations() {
         // slide down animation on both toggle buttons
-        trigoModeButton.frame.origin.y -= scaled(100)
-        scientificModeButton.frame.origin.y -= scaled(100)
+        let offset = scaled(100)
+        trigoModeButton.frame.origin.y -= offset
+        scientificModeButton.frame.origin.y -= offset
         UIView.animate(withDuration: 0.5) {
-            self.trigoModeButton.frame.origin.y += scaled(100)
-            self.scientificModeButton.frame.origin.y += scaled(100)
+            self.trigoModeButton.frame.origin.y += offset
+            self.scientificModeButton.frame.origin.y += offset
         }
     }
 

@@ -11,11 +11,13 @@ import Engine
 
 public class SUnitSelectorView: UICollectionView {
     
+    // MARK: Displayed Units
     fileprivate var unitIds: [String] = ["m", "s", "kg"]
     fileprivate let unitToPrefixed: [[String]] = [["mm", "cm", "m", "km"],
                                                   ["s", "min", "hr", "day"],
                                                   ["mg", "g", "kg", "ton"]]
     
+    /// If user has long pressed - triggering prefix selection for the unit. Chanegs to this will update the tableView.
     fileprivate var isChoosingPrefix = false {
         didSet {
             performBatchUpdates({
@@ -27,7 +29,10 @@ public class SUnitSelectorView: UICollectionView {
             }
         }
     }
+    
+    /// The index of the selected unit.
     fileprivate var selectedUnitIndex: Int?
+    /// The index of the selected prefix.
     fileprivate var selectedPrefixIndex: Int? {
         didSet {
             guard oldValue != selectedPrefixIndex else {
@@ -35,17 +40,21 @@ public class SUnitSelectorView: UICollectionView {
             }
             
             if let index = oldValue {
+                // De-highlight previously selected.
                 (cellForItem(at: IndexPath(item: index, section: 0)) as! SUnitSelectorCell).showNormal()
             }
             
             if let index = selectedPrefixIndex {
+                // Highlight new cell.
                 (cellForItem(at: IndexPath(item: index, section: 0)) as! SUnitSelectorCell).showHighlighted()
             }
         }
     }
     
+    /// Keyboard associated with this instance.
     fileprivate weak var keyboard: SKeyboardView!
     
+    // MARK: Setup Methods
     public init(keyboard: SKeyboardView) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -74,6 +83,7 @@ public class SUnitSelectorView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// During prefix selection, user interaction is handed over to the gesture recognizer.
     @objc private func longPress(_ sender: UILongPressGestureRecognizer) {
         switch sender.state {
         case .began, .changed:

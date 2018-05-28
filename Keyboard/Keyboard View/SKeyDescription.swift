@@ -8,10 +8,12 @@
 
 import UIKit
 
-
+/// Struct describing the appearance of a key.
 public struct SKeyDescription {
     
-    var symbol: String
+    /// The symbol to be displayed on the key.
+    let symbol: String
+    /// The style of the key.
     let style: KeyStyle
     
     enum KeyStyle {

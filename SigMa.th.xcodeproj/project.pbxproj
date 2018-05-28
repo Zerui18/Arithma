@@ -482,8 +482,8 @@
 				01C5E58D20B947A20022A871 /* SKeyboardKey.swift */,
 				01C5E58C20B947A20022A871 /* SKeyboardView.swift */,
 				01C5E58920B947A20022A871 /* SKeyDescription.swift */,
-				01C5E58A20B947A20022A871 /* SKeyViewDelete.swift */,
 				01C5E58E20B947A20022A871 /* SKeyViewNormal.swift */,
+				01C5E58A20B947A20022A871 /* SKeyViewDelete.swift */,
 			);
 			path = "Keyboard View";
 			sourceTree = "<group>";

@@ -9,28 +9,50 @@
 import UIKit
 import Engine
 
+// MARK: Callback Types
 public typealias SResultUpdateHandler = (SValue?, Error?) -> Void
 public typealias STextChangedHandler = () -> Void
 
+// MARK: SInputTextView
+/// Custom UITextView subclass which integrates with SEvaluator to automatically evaluate its text content as mathematical expressions and public its results with the registered callbacks.
 public class SInputTextView: UITextView {
     
+    // MARK: Public Properties
+    /// The name of the variable that the text view assignes its results to. Currently variable evaluation is unsuable.
     public var variableName: String?
+    
+    /// Callback when text changes. This block is executed before the new text is evaluated.
     public var onTextChange: STextChangedHandler?
+    
+    /// Callback when evaluation completes with result.
     public var onResultUpdate: SResultUpdateHandler?
     
+    // MARK: Private Properties
+    /// If the ongoing text change is from the keyboard.
+    private var isKeyboardInput = false
+    
+    /// Cache of current result.
     private var currentResult: SValue?
+    
+    /// Evaluator backing this text view.
     private var interpreter: SInterpreter!
+    
+    /// Weakly associated keyboard instance. This is required for the keyboard's exponent key to be updated on text replaced & selection changed.
     private weak var keyboard: SKeyboardView!
     
+    /// Helper function to update the state of the exponent key of the associated keyboard.
     private func updateIndentationKey() {
         keyboard.setIsIndenting(typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
     }
     
+    /// Overrided to update exponent key of associated keyboard whenever selection changes.
     public override var selectedTextRange: UITextRange? {
         didSet {
             updateIndentationKey()
         }
     }
+    
+    // MARK: Basic Methods
     
     public init(frame: CGRect, keyboard: SKeyboardView) {
         super.init(frame: frame, textContainer: nil)
@@ -42,6 +64,7 @@ public class SInputTextView: UITextView {
         fatalError("Init from coder is not supported!")
     }
     
+    /// Helper init function.
     private func _init(_ keyboardView: SKeyboardView) {
         autocorrectionType = .no
         autocapitalizationType = .none
@@ -52,18 +75,26 @@ public class SInputTextView: UITextView {
         textContainer.lineBreakMode = .byWordWrapping
     }
     
+    /// Only selectAll is allowed in menu.
     public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return action == #selector(selectAll(_:))
     }
     
+    // MARK: On Text Change Methods
+    /// Overrided to be aware of text changes from non-keyboard sources.
+    public override func replace(_ range: UITextRange, withText text: String) {
+        super.replace(range, withText: text)
+        if !isKeyboardInput {
+            onTextChange?()
+            textDidChange()
+        }
+    }
+    
+    /// Performs the necessary updates & evaluations when text changes.
     func textDidChange() {
-        
-        onTextChange?()
         
         let lexer = SLexer(textStorage: textStorage, variableName: variableName)
         let expression = lexer.lex()
-        
-        adjustContentSize()
         
         do {
             let result = try interpreter.evaluate(expression)
@@ -75,12 +106,6 @@ public class SInputTextView: UITextView {
             onResultUpdate?(nil, error)
         }
     }
-    
-    private func adjustContentSize() {
-        let newSize = textStorage.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: [], context: nil).size
-        bounds.size = CGSize(width: bounds.width, height: max(bounds.height, newSize.height))
-        contentSize = CGSize(width: newSize.width, height: newSize.height)
-    }
 
 }
 
@@ -89,11 +114,16 @@ fileprivate let notificationFeedBack = UINotificationFeedbackGenerator()
 
 extension SInputTextView {
     
+    /// Process input key sent from the keyboard.
     func didReceive(key: SKeyDescription) {
         
         defer {
+            onTextChange?()
             textDidChange()
+            isKeyboardInput = false
         }
+        
+        isKeyboardInput = true
         
         switch key.style {
         case .operator where key.symbol == "^":
@@ -123,6 +153,7 @@ extension SInputTextView {
             }
             
             if selectedTextRange!.isEmpty {
+                // no selection, delete one character backwards (if exists)
                 let startIndex = selectedTextRange!.start.index(in: self)
                 replace(textRange(from: position(from: beginningOfDocument, offset: startIndex)!, to: selectedTextRange!.start)!, withText: "")
             }
@@ -144,6 +175,7 @@ extension SInputTextView {
     
 }
 
+// MARK: SInterpreterDelegate Conformance
 extension SInputTextView: SInterpreterDelegate {
     
     public func interpreterDidReEvaluate(value: SValue?, error: Error?) {
@@ -152,7 +184,7 @@ extension SInputTextView: SInterpreterDelegate {
     
 }
 
-
+// MARK: Helper Extension
 extension UITextPosition {
     
     fileprivate func index(in textView: UITextView)-> Int {

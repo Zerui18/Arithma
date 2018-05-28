@@ -8,8 +8,10 @@
 
 import UIKit
 
+/// UICollectionViewCell subclass which displays a unit, installed in SUnitSelectorView.
 class SUnitSelectorCell: UICollectionViewCell {
     
+    /// Label displaying the unit's name. Publicly accessible to allow direct setup from the collectionView datasource.
     lazy var label = UILabel(frame: bounds)
     
     override init(frame: CGRect) {
