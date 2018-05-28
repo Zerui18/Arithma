@@ -240,19 +240,10 @@ xpr_asprint (struct xpr u, int sc_not, int sign, int lim)
 	  *pa ^= xM_sgn;
 	  xstrputc ('-', buffer);
 	}
-//      else
-//    {
-//      if ((sign))
-//      xstrputc ('+', buffer);
-//    }
+
       if ((xis0(&u)))
 	{
 	  xsprintfmt (buffer, "0");
-//    xsprintfmt (buffer, ".");
-//      for (k = 0; k < lim; ++k)
-//        xstrputc ('0', buffer);
-//      if ((sc_not))
-//        xsprintfmt (buffer, "e0");
 	}
       else
 	{

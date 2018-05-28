@@ -10,8 +10,31 @@ import UIKit
 
 class ResultTextView: UITextView {
 
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(copy(_:))
+    /// View where the MenuController will be embeded in, must be a superView of this instance.
+    var menuContainerView: UIView!
+    
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        layer.cornerRadius = scaled(22)
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        layer.backgroundColor = #colorLiteral(red: 0.2071908116, green: 0.2071908116, blue: 0.2071908116, alpha: 1)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        layer.backgroundColor = nil
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        layer.backgroundColor = nil
+    }
+    
 }

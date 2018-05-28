@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
     // MARK: Private Properties
     private let trigoModeButton = ToggleButton(colors: (#colorLiteral(red: 0.7163728282, green: 0.9372549057, blue: 0.8692806858, alpha: 1), #colorLiteral(red: 0.4371609821, green: 0.5123683887, blue: 0.9686274529, alpha: 1)), labels: ("D", "R"), propertyPath: \SSettings.isDegreeMode)
     private let scientificModeButton = ToggleButton(colors: (#colorLiteral(red: 0.5568627715, green: 0.4501634074, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), labels: ("S", "N"), propertyPath: \SSettings.isScientificMode)
+    private let messageLabel = UILabel(frame: .zero)
     
     private let resultTextView = ResultTextView(frame: .zero)
     private lazy var resultScrollView = ContainerScrollView(wrapping: resultTextView)
@@ -42,7 +43,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         keyboard.delegate = self
-        
+        setupProperties()
         setupLayout()
     }
     
@@ -58,49 +59,26 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Private Methods
-    private func setupLayout() {
-        
+    private func setupProperties() {
         // Toggle Buttons
-        
         scientificModeButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(scientificModeButton)
-        scientificModeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: scaled(16)).isActive = true
-        scientificModeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
-        scientificModeButton.widthAnchor.constraint(equalToConstant: 36).isActive = true
-        scientificModeButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
-        
-        
         trigoModeButton.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(trigoModeButton)
-        trigoModeButton.topAnchor.constraint(equalTo: scientificModeButton.topAnchor).isActive = true
-        trigoModeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: scaled(-16)).isActive = true
-        trigoModeButton.widthAnchor.constraint(equalToConstant: 36).isActive = true
-        trigoModeButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
-        
-        // Main UI -> Result
+        // Result Text View
         resultTextView.translatesAutoresizingMaskIntoConstraints = false
         resultTextView.isOpaque = false
         resultTextView.backgroundColor = nil
         resultTextView.isScrollEnabled = false
         resultTextView.isEditable = false
+        resultTextView.isSelectable = false
+        resultTextView.menuContainerView = view
         
-        resultTextView.leadingAnchor.constraint(equalTo: resultScrollView.contentLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        resultTextView.trailingAnchor.constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: -16).isActive = true
-        
+        // Result Scroll Container
         resultScrollView.translatesAutoresizingMaskIntoConstraints = false
         resultScrollView.bounces = false
         resultScrollView.showsVerticalScrollIndicator = false
         
-        view.addSubview(resultScrollView)
-        resultScrollView.topAnchor.constraint(equalTo: trigoModeButton.bottomAnchor, constant: scaled(8)).isActive = true
-        resultScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        resultScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        resultScrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: scaled(74)).isActive = true
-        
-        
-        // Main UI -> Input
+        // Input Text View
         inputTextView.backgroundColor = nil
         inputTextView.isScrollEnabled = false
         inputTextView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,21 +86,71 @@ class MainViewController: UIViewController {
         inputTextView.inputAccessoryView = unitSelector
         inputTextView.textAlignment = .right
         
+        // Input Scroll Container
         inputScrollView.translatesAutoresizingMaskIntoConstraints = false
         inputScrollView.bounces = false
         inputScrollView.showsVerticalScrollIndicator = false
+    }
+    
+    private func setupLayout() {
         
+        // Toggle Buttons
+        view.addSubview(scientificModeButton)
+        scientificModeButton.topAnchor
+            .constraint(equalTo: view.topAnchor, constant: scaled(16)).isActive = true
+        scientificModeButton.leadingAnchor
+            .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
+        scientificModeButton.widthAnchor
+            .constraint(equalToConstant: 36).isActive = true
+        scientificModeButton.heightAnchor
+            .constraint(equalToConstant: 36).isActive = true
+        
+        view.addSubview(trigoModeButton)
+        trigoModeButton.topAnchor
+            .constraint(equalTo: scientificModeButton.topAnchor).isActive = true
+        trigoModeButton.trailingAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: scaled(-16)).isActive = true
+        trigoModeButton.widthAnchor
+            .constraint(equalToConstant: 36).isActive = true
+        trigoModeButton.heightAnchor
+            .constraint(equalToConstant: 36).isActive = true
+        
+        // Main UI -> Result
+        resultTextView.leadingAnchor
+            .constraint(equalTo: resultScrollView.contentLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        resultTextView.trailingAnchor
+            .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: -16).isActive = true
+        
+        view.addSubview(resultScrollView)
+        resultScrollView.topAnchor
+            .constraint(equalTo: trigoModeButton.bottomAnchor, constant: scaled(8)).isActive = true
+        resultScrollView.leadingAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        resultScrollView.trailingAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        resultScrollView.heightAnchor
+            .constraint(greaterThanOrEqualToConstant: scaled(74)).isActive = true
+        
+        
+        // Main UI -> Input
         view.addSubview(inputScrollView)
-        inputScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
+        inputScrollView.bottomAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
             -keyboard.bounds.height - unitSelector.bounds.height - 8
         ).isActive = true
-        inputScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        inputScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        inputScrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
+        inputScrollView.leadingAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        inputScrollView.trailingAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        inputScrollView.heightAnchor
+            .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
         
-        inputTextView.leadingAnchor.constraint(greaterThanOrEqualTo: inputScrollView.leadingAnchor, constant: 16).isActive = true
-        inputTextView.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -16).isActive = true
-        inputTextView.trailingAnchor.constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
+        inputTextView.leadingAnchor
+            .constraint(greaterThanOrEqualTo: inputScrollView.leadingAnchor, constant: 16).isActive = true
+        inputTextView.trailingAnchor
+            .constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -16).isActive = true
+        inputTextView.trailingAnchor
+            .constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
         
         // setup result-update logic
         inputTextView.onResultUpdate = { value, error in
@@ -135,7 +163,9 @@ class MainViewController: UIViewController {
                 }
                 
                 // else gray-out the displayed result
-                self.resultTextView.textStorage.addAttribute(.foregroundColor, value: UIColor.darkGray, range: NSRange(location: 0, length: self.resultTextView.textStorage.length))
+                self.resultTextView.textStorage
+                    .addAttribute(.foregroundColor, value: UIColor.darkGray,
+                                  range: NSRange(location: 0, length: self.resultTextView.textStorage.length))
                 return
             }
             
