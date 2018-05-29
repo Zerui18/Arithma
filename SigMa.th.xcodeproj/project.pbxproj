@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
+		01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B33D2720BD254B004E2310 /* UILabel+Extension.swift */; };
 		01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
 		01C050D320BC096900B7A09B /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */; };
 		01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46420B936A70022A871 /* AppDelegate.swift */; };
 		01C5E46E20B936A80022A871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E46720B936A70022A871 /* Assets.xcassets */; };
-		01C5E46F20B936A80022A871 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46820B936A70022A871 /* MainViewController.swift */; };
+		01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46820B936A70022A871 /* CalculatorViewController.swift */; };
 		01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46920B936A70022A871 /* ToggleButton.swift */; };
 		01C5E47B20B9373B0022A871 /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C5E47920B9373B0022A871 /* Engine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01C5E47E20B9373B0022A871 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
@@ -106,6 +107,8 @@
 		01C5E5B320B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */; };
 		01C5E5B420B985C10022A871 /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AF20B985C10022A871 /* Character+Extension.swift */; };
 		01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5B020B985C10022A871 /* Token+Highlight.swift */; };
+		01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */; };
+		01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E118D420BD5AF7005B1BE9 /* PolynomialViewController.swift */; };
 		01E5BAFF20BACE7F00FEE362 /* HPAKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BAFE20BACE7F00FEE362 /* HPAKitTests.swift */; };
 		01E5BB0120BACE7F00FEE362 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
 		01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */; };
@@ -175,13 +178,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		01C5E44F20B936550022A871 /* SigMa.th.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SigMa.th.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C5E45E20B936560022A871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01C5E46420B936A70022A871 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01C5E46520B936A70022A871 /* ContainerScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerScrollView.swift; sourceTree = "<group>"; };
 		01C5E46720B936A70022A871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		01C5E46820B936A70022A871 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		01C5E46820B936A70022A871 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		01C5E46920B936A70022A871 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		01C5E47720B9373B0022A871 /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C5E47920B9373B0022A871 /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 		01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCompoundUnit+NSMutableAttributedString.swift"; path = "Engine/Extensions/SCompoundUnit+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
 		01C5E5AF20B985C10022A871 /* Character+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+Extension.swift"; path = "Engine/Extensions/Character+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		01C5E5B020B985C10022A871 /* Token+Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Token+Highlight.swift"; path = "Engine/Extensions/Token+Highlight.swift"; sourceTree = SOURCE_ROOT; };
+		01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		01E118D420BD5AF7005B1BE9 /* PolynomialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialViewController.swift; sourceTree = "<group>"; };
 		01E5BAFC20BACE7F00FEE362 /* HPAKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HPAKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E5BAFE20BACE7F00FEE362 /* HPAKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPAKitTests.swift; sourceTree = "<group>"; };
 		01E5BB0020BACE7F00FEE362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -374,9 +380,12 @@
 			isa = PBXGroup;
 			children = (
 				01C5E46420B936A70022A871 /* AppDelegate.swift */,
-				01C5E46820B936A70022A871 /* MainViewController.swift */,
-				01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */,
+				01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */,
+				01E118D420BD5AF7005B1BE9 /* PolynomialViewController.swift */,
+				01C5E46820B936A70022A871 /* CalculatorViewController.swift */,
+				01B33D2720BD254B004E2310 /* UILabel+Extension.swift */,
 				01C5E46920B936A70022A871 /* ToggleButton.swift */,
+				01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */,
 				01C5E46520B936A70022A871 /* ContainerScrollView.swift */,
 				01C5E5A420B983C60022A871 /* Others */,
 			);
@@ -909,13 +918,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */,
 				01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */,
 				01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */,
 				01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */,
 				01C050D320BC096900B7A09B /* UIView+Constraints.swift in Sources */,
+				01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */,
+				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,
 				01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */,
-				01C5E46F20B936A80022A871 /* MainViewController.swift in Sources */,
+				01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ public typealias STextChangedHandler = () -> Void
 
 // MARK: SInputTextView
 /// Custom UITextView subclass which integrates with SEvaluator to automatically evaluate its text content as mathematical expressions and public its results with the registered callbacks.
-public class SInputTextView: UITextView {
+public class SInputTextView: UITextView, UITextViewDelegate {
     
     // MARK: Public Properties
     /// The name of the variable that the text view assignes its results to. Currently variable evaluation is unsuable.
@@ -27,9 +27,14 @@ public class SInputTextView: UITextView {
     /// Callback when evaluation completes with result.
     public var onResultUpdate: SResultUpdateHandler?
     
+    override public var text: String! {
+        didSet {
+            onTextChange?()
+            textDidChange()
+        }
+    }
+    
     // MARK: Private Properties
-    /// If the ongoing text change is from the keyboard.
-    private var isKeyboardInput = false
     
     /// Cache of current result.
     private var currentResult: SValue?
@@ -66,6 +71,7 @@ public class SInputTextView: UITextView {
     
     /// Helper init function.
     private func _init(_ keyboardView: SKeyboardView) {
+        delegate = self
         autocorrectionType = .no
         autocapitalizationType = .none
         keyboard = keyboardView
@@ -77,17 +83,13 @@ public class SInputTextView: UITextView {
     
     /// Only selectAll is allowed in menu.
     public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(selectAll(_:))
+        return action == #selector(selectAll(_:)) || action == #selector(paste(_:))
     }
     
-    // MARK: On Text Change Methods
-    /// Overrided to be aware of text changes from non-keyboard sources.
-    public override func replace(_ range: UITextRange, withText text: String) {
-        super.replace(range, withText: text)
-        if !isKeyboardInput {
-            onTextChange?()
-            textDidChange()
-        }
+    // MARK: TextView Delegate
+    public func textViewDidChange(_ textView: UITextView) {
+        onTextChange?()
+        textDidChange()
     }
     
     /// Performs the necessary updates & evaluations when text changes.
@@ -116,14 +118,6 @@ extension SInputTextView {
     
     /// Process input key sent from the keyboard.
     func didReceive(key: SKeyDescription) {
-        
-        defer {
-            onTextChange?()
-            textDidChange()
-            isKeyboardInput = false
-        }
-        
-        isKeyboardInput = true
         
         switch key.style {
         case .operator where key.symbol == "^":

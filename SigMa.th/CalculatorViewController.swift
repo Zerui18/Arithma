@@ -11,25 +11,19 @@ import Engine
 import Keyboard
 import Settings
 
-//Private Input-components
+// MARK: Private Input-components
 fileprivate let keyboard = SKeyboardView(size: CGSize(width: UIScreen.main.bounds.width,
                                                        height: UIScreen.main.bounds.height*0.6))
 fileprivate let unitSelector = SUnitSelectorView(keyboard: keyboard)
 
 // MARK: MainViewController class
-class MainViewController: UIViewController {
-    
-    
-    static let shared = MainViewController()
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+class CalculatorViewController: UIViewController {
     
     // MARK: Private Properties
     private let trigoModeButton = ToggleButton(colors: (#colorLiteral(red: 0.7163728282, green: 0.9372549057, blue: 0.8692806858, alpha: 1), #colorLiteral(red: 0.4371609821, green: 0.5123683887, blue: 0.9686274529, alpha: 1)), labels: ("D", "R"), propertyPath: \SSettings.isDegreeMode)
     private let scientificModeButton = ToggleButton(colors: (#colorLiteral(red: 0.5568627715, green: 0.4501634074, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), labels: ("S", "N"), propertyPath: \SSettings.isScientificMode)
     private let messageLabel = UILabel(frame: .zero)
+    private var hideTimer: Timer?
     
     private let resultTextView = ResultTextView(frame: .zero)
     private lazy var resultScrollView = ContainerScrollView(wrapping: resultTextView)
@@ -64,6 +58,12 @@ class MainViewController: UIViewController {
         scientificModeButton.translatesAutoresizingMaskIntoConstraints = false
         trigoModeButton.translatesAutoresizingMaskIntoConstraints = false
         
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.font = .systemFont(ofSize: 16)
+        messageLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        messageLabel.text = "Hello"
+        messageLabel.alpha = 0
+        
         // Result Text View
         resultTextView.translatesAutoresizingMaskIntoConstraints = false
         resultTextView.isOpaque = false
@@ -78,6 +78,8 @@ class MainViewController: UIViewController {
         resultScrollView.bounces = false
         resultScrollView.showsVerticalScrollIndicator = false
         
+        resultTextView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(resultLongPressed(_:))))
+        
         // Input Text View
         inputTextView.backgroundColor = nil
         inputTextView.isScrollEnabled = false
@@ -90,6 +92,27 @@ class MainViewController: UIViewController {
         inputScrollView.translatesAutoresizingMaskIntoConstraints = false
         inputScrollView.bounces = false
         inputScrollView.showsVerticalScrollIndicator = false
+        
+        // setup result-update logic
+        inputTextView.onResultUpdate = { value, error in
+            guard error == nil else {
+                
+                // blank-out label if it's empty input
+                guard !self.inputTextView.text.isEmpty else {
+                    self.resultTextView.text = nil
+                    return
+                }
+                
+                // else gray-out the displayed result
+                self.resultTextView.textStorage
+                    .addAttribute(.foregroundColor, value: UIColor.darkGray,
+                                  range: NSRange(location: 0, length: self.resultTextView.textStorage.length))
+                return
+            }
+            
+            // no error
+            value!.boundLabel = self.resultTextView
+        }
     }
     
     private func setupLayout() {
@@ -115,11 +138,17 @@ class MainViewController: UIViewController {
         trigoModeButton.heightAnchor
             .constraint(equalToConstant: 36).isActive = true
         
+        view.addSubview(messageLabel)
+        messageLabel.topAnchor
+            .constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(4)).isActive = true
+        messageLabel.centerXAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        
         // Main UI -> Result
         resultTextView.leadingAnchor
-            .constraint(equalTo: resultScrollView.contentLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            .constraint(equalTo: resultScrollView.contentLayoutGuide.leadingAnchor, constant: scaled(16)).isActive = true
         resultTextView.trailingAnchor
-            .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: -16).isActive = true
+            .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: scaled(-16)).isActive = true
         
         view.addSubview(resultScrollView)
         resultScrollView.topAnchor
@@ -146,32 +175,11 @@ class MainViewController: UIViewController {
             .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
         
         inputTextView.leadingAnchor
-            .constraint(greaterThanOrEqualTo: inputScrollView.leadingAnchor, constant: 16).isActive = true
+            .constraint(greaterThanOrEqualTo: inputScrollView.leadingAnchor, constant: scaled(16)).isActive = true
         inputTextView.trailingAnchor
-            .constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -16).isActive = true
+            .constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: scaled(-16)).isActive = true
         inputTextView.trailingAnchor
             .constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
-        
-        // setup result-update logic
-        inputTextView.onResultUpdate = { value, error in
-            guard error == nil else {
-                
-                // blank-out label if it's empty input
-                guard !self.inputTextView.text.isEmpty else {
-                    self.resultTextView.text = nil
-                    return
-                }
-                
-                // else gray-out the displayed result
-                self.resultTextView.textStorage
-                    .addAttribute(.foregroundColor, value: UIColor.darkGray,
-                                  range: NSRange(location: 0, length: self.resultTextView.textStorage.length))
-                return
-            }
-            
-            // no error
-            value!.boundLabel = self.resultTextView
-        }
     }
     
     private func applyAnimations() {
@@ -184,11 +192,30 @@ class MainViewController: UIViewController {
             self.scientificModeButton.frame.origin.y += offset
         }
     }
+    
+    fileprivate func displayMessage(_ text: String) {
+        if messageLabel.text != nil {
+            messageLabel.animateText(to: "Copied")
+            hideTimer?.invalidate()
+            hideTimer = Timer.scheduledTimer(withTimeInterval: 2.2, repeats: false) { _ in
+                UIView.animate(withDuration: 0.2) {
+                    self.messageLabel.alpha = 0
+                }
+            }
+        }
+    }
+    
+    @objc private func resultLongPressed(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            UIPasteboard.general.string = resultTextView.textStorage.string
+            displayMessage("Copied")
+        }
+    }
 
 }
 
 // MARK: SKeyboardViewDelegate Conformance
-extension MainViewController: SKeyboardViewDelegate {
+extension CalculatorViewController: SKeyboardViewDelegate {
     
     var textViewForInput: SInputTextView? {
         return inputTextView

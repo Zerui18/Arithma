@@ -9,7 +9,6 @@
 import UIKit
 import Settings
 
-
 // MARK: TrigoToggleButton class
 class ToggleButton: UIButton {
     

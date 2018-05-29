@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupWindow() {
-        window!.rootViewController = MainViewController.shared
+        window!.rootViewController = BaseViewController()
         window!.makeKeyAndVisible()
         window!.backgroundColor = .white
     }
