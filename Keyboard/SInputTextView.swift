@@ -24,8 +24,8 @@ public class SInputTextView: UITextView, UITextViewDelegate {
     /// Callback when text changes. This block is executed before the new text is evaluated.
     public var onTextChange: STextChangedHandler?
     
-    /// Callback when evaluation completes with result.
-    public var onResultUpdate: SResultUpdateHandler?
+//    /// Callback when evaluation completes with result.
+//    public var onResultUpdate: SResultUpdateHandler?
     
     override public var text: String! {
         didSet {
@@ -37,7 +37,7 @@ public class SInputTextView: UITextView, UITextViewDelegate {
     // MARK: Private Properties
     
     /// Cache of current result.
-    private var currentResult: SValue?
+    public var currentResult: SValue?
     
     /// Evaluator backing this text view.
     private var interpreter: SInterpreter!
@@ -45,8 +45,11 @@ public class SInputTextView: UITextView, UITextViewDelegate {
     /// Weakly associated keyboard instance. This is required for the keyboard's exponent key to be updated on text replaced & selection changed.
     private weak var keyboard: SKeyboardView!
     
+    private weak var resultTextView: UITextView?
+    private var resultFontSize: CGFloat?
+    
     /// Helper function to update the state of the exponent key of the associated keyboard.
-    private func updateIndentationKey() {
+    public func updateIndentationKey() {
         keyboard.setIsIndenting(typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
     }
     
@@ -92,6 +95,11 @@ public class SInputTextView: UITextView, UITextViewDelegate {
         textDidChange()
     }
     
+    public func writeResult(to textView: UITextView, fontSize: CGFloat? = nil) {
+        resultTextView = textView
+        resultFontSize = fontSize
+    }
+    
     /// Performs the necessary updates & evaluations when text changes.
     func textDidChange() {
         
@@ -101,11 +109,25 @@ public class SInputTextView: UITextView, UITextViewDelegate {
         do {
             let result = try interpreter.evaluate(expression)
             currentResult = result
-            onResultUpdate?(result, nil)
+            result.fontSize = resultFontSize
+            result.boundLabel = resultTextView
         }
-        catch let error{
+        catch _{
             currentResult = nil
-            onResultUpdate?(nil, error)
+            guard let textView = resultTextView else {
+                return
+            }
+            
+            // blank-out label if it's empty input
+            guard !textView.text.isEmpty else {
+                textView.text = nil
+                return
+            }
+            
+            // else gray-out the displayed result
+            textView.textStorage
+                .addAttribute(.foregroundColor, value: UIColor.darkGray,
+                              range: NSRange(location: 0, length: textView.textStorage.length))
         }
     }
 
@@ -155,6 +177,7 @@ extension SInputTextView {
                 replace(selectedTextRange!, withText: "")
             }
             updateIndentationKey()
+        case .solve: break
         default:
             
             if key.style == .function {
@@ -172,9 +195,7 @@ extension SInputTextView {
 // MARK: SInterpreterDelegate Conformance
 extension SInputTextView: SInterpreterDelegate {
     
-    public func interpreterDidReEvaluate(value: SValue?, error: Error?) {
-        onResultUpdate?(value, error)
-    }
+    public func interpreterDidReEvaluate(value: SValue?, error: Error?) {}
     
 }
 

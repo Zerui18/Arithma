@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0128C77120BE9614005C5EF2 /* PolynomialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128C77020BE9614005C5EF2 /* PolynomialCell.swift */; };
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B33D2720BD254B004E2310 /* UILabel+Extension.swift */; };
 		01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
@@ -90,7 +91,7 @@
 		01C5E58620B947620022A871 /* SUnitSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58420B947620022A871 /* SUnitSelectorView.swift */; };
 		01C5E58720B947620022A871 /* SUnitSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58520B947620022A871 /* SUnitSelectorCell.swift */; };
 		01C5E58F20B947A20022A871 /* SKeyDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58920B947A20022A871 /* SKeyDescription.swift */; };
-		01C5E59020B947A20022A871 /* SKeyViewDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58A20B947A20022A871 /* SKeyViewDelete.swift */; };
+		01C5E59020B947A20022A871 /* SKeyViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58A20B947A20022A871 /* SKeyViewImage.swift */; };
 		01C5E59120B947A20022A871 /* SKeyboardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58B20B947A20022A871 /* SKeyboardGridView.swift */; };
 		01C5E59220B947A20022A871 /* SKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58C20B947A20022A871 /* SKeyboardView.swift */; };
 		01C5E59320B947A20022A871 /* SKeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58D20B947A20022A871 /* SKeyboardKey.swift */; };
@@ -178,6 +179,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0128C77020BE9614005C5EF2 /* PolynomialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialCell.swift; sourceTree = "<group>"; };
 		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		01C5E44F20B936550022A871 /* SigMa.th.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SigMa.th.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,7 +264,7 @@
 		01C5E58420B947620022A871 /* SUnitSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUnitSelectorView.swift; sourceTree = "<group>"; };
 		01C5E58520B947620022A871 /* SUnitSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUnitSelectorCell.swift; sourceTree = "<group>"; };
 		01C5E58920B947A20022A871 /* SKeyDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKeyDescription.swift; sourceTree = "<group>"; };
-		01C5E58A20B947A20022A871 /* SKeyViewDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKeyViewDelete.swift; sourceTree = "<group>"; };
+		01C5E58A20B947A20022A871 /* SKeyViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKeyViewImage.swift; sourceTree = "<group>"; };
 		01C5E58B20B947A20022A871 /* SKeyboardGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKeyboardGridView.swift; sourceTree = "<group>"; };
 		01C5E58C20B947A20022A871 /* SKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKeyboardView.swift; sourceTree = "<group>"; };
 		01C5E58D20B947A20022A871 /* SKeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKeyboardKey.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				01C5E46420B936A70022A871 /* AppDelegate.swift */,
 				01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */,
 				01E118D420BD5AF7005B1BE9 /* PolynomialViewController.swift */,
+				0128C77020BE9614005C5EF2 /* PolynomialCell.swift */,
 				01C5E46820B936A70022A871 /* CalculatorViewController.swift */,
 				01B33D2720BD254B004E2310 /* UILabel+Extension.swift */,
 				01C5E46920B936A70022A871 /* ToggleButton.swift */,
@@ -487,12 +490,12 @@
 			isa = PBXGroup;
 			children = (
 				01C5E53320B939F60022A871 /* Assets.xcassets */,
-				01C5E58B20B947A20022A871 /* SKeyboardGridView.swift */,
-				01C5E58D20B947A20022A871 /* SKeyboardKey.swift */,
-				01C5E58C20B947A20022A871 /* SKeyboardView.swift */,
 				01C5E58920B947A20022A871 /* SKeyDescription.swift */,
+				01C5E58D20B947A20022A871 /* SKeyboardKey.swift */,
 				01C5E58E20B947A20022A871 /* SKeyViewNormal.swift */,
-				01C5E58A20B947A20022A871 /* SKeyViewDelete.swift */,
+				01C5E58A20B947A20022A871 /* SKeyViewImage.swift */,
+				01C5E58B20B947A20022A871 /* SKeyboardGridView.swift */,
+				01C5E58C20B947A20022A871 /* SKeyboardView.swift */,
 			);
 			path = "Keyboard View";
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,
 				01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */,
+				0128C77120BE9614005C5EF2 /* PolynomialCell.swift in Sources */,
 				01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1007,7 +1011,7 @@
 				01C5E59320B947A20022A871 /* SKeyboardKey.swift in Sources */,
 				01C5E59220B947A20022A871 /* SKeyboardView.swift in Sources */,
 				01C5E58620B947620022A871 /* SUnitSelectorView.swift in Sources */,
-				01C5E59020B947A20022A871 /* SKeyViewDelete.swift in Sources */,
+				01C5E59020B947A20022A871 /* SKeyViewImage.swift in Sources */,
 				01C5E59420B947A20022A871 /* SKeyViewNormal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1260,7 +1264,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Engine;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

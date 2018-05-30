@@ -8,7 +8,39 @@
 
 import UIKit
 
-class SKeyViewDelete: UICollectionViewCell, SKeyboardKey{
+class SKeyViewImage: UICollectionViewCell, SKeyboardKey{
+    
+    var keyDescription: SKeyDescription! {
+        didSet {
+            guard oldValue == nil else {
+                fatalError("keyDescription can only be set once")
+            }
+            
+            let imageName: String
+            
+            if keyDescription.style == .delete {
+                imageName = "ic_key_delete"
+            }
+            else {
+                imageName = "ic_key_solve"
+            }
+            
+            imageView.image = UIImage(named: imageName,
+                                      in: Bundle(for: SKeyViewImage.self),
+                                      compatibleWith: nil)!
+            
+            backgroundColor = nil
+            imageView.tintColor = .white
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(imageView)
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: scaled(55)).isActive = true
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+            imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+            
+            setupRings()
+        }
+    }
     
     lazy private var imageView = UIImageView(frame: bounds)
     let innerRingLayer = CAShapeLayer()
@@ -17,24 +49,6 @@ class SKeyViewDelete: UICollectionViewCell, SKeyboardKey{
     private var isBeingTouched = false
     private var isAnimating = false
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = nil
-        imageView.tintColor = .white
-        imageView.image = UIImage(named: "ic_key_delete", in: Bundle(for: SKeyViewDelete.self), compatibleWith: nil)!
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(imageView)
-        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: scaled(55)).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        setupRings()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private func setupRings() {
         let factor: CGFloat = 2
         
@@ -42,13 +56,13 @@ class SKeyViewDelete: UICollectionViewCell, SKeyboardKey{
         let origin = (bounds.height-innerDiameter) / 2
         innerRingLayer.frame = CGRect(x: origin, y: origin, width: innerDiameter, height: innerDiameter)
         innerRingLayer.cornerRadius = innerDiameter / factor
-        innerRingLayer.borderColor = SKeyDescription.KeyStyle.delete.highlightedCircleColor.cgColor
+        innerRingLayer.borderColor = keyDescription.style.highlightedCircleColor.cgColor
         
         let outerDiameter = bounds.height * 0.9
         let origin2 = (bounds.height-outerDiameter) / 2
         outerRingLayer.frame = CGRect(x: origin2, y: origin2, width: outerDiameter, height: outerDiameter)
         outerRingLayer.cornerRadius = outerDiameter / factor
-        outerRingLayer.borderColor = SKeyDescription.KeyStyle.delete.highlightedCircleColor.cgColor
+        outerRingLayer.borderColor = keyDescription.style.highlightedCircleColor.cgColor
         
         
         layer.addSublayer(innerRingLayer)
@@ -77,7 +91,7 @@ class SKeyViewDelete: UICollectionViewCell, SKeyboardKey{
 
         isAnimating = true
         UIView.animate(withDuration: 0.2, animations: {
-            self.imageView.tintColor = SKeyDescription.KeyStyle.delete.highlightedTextColor
+            self.imageView.tintColor = self.keyDescription.style.highlightedTextColor
         }) { _ in
             self.isAnimating = false
             

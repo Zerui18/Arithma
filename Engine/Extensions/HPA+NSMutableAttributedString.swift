@@ -11,13 +11,25 @@ import HPAKit
 import Settings
 
 extension HPAReal {
-    func formatted()-> NSAttributedString {
-        let base = description(sf: 10)
-        let annotated = NSMutableAttributedString(string: description(sf: 10), attributes: [.font: resultFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)])
+    func formatted(sf: Int32 = 10, customFontSize: CGFloat? = nil)-> NSAttributedString {
+        let normalFont: UIFont
+        let smallerFont: UIFont
+        
+        if let size = customFontSize {
+            normalFont = resultFont.withSize(size)
+            smallerFont = smallerResultFont.withSize(size * 0.75)
+        }
+        else {
+            normalFont = resultFont
+            smallerFont = smallerResultFont
+        }
+        
+        let base = description(sf: sf)
+        let annotated = NSMutableAttributedString(string: base, attributes: [.font: normalFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)])
         if let symbolIndex = base.index(of: "e") {
             // eleviate exponent
             let expStart = base.index(after: symbolIndex)
-            annotated.addAttributes([.font: smallerResultFont, .baselineOffset: 31.0], range: NSRange(location: expStart.encodedOffset, length: base.count-expStart.encodedOffset))
+            annotated.addAttributes([.font: smallerFont, .baselineOffset: normalFont.pointSize/2], range: NSRange(location: expStart.encodedOffset, length: base.count-expStart.encodedOffset))
         }
         return annotated
     }
@@ -26,20 +38,29 @@ extension HPAReal {
 
 extension HPAComplex {
     
-    mutating func formatted()-> NSMutableAttributedString {
+    mutating func formatted(customFontSize: CGFloat? = nil)-> NSMutableAttributedString {
+        let normalFont: UIFont
+        
+        if let size = customFontSize {
+            normalFont = resultFont.withSize(size)
+        }
+        else {
+            normalFont = resultFont
+        }
+        
         let annotated = NSMutableAttributedString()
         if !re.isZero || im.isZero {
             // only append real component if it's not 0 || i=0
-            annotated.append(re.formatted())
+            annotated.append(re.formatted(sf: 5, customFontSize: customFontSize))
             if !im.isZero && im.sign() == .plus {
                 // only append + connector if both real and imaginary not 0, i > 0
-                annotated.append(NSAttributedString(string: "+", attributes: [.font: resultFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), .baselineOffset: 0.0]))
+                annotated.append(NSAttributedString(string: "+", attributes: [.font: normalFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), .baselineOffset: 0.0]))
             }
         }
         if !im.isZero {
             // only append imaginary component is it's not 0
-            annotated.append(im.formatted())
-            annotated.append(NSAttributedString(string: "i", attributes: [.font: resultFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), .baselineOffset: 0.0]))
+            annotated.append(im.formatted(sf: 5, customFontSize: customFontSize))
+            annotated.append(NSAttributedString(string: "i", attributes: [.font: normalFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), .baselineOffset: 0.0]))
         }
         return annotated
     }

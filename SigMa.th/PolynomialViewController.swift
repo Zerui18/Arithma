@@ -7,29 +7,108 @@
 //
 
 import UIKit
+import HPAKit
 import Keyboard
 
 // MARK: Private Input-components
 fileprivate let keyboard = SKeyboardView(size: CGSize(width: UIScreen.main.bounds.width,
-                                                      height: UIScreen.main.bounds.height*0.6))
+                                                      height: UIScreen.main.bounds.height*0.6),
+                                         useImaginary: false)
 
-class PolynomialViewController: UIViewController {
+class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
     
-    private let inputTextView = SInputTextView(frame: .zero, keyboard: keyboard)
-    private lazy var inputContainerView = ContainerScrollView(wrapping: inputTextView)
-
+    // MARK: Private Properties
+    private var pgCollectionView: UICollectionView!
+    private var instantiatedCells = [PolynomialCell]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupInput()
+        setupProperties()
+        setupLayout()
     }
     
-    private func setupInput() {
-        inputTextView.leadingAnchor.constraint(greaterThanOrEqualTo: inputContainerView.leadingAnchor, constant: scaled(16)).isActive = true
-        inputTextView.trailingAnchor
-            .constraint(greaterThanOrEqualTo: inputContainerView.trailingAnchor, constant: scaled(-16)).isActive = true
-        inputTextView.trailingAnchor
-            .constraint(equalTo: inputContainerView.contentLayoutGuide.trailingAnchor).isActive = true
+    // MARK: Private Setups
+    
+    private func setupProperties() {
+        keyboard.delegate = self
+        view.backgroundColor = .black
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 150, height: 120)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
+        pgCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        pgCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        pgCollectionView.dataSource = self
+        pgCollectionView.register(PolynomialCell.self, forCellWithReuseIdentifier: "cell")
     }
 
+    private func setupLayout() {
+        view.addSubview(pgCollectionView)
+        pgCollectionView.topAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(56)).isActive = true
+        pgCollectionView.leadingAnchor
+            .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
+        pgCollectionView.centerXAnchor
+            .constraint(equalTo: view.centerXAnchor).isActive = true
+        pgCollectionView.heightAnchor
+            .constraint(equalToConstant: 120).isActive = true
+    }
+    
+    private func solvePolynomial() {
+        var coefficients = [HPAReal]()
+        coefficients.reserveCapacity(instantiatedCells.count)
+        for cell in instantiatedCells.reversed() {
+            guard let value = cell.linkedInputView.currentResult?.value,
+                value.isReal else {
+                    print("Error: coefficient cannot be nil or imaginary")
+                    return
+            }
+            coefficients.append(value.re)
+        }
+        let polynomial = HPAPolynomial(coefficients)
+        print(polynomial.roots())
+    }
+    
+    // MARK: SKeyboardViewDelegate Conformance
+    var textViewForInput: SInputTextView? {
+        return PolynomialCell.currentActive?.linkedInputView
+    }
+    
+    var bottomInset: CGFloat {
+        return view.safeAreaInsets.bottom
+    }
+    
+    func didReceive(customKey symbol: String) {
+        if symbol == "Solve" {
+            solvePolynomial()
+        }
+    }
 
+}
+
+extension PolynomialViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.item >= instantiatedCells.count {
+            instantiatedCells.append(collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PolynomialCell)
+        }
+        let cell = instantiatedCells[indexPath.item]
+        cell.degree = UInt(2-indexPath.item)
+        return cell
+    }
+}
+
+extension PolynomialCell {
+    
+    var keyboardView: SKeyboardView {
+        return keyboard
+    }
+    
 }

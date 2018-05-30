@@ -12,22 +12,35 @@ import Engine
 public protocol SKeyboardViewDelegate: class {
     var textViewForInput: SInputTextView? {get}
     var bottomInset: CGFloat {get}
+    
+    func didReceive(customKey symbol: String)
 }
 
 /// Embeds a paging UIScrollView which contains the keyboard grids.
 public class SKeyboardView: UIView {
     
-    private let scrollView = UIScrollView(frame: .zero)
     let pages: [SKeyboardGridView]
     
+    /// Scroll view which encapsulates the key grids.
+    private let scrollView = UIScrollView(frame: .zero)
+    /// Constraint of scrollView to the bottom of self. The constraint's constant is maintained to avoid bottom safeAreaInsets.
     private weak var bottomConstraint: NSLayoutConstraint!
     
     public weak var delegate: SKeyboardViewDelegate?
     
-    public init(size: CGSize) {
+    public init(size: CGSize, useImaginary: Bool = true) {
         
-        let main = SKeyboardGridView(keys: mainKeys, columns: 4, size: size)
+        let main: SKeyboardGridView
         let functions = SKeyboardGridView(keys: functionKeys, columns: 3, size: size)
+        
+        if useImaginary {
+            main = SKeyboardGridView(keys: mainKeys, columns: 4, size: size)
+        }
+        else {
+            var newGrid = mainKeys
+            newGrid[newGrid.count-1] = SKeyDescription(symbol: "Solve", style: .solve)
+            main = SKeyboardGridView(keys: newGrid, columns: 4, size: size)
+        }
         
         self.pages = [main, functions]
         
@@ -76,7 +89,8 @@ public class SKeyboardView: UIView {
     
     /// Update the exponent key's appearance. Only call this on the "main" keyboard.
     func setIsIndenting(_ flag: Bool) {
-        let cell = pages[0].cellForItem(at: IndexPath(item: 18, section: 0)) as! SKeyViewNormal
+        guard let cell = pages[0].cellForItem(at: IndexPath(item: 18, section: 0)) as? SKeyViewNormal
+            else {return}
         
         if flag {
             if cell.innerRingLayer.borderWidth == 0 {
@@ -96,7 +110,12 @@ public class SKeyboardView: UIView {
 extension SKeyboardView: UIInputViewAudioFeedback {
     
     func didPress(_ key: SKeyDescription) {
-        delegate?.textViewForInput?.didReceive(key: key)
+        if key.style == .solve {
+            delegate?.didReceive(customKey: "Solve")
+        }
+        else {
+            delegate?.textViewForInput?.didReceive(key: key)
+        }
     }
     
     public var enableInputClicksWhenVisible: Bool {

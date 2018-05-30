@@ -17,7 +17,7 @@ public struct SKeyDescription {
     let style: KeyStyle
     
     enum KeyStyle {
-        case number, constant, `operator`, function, delete
+        case number, constant, `operator`, function, delete, solve
         
         var highlightedTextColor: UIColor {
             switch self {
@@ -29,6 +29,8 @@ public struct SKeyDescription {
                 return #colorLiteral(red: 0.4478083688, green: 0.2266379278, blue: 1, alpha: 1)
             case .delete:
                 return #colorLiteral(red: 0.7335025381, green: 0, blue: 0.2971241429, alpha: 1)
+            case .solve:
+                return .white
             }
         }
         
@@ -42,6 +44,8 @@ public struct SKeyDescription {
                 return #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
             case .delete:
                 return #colorLiteral(red: 1, green: 0.6178299837, blue: 0.734453436, alpha: 1)
+            case .solve:
+                return #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             }
         }
         

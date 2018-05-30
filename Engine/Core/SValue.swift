@@ -19,6 +19,7 @@ public class SValue: Equatable, CustomStringConvertible {
             boundLabel?.setValue(attributedDescription, forKey: "attributedText")
         }
     }
+    public var fontSize: CGFloat?
     
     /**
      Initializes a SValue instance with a scalar value and a unit
@@ -75,7 +76,7 @@ public class SValue: Equatable, CustomStringConvertible {
      */
     public var attributedDescription: NSMutableAttributedString {
         var value = valueInBaseUnit()
-        let str = value.formatted()
+        let str = value.formatted(customFontSize: fontSize)
         unit.addUnitDescription(to: str)
         return str
     }

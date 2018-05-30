@@ -53,7 +53,7 @@ class SKeyboardGridView: UICollectionView, UICollectionViewDataSource, UICollect
         backgroundColor = nil
         
         register(SKeyViewNormal.self, forCellWithReuseIdentifier: "normalKey")
-        register(SKeyViewDelete.self, forCellWithReuseIdentifier: "deleteKey")
+        register(SKeyViewImage.self, forCellWithReuseIdentifier: "imageKey")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,8 +66,10 @@ class SKeyboardGridView: UICollectionView, UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let description = keys[indexPath.item]
-        if description.style == .delete {
-            return dequeueReusableCell(withReuseIdentifier: "deleteKey", for: indexPath) as! SKeyViewDelete
+        if description.style == .delete || description.style == .solve {
+            let cell = dequeueReusableCell(withReuseIdentifier: "imageKey", for: indexPath) as! SKeyViewImage
+            cell.keyDescription = description
+            return cell
         }
         let cell = dequeueReusableCell(withReuseIdentifier: "normalKey", for: indexPath) as! SKeyViewNormal
         cell.keyDescription = description

@@ -25,7 +25,12 @@ class SKeyViewNormal: UICollectionViewCell, SKeyboardKey{
             
             label.text = keyDescription.symbol
             label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            label.font = keyDescription.style == .function ? smallerKeyFont:keyFont
+            switch keyDescription.style {
+            case .function, .solve:
+                label.font = smallerKeyFont
+            default:
+                label.font = keyFont
+            }
             label.textAlignment = .center
             
             innerRingLayer.borderColor = keyDescription.style.highlightedCircleColor.cgColor
@@ -43,7 +48,14 @@ class SKeyViewNormal: UICollectionViewCell, SKeyboardKey{
     }
     
     private func setupRings() {
-        let factor: CGFloat = keyDescription.style == .function ? 4:2
+        let factor: CGFloat
+        
+        switch keyDescription.style {
+        case .function, .solve:
+            factor = 4
+        default:
+            factor = 2
+        }
         
         let innerDiameter = bounds.height * 0.75
         let origin = (bounds.height-innerDiameter) / 2
