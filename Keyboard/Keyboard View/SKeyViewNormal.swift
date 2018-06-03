@@ -26,7 +26,7 @@ class SKeyViewNormal: UICollectionViewCell, SKeyboardKey{
             label.text = keyDescription.symbol
             label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             switch keyDescription.style {
-            case .function, .solve:
+            case .function:
                 label.font = smallerKeyFont
             default:
                 label.font = keyFont
@@ -51,7 +51,7 @@ class SKeyViewNormal: UICollectionViewCell, SKeyboardKey{
         let factor: CGFloat
         
         switch keyDescription.style {
-        case .function, .solve:
+        case .function:
             factor = 4
         default:
             factor = 2

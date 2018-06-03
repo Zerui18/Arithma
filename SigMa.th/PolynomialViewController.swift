@@ -34,12 +34,14 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         view.backgroundColor = .black
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 120)
+        layout.itemSize = CGSize(width: 150, height: 36)
         layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        layout.minimumInteritemSpacing = 8
         layout.scrollDirection = .horizontal
         pgCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         pgCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        pgCollectionView.showsHorizontalScrollIndicator = false
+        pgCollectionView.showsVerticalScrollIndicator = false
         
         pgCollectionView.dataSource = self
         pgCollectionView.register(PolynomialCell.self, forCellWithReuseIdentifier: "cell")
@@ -54,7 +56,7 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         pgCollectionView.centerXAnchor
             .constraint(equalTo: view.centerXAnchor).isActive = true
         pgCollectionView.heightAnchor
-            .constraint(equalToConstant: 120).isActive = true
+            .constraint(equalToConstant: 50).isActive = true
     }
     
     private func solvePolynomial() {
@@ -68,6 +70,7 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
             }
             coefficients.append(value.re)
         }
+        
         let polynomial = HPAPolynomial(coefficients)
         print(polynomial.roots())
     }
@@ -82,7 +85,7 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
     }
     
     func didReceive(customKey symbol: String) {
-        if symbol == "Solve" {
+        if symbol == "=" {
             solvePolynomial()
         }
     }

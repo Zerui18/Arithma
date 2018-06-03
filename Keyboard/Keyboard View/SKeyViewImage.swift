@@ -16,14 +16,7 @@ class SKeyViewImage: UICollectionViewCell, SKeyboardKey{
                 fatalError("keyDescription can only be set once")
             }
             
-            let imageName: String
-            
-            if keyDescription.style == .delete {
-                imageName = "ic_key_delete"
-            }
-            else {
-                imageName = "ic_key_solve"
-            }
+            let imageName: String = "ic_key_delete"
             
             imageView.image = UIImage(named: imageName,
                                       in: Bundle(for: SKeyViewImage.self),

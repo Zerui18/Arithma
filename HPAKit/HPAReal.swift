@@ -43,16 +43,17 @@ extension HPAReal: HPANumeric, Comparable{
     public static let epsilon: HPAReal = 1e-30
     
     // MARK: Description
-    @inline(__always)
     public func description(sf: Int32)-> String {
         var str = String(cString:
             xpr_asprint(self, SSettings.shared.isScientificMode ? 1:0, 0, sf)
         )
-        while str.last == "0" {
-            str.removeLast()
-        }
-        if str.last == "." {
-            str.removeLast()
+        if str != "0" {
+            while str.last == "0" {
+                str.removeLast()
+            }
+            if str.last == "." {
+                str.removeLast()
+            }
         }
         return str
     }
@@ -69,6 +70,7 @@ extension HPAReal: HPANumeric, Comparable{
         return xeq(self, .zero) != 0
     }
     
+    @inline(__always)
     public mutating func sign()-> FloatingPointSign {
         return xsgn(&self) != -1 ? .plus:.minus
     }

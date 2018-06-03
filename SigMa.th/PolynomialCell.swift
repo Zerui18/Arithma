@@ -11,42 +11,68 @@ import Keyboard
 
 class PolynomialCell: UICollectionViewCell {
     
-    static weak var currentActive: PolynomialCell?
-    
-    var degree: UInt! {
-        didSet {
-            topLabel.string = degree.description
+    private class TextView: UITextView {
+        fileprivate weak var cell: PolynomialCell!
+        
+        override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+            return false
+        }
+        override func becomeFirstResponder() -> Bool {
+            defer{ cell.linkedInputView.becomeFirstResponder() }
+            return super.becomeFirstResponder()
         }
     }
+    
+    /// Currently active PolynomialCell instance.
+    static weak var currentActive: PolynomialCell?
+    
+    /// UInt representing the degree this cell represents.
+    var degree: UInt! {
+        didSet {
+            let label = NSMutableAttributedString(string: "x", attributes: [.font: baseFont, .foregroundColor: UIColor.white])
+            label.append(NSAttributedString(string: degree.description, attributes: [.font: expoFont, .baselineOffset: 13.0]))
+            degreeLabel.attributedText = label
+        }
+    }
+    
+    /// Input textfield serving as inputAccesoryView for the coefficientLabel.
     lazy var linkedInputView = SInputTextView(frame: .zero, keyboard: keyboardView)
     
-    private let topLabel = CATextLayer()
-    private let bLabel = UITextView(frame: .zero)
+    private let degreeLabel = UILabel(frame: .zero)
+    private let coefficientLabel = TextView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        topLabel.foregroundColor = UIColor.white.cgColor
-        topLabel.frame = CGRect(origin: .zero, size:
-            CGSize(width: frame.width, height: frame.height*0.3)
-        )
-        topLabel.fontSize = 26
-        contentView.layer.addSublayer(topLabel)
+        
+        layer.masksToBounds = false
+        contentView.layer.masksToBounds = false
         
         linkedInputView.backgroundColor = nil
         linkedInputView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: scaled(54))
         linkedInputView.inputView = keyboardView
         linkedInputView.inputAccessoryView = linkedInputView
-        linkedInputView.writeResult(to: bLabel, fontSize: 26)
+        linkedInputView.writeResult(to: coefficientLabel, fontSize: 26)
         
-        bLabel.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        bLabel.textColor = .black
-        bLabel.frame = CGRect(x: 0, y: frame.height*0.3,
-                              width: frame.width, height: frame.height*0.7)
-        bLabel.isEditable = false
-        bLabel.inputView = keyboardView
-        bLabel.inputAccessoryView = linkedInputView
-        bLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(beginEditing)))
-        contentView.addSubview(bLabel)
+        coefficientLabel.cell = self
+        coefficientLabel.layer.cornerRadius = scaled(10)
+        coefficientLabel.backgroundColor = #colorLiteral(red: 0.1470725536, green: 0.1470725536, blue: 0.1470725536, alpha: 1)
+        coefficientLabel.textColor = .black
+        coefficientLabel.frame = CGRect(origin: .zero,
+                                        size: CGSize(width: frame.width*0.7, height: frame.height))
+        coefficientLabel.isEditable = false
+        coefficientLabel.inputView = keyboardView
+        coefficientLabel.inputAccessoryView = linkedInputView
+        coefficientLabel.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(beginEditing))
+        )
+        contentView.addSubview(coefficientLabel)
+        
+        degreeLabel.textColor = .white
+        degreeLabel.frame = CGRect(x: frame.width*0.75, y: 0,
+                                   width: frame.width*0.2, height: frame.height)
+        contentView.addSubview(degreeLabel)
+        
+        linkedInputView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,3 +85,7 @@ class PolynomialCell: UICollectionViewCell {
         PolynomialCell.currentActive = self
     }
 }
+
+
+fileprivate let baseFont = UIFont(name: "CourierNewPSMT", size: 26)!
+fileprivate let expoFont = UIFont(name: "CourierNewPSMT", size: 19.5)!

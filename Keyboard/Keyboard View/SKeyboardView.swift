@@ -38,7 +38,7 @@ public class SKeyboardView: UIView {
         }
         else {
             var newGrid = mainKeys
-            newGrid[newGrid.count-1] = SKeyDescription(symbol: "Solve", style: .solve)
+            newGrid[newGrid.count-1] = SKeyDescription(symbol: "=", style: .solve)
             main = SKeyboardGridView(keys: newGrid, columns: 4, size: size)
         }
         
@@ -54,7 +54,7 @@ public class SKeyboardView: UIView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(scrollView)
-                
+        
         scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
@@ -111,7 +111,7 @@ extension SKeyboardView: UIInputViewAudioFeedback {
     
     func didPress(_ key: SKeyDescription) {
         if key.style == .solve {
-            delegate?.didReceive(customKey: "Solve")
+            delegate?.didReceive(customKey: "=")
         }
         else {
             delegate?.textViewForInput?.didReceive(key: key)

@@ -104,8 +104,8 @@
 		01C5E5A120B955BA0022A871 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
 		01C5E5A220B955BF0022A871 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
 		01C5E5A320B955C30022A871 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; };
-		01C5E5B120B985C10022A871 /* HPA+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AC20B985C10022A871 /* HPA+NSMutableAttributedString.swift */; };
-		01C5E5B320B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */; };
+		01C5E5B120B985C10022A871 /* HPA+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AC20B985C10022A871 /* HPA+Description.swift */; };
+		01C5E5B320B985C10022A871 /* SCompoundUnit+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AE20B985C10022A871 /* SCompoundUnit+Description.swift */; };
 		01C5E5B420B985C10022A871 /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5AF20B985C10022A871 /* Character+Extension.swift */; };
 		01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E5B020B985C10022A871 /* Token+Highlight.swift */; };
 		01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */; };
@@ -273,8 +273,8 @@
 		01C5E59820B948D10022A871 /* HPAReal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPAReal+Extension.swift"; sourceTree = "<group>"; };
 		01C5E59C20B952DF0022A871 /* HPAComplex+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPAComplex+Extension.swift"; sourceTree = "<group>"; };
 		01C5E5AB20B9856B0022A871 /* const31.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const31.h; sourceTree = "<group>"; };
-		01C5E5AC20B985C10022A871 /* HPA+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HPA+NSMutableAttributedString.swift"; path = "Engine/Extensions/HPA+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
-		01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCompoundUnit+NSMutableAttributedString.swift"; path = "Engine/Extensions/SCompoundUnit+NSMutableAttributedString.swift"; sourceTree = SOURCE_ROOT; };
+		01C5E5AC20B985C10022A871 /* HPA+Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HPA+Description.swift"; path = "Engine/Extensions/HPA+Description.swift"; sourceTree = SOURCE_ROOT; };
+		01C5E5AE20B985C10022A871 /* SCompoundUnit+Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SCompoundUnit+Description.swift"; path = "Engine/Extensions/SCompoundUnit+Description.swift"; sourceTree = SOURCE_ROOT; };
 		01C5E5AF20B985C10022A871 /* Character+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+Extension.swift"; path = "Engine/Extensions/Character+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		01C5E5B020B985C10022A871 /* Token+Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Token+Highlight.swift"; path = "Engine/Extensions/Token+Highlight.swift"; sourceTree = SOURCE_ROOT; };
 		01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -456,8 +456,8 @@
 			isa = PBXGroup;
 			children = (
 				01C5E5AF20B985C10022A871 /* Character+Extension.swift */,
-				01C5E5AC20B985C10022A871 /* HPA+NSMutableAttributedString.swift */,
-				01C5E5AE20B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift */,
+				01C5E5AC20B985C10022A871 /* HPA+Description.swift */,
+				01C5E5AE20B985C10022A871 /* SCompoundUnit+Description.swift */,
 				01C5E5B020B985C10022A871 /* Token+Highlight.swift */,
 			);
 			name = Extensions;
@@ -939,10 +939,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C5E5B320B985C10022A871 /* SCompoundUnit+NSMutableAttributedString.swift in Sources */,
+				01C5E5B320B985C10022A871 /* SCompoundUnit+Description.swift in Sources */,
 				01C5E5B420B985C10022A871 /* Character+Extension.swift in Sources */,
 				01C5E56F20B945160022A871 /* SBasicUnit.swift in Sources */,
-				01C5E5B120B985C10022A871 /* HPA+NSMutableAttributedString.swift in Sources */,
+				01C5E5B120B985C10022A871 /* HPA+Description.swift in Sources */,
 				01C5E48820B937610022A871 /* SLexer.swift in Sources */,
 				01C5E57020B945160022A871 /* SValue.swift in Sources */,
 				01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */,

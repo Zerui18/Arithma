@@ -66,7 +66,7 @@ class SKeyboardGridView: UICollectionView, UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let description = keys[indexPath.item]
-        if description.style == .delete || description.style == .solve {
+        if description.style == .delete {
             let cell = dequeueReusableCell(withReuseIdentifier: "imageKey", for: indexPath) as! SKeyViewImage
             cell.keyDescription = description
             return cell
