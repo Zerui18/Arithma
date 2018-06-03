@@ -59,6 +59,7 @@ class BaseViewController: UIViewController {
         containerScrollView.frame = view.bounds
         containerScrollView.isPagingEnabled = true
         containerScrollView.bounces = false
+        containerScrollView.delegate = self
         containerScrollView.contentSize = CGSize(width: 2*containerScrollView.bounds.width, height: containerScrollView.bounds.height)
         containerScrollView.contentOffset = CGPoint(x: containerScrollView.bounds.width, y: 0)
         view.addSubview(containerScrollView)
@@ -105,7 +106,7 @@ class BaseViewController: UIViewController {
         
         view.addSubview(messageLabel)
         messageLabel.topAnchor
-            .constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(4)).isActive = true
+            .constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         messageLabel.centerXAnchor
             .constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         
@@ -122,4 +123,20 @@ class BaseViewController: UIViewController {
         }
     }
 
+}
+
+extension BaseViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y
+        if offset == 0 {
+            // in polynomials page
+            
+        }
+        else {
+            // in calculator page
+            
+        }
+    }
+    
 }

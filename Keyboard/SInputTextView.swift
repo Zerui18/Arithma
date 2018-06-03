@@ -120,7 +120,7 @@ public class SInputTextView: UITextView, UITextViewDelegate {
             
             // blank-out label if it's empty input
             guard !textView.text.isEmpty else {
-                textView.text = nil
+                resultTextView?.attributedText = nil
                 return
             }
             

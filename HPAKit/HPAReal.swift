@@ -45,9 +45,16 @@ extension HPAReal: HPANumeric, Comparable{
     // MARK: Description
     @inline(__always)
     public func description(sf: Int32)-> String {
-        return String(cString:
+        var str = String(cString:
             xpr_asprint(self, SSettings.shared.isScientificMode ? 1:0, 0, sf)
         )
+        while str.last == "0" {
+            str.removeLast()
+        }
+        if str.last == "." {
+            str.removeLast()
+        }
+        return str
     }
     
     public var description: String {
