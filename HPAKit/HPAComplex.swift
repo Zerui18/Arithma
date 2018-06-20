@@ -30,8 +30,7 @@ extension HPAComplex: HPANumeric {
     
     // MARK: Description
     public func description(sf: Int32)-> String {
-        var imcopy = im
-        let connector = (imcopy.sign() == .plus && !re.isZero && !im.isZero) ? "+":""
+        let connector = (im.sign() == .plus && !re.isZero && !im.isZero) ? "+":""
         let real = re.isZero && !im.isZero ? "":re.description(sf: sf)
         let imaginary = im.isZero ? "":"\(im.description(sf: sf))i"
         return real + connector + imaginary

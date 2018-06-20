@@ -11,7 +11,7 @@ import HPAKit
 import Settings
 
 extension HPAReal {
-    func formatted(sf: Int32 = 7, customFontSize: CGFloat? = nil)-> NSAttributedString {
+    public func formatted(sf: Int32 = 7, customFontSize: CGFloat? = nil)-> NSAttributedString {
         let normalFont: UIFont
         let smallerFont: UIFont
         
@@ -38,7 +38,7 @@ extension HPAReal {
 
 extension HPAComplex {
     
-    mutating func formatted(customFontSize: CGFloat? = nil)-> NSMutableAttributedString {
+    public mutating func formatted(customFontSize: CGFloat? = nil)-> NSMutableAttributedString {
         let normalFont: UIFont
         
         if let size = customFontSize {
@@ -67,3 +67,36 @@ extension HPAComplex {
     
 }
 
+extension HPAPolynomial {
+    
+    public func formatted(fontSize: CGFloat)-> NSMutableAttributedString {
+        let str = NSMutableAttributedString()
+        
+        // cached properties
+        let baseFont = resultFont.withSize(fontSize)
+        let expoFont = resultFont.withSize(fontSize * 0.75)
+        let baseline = fontSize * 0.5
+        let baseAttrs = [NSAttributedStringKey.font: baseFont, .foregroundColor: UIColor.white, .baselineOffset: 0.0] as [NSAttributedStringKey : Any]
+        
+        for (degree, coefficient) in coefficients.enumerated().reversed() {
+            // add plus sign if necessary
+            if degree < coefficients.count-1 && coefficient.sign() == .plus {
+                str.append(NSAttributedString(string: "+", attributes: baseAttrs))
+            }
+            // add coefficient
+            str.append(coefficient.formatted(sf: 4, customFontSize: fontSize))
+            
+            if degree > 0 {
+                // add degree (x^n)
+                let substr = NSMutableAttributedString(string: "x\(degree)", attributes: baseAttrs)
+                substr.addAttributes([.font: expoFont, .baselineOffset: baseline, .foregroundColor: #colorLiteral(red: 0.2392156863, green: 0.6745098039, blue: 0.968627451, alpha: 1)], range: NSRange(location: 1, length: 1))
+                str.append(substr)
+            }
+        }
+        
+        str.append(NSAttributedString(string: "=0", attributes: baseAttrs))
+        str.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.2392156863, green: 0.6745098039, blue: 0.968627451, alpha: 1), range: NSRange(location: str.length-1, length: 1))
+        return str
+    }
+    
+}

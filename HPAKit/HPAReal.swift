@@ -71,8 +71,9 @@ extension HPAReal: HPANumeric, Comparable{
     }
     
     @inline(__always)
-    public mutating func sign()-> FloatingPointSign {
-        return xsgn(&self) != -1 ? .plus:.minus
+    public func sign()-> FloatingPointSign {
+        var copy = self
+        return xsgn(&copy) != -1 ? .plus:.minus
     }
     
     // MARK: Math Functions

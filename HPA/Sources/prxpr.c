@@ -21,6 +21,7 @@
 */
 
 #include <stdlib.h>		/* for calloc() */
+#include <ctype.h>
 #include <string.h>             /* for strcpy() */
 #include "xpre.h"		/* Automatically includes <stdio.h> */
 
@@ -212,119 +213,132 @@ xpr_print (FILE * stream, struct xpr u, int sc_not, int sign, int lim)
 char *
 xpr_asprint (struct xpr u, int sc_not, int sign, int lim)
 {
-  char q[5 * XDIM + 4], *buffer, *ptr;
-  register char *p = q;
-  register int k, m;
-  int dig;
-  unsigned short *pa = (unsigned short *) &u;
-
-  if (lim < 0)
-    lim = 0;
-  if (lim > 5 * XDIM + 2)
-    lim = 5 * XDIM + 2;
-  if (!(buffer = (char *) calloc (BUFF_SIZE, sizeof (char))))
-    return NULL;
-  else if((copied_special_value (buffer, u, sign)))
+    char q[5 * XDIM + 4], *buffer, *ptr;
+    register char *p = q;
+    register int k, m;
+    int dig;
+    unsigned short *pa = (unsigned short *) &u;
+    
+    if (lim < 0)
+        lim = 0;
+    if (lim > 5 * XDIM + 2)
+        lim = 5 * XDIM + 2;
+    if (!(buffer = (char *) calloc (BUFF_SIZE, sizeof (char))))
+        return NULL;
+    else if((copied_special_value (buffer, u, sign)))
     {
-      for (k = 0; buffer[k] != '\0'; k++);
-      /* Now k is the length of the buffer. */
-      /* We shrink the buffer so that it has the exact */
-      /* size to contain all its non null chars.       */
-      ptr = (char *) realloc (buffer, k + 1);
-      return (ptr != NULL) ? ptr : buffer;
+        for (k = 0; buffer[k] != '\0'; k++);
+        /* Now k is the length of the buffer. */
+        /* We shrink the buffer so that it has the exact */
+        /* size to contain all its non null chars.       */
+        ptr = (char *) realloc (buffer, k + 1);
+        return (ptr != NULL) ? ptr : buffer;
     }
-  else
+    else
     {
-      if ((*pa & xM_sgn))
-	{
-	  *pa ^= xM_sgn;
-	  xstrputc ('-', buffer);
-	}
-
-      if ((xis0(&u)))
-	{
-	  xsprintfmt (buffer, "0");
-	}
-      else
-	{
-	  m = ((*pa & xM_exp) - xBias);
-	  m = (int) ((double) (m + 1) * __Log10_2__);
-	  if ((m))
-	    u = xmul (u, xpwr (xTen, -m));
-	  while ((*pa & xM_exp) < xBias)
-	    {
-	      --m;
-	      u = xmul (u, xTen);
-	    }
-	  for (*p = 0, k = 0; k <= lim; ++k)
-	    {
-	      u = xsfmod (u, &dig);
-	      ++p, *p = (char) dig;
-	      if (*pa == 0)
-		break;
-	      u = xmul (xTen, u);
-	    }
-	  for (; k <= lim; ++k)
-	    *++p = 0;
-	  if ((*pa))
-	    {
-	      u = xsfmod (u, &dig);
-	      if (dig >= 5)
-		++(*p);
-	      while (*p == 10)
-		{
-		  *p = 0;
-		  ++(*--p);
-		}
-	    }
-	  p = q;
-	  if (*p == 0)
-	    ++p;
-	  else
-	    ++m;
-	  /* Now has come the moment to print */
-	  if (m > XMAX_10EX)
-	    xsprintfmt (buffer, "Inf");
-	  else if ((sc_not) || m>=10 || m<=-10)
-	    {
-	      xsprintfmt (buffer, "%c", '0' + *p++);
-            if(*p) {
-                xstrputc('.', buffer);
-                for (k = 0; k < lim && *p; ++k)
+        if ((*pa & xM_sgn))
+        {
+            *pa ^= xM_sgn;
+            xstrputc ('-', buffer);
+        }
+        else
+        {
+            if ((sign))
+                xstrputc ('+', buffer);
+        }
+        if ((xis0(&u)))
+        {
+            xsprintfmt (buffer, "0.");
+            for (k = 0; k < lim; ++k)
+                xstrputc ('0', buffer);
+            if ((sc_not))
+                xsprintfmt (buffer, "e+0");
+        }
+        else
+        {
+            m = ((*pa & xM_exp) - xBias);
+            m = (int) ((double) (m + 1) * __Log10_2__);
+            if ((m))
+                u = xmul (u, xpwr (xTen, -m));
+            while ((*pa & xM_exp) < xBias)
+            {
+                --m;
+                u = xmul (u, xTen);
+            }
+            for (*p = 0, k = 0; k <= lim; ++k)
+            {
+                u = xsfmod (u, &dig);
+                ++p, *p = (char) dig;
+                if (*pa == 0)
+                    break;
+                u = xmul (xTen, u);
+            }
+            for (; k <= lim; ++k)
+                *++p = 0;
+            if ((*pa))
+            {
+                u = xsfmod (u, &dig);
+                if (dig >= 5)
+                    ++(*p);
+                while (*p == 10)
+                {
+                    *p = 0;
+                    ++(*--p);
+                }
+            }
+            p = q;
+            if (*p == 0)
+                ++p;
+            else
+                ++m;
+            /* Now has come the moment to print */
+            if (m > XMAX_10EX)
+                xsprintfmt (buffer, "Inf");
+            else if ((sc_not) || m>4)
+            {
+                xsprintfmt (buffer, "%c.", '0' + *p++);
+                for (k = 1; k < lim-1; ++k)
                     xstrputc ('0' + *p++, buffer);
+                if (m >= 0)
+                    xsprintfmt (buffer, "e%d", m);
+                else
+                    xsprintfmt (buffer, "e%d", m);
             }
-          if(m != 0)
-        xsprintfmt (buffer, "e%d", m);
-	    }
-	  else
-	    {
-	      if (m >= 0)
-		{
-		  for (k = 0; k <= m; k++)
-        xstrputc ('0' + p[k], buffer);
-            if(p[k]) {
-                xstrputc ('.', buffer);
-                for (;k-1-m <= lim && p[k]; k++)
-                    xstrputc ('0' + p[k], buffer);
+            else
+            {
+                if (m >= 0)
+                {
+                    for (k = 0; k <= m; k++)
+                    {
+                        if (k < lim)
+                            xstrputc ('0' + p[k], buffer);
+                        else
+                            xstrputc ('0', buffer);
+                    }
+                    if (k <= lim)
+                    {
+                        xstrputc ('.', buffer);
+                        for (; k <= lim; k++)
+                            xstrputc ('0' + p[k], buffer);
+                    }
+                }
+                else
+                {
+                    xsprintfmt (buffer, "0.");
+                    for (k = 1; k < -m; k++)
+                        xstrputc ('0', buffer);
+                    for (k = 0; k <= lim; ++k)
+                        xstrputc ('0' + *p++, buffer);
+                }
             }
-		}
-	      else
-		{
-		  xsprintfmt (buffer, "0.");
-		  for (k = 1; k < -m; k++)
-		    xstrputc ('0', buffer);
-		  for (k = 0; k <= lim; ++k)
-		    xstrputc ('0' + *p++, buffer);
-		}
-	    }
-	}			/* End of *pa != 0 */
-      for (k = 0; buffer[k] != '\0'; k++);
-      /* Now k is the length of the buffer. */
-      /* We shrink the buffer so that it has the exact */
-      /* size to contain all its non null chars.       */
-      ptr = (char *) realloc (buffer, k + 1);
-      return (ptr != NULL) ? ptr : buffer;
-    }				/* End of buffer != 0 */
+        }            /* End of *pa != 0 */
+        for (k = 0; buffer[k] != '\0'; k++);
+        /* Now k is the length of the buffer. */
+        /* We shrink the buffer so that it has the exact */
+        /* size to contain all its non null chars.       */
+        ptr = (char *) realloc (buffer, k + 1);
+        return (ptr != NULL) ? ptr : buffer;
+    }                /* End of buffer != 0 */
 }
 
 char *

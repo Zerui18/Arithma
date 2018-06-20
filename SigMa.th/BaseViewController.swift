@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HPAKit
 import Settings
 
 class BaseViewController: UIViewController {
@@ -21,7 +22,7 @@ class BaseViewController: UIViewController {
     private var hideTimer: Timer?
     
     private let containerScrollView = UIScrollView(frame: .zero)
-    private let viewControllers = [PolynomialViewController(), CalculatorViewController()]
+    private let viewControllers = [PolynomialViewController.shared, CalculatorViewController()]
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -35,14 +36,14 @@ class BaseViewController: UIViewController {
         setupOverlayes()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         applyAnimations()
     }
     
     func displayMessage(_ text: String) {
         if messageLabel.text != nil {
-            messageLabel.animateText(to: "Copied")
+            messageLabel.animateText(to: text)
             hideTimer?.invalidate()
             hideTimer = Timer.scheduledTimer(withTimeInterval: 2.2, repeats: false) { _ in
                 UIView.animate(withDuration: 0.2) {
@@ -128,14 +129,14 @@ class BaseViewController: UIViewController {
 extension BaseViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
+        let offset = scrollView.contentOffset.x
         if offset == 0 {
             // in polynomials page
-            
+            viewControllers[0].becomeFirstResponder()
         }
         else {
             // in calculator page
-            
+            viewControllers[1].becomeFirstResponder()
         }
     }
     

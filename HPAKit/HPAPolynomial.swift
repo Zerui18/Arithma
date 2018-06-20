@@ -10,7 +10,7 @@ import Foundation
 
 public struct HPAPolynomial: Equatable {
     
-    let coefficients: [HPAReal]
+    public let coefficients: [HPAReal]
     
     /**
      Creates a new instance of `Polynomial` with the given coefficients.
@@ -76,7 +76,7 @@ public struct HPAPolynomial: Equatable {
     
     private func quadratic() -> [HPAComplex] {
         let a = coefficients[0]
-        var b = coefficients[1]
+        let b = coefficients[1]
         let c = coefficients[2]
         
         if a.isZero {

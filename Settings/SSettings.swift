@@ -19,7 +19,7 @@ public class SSettings {
             return trigoModeRaw == 0
         }
         set {
-            trigoModeRaw = (!newValue).hashValue
+            trigoModeRaw = newValue ? 0:1
         }
     }
     
@@ -40,7 +40,7 @@ public class SSettings {
             return scientificModeRaw == 0
         }
         set {
-            scientificModeRaw = (!newValue).hashValue
+            scientificModeRaw = newValue ? 0:1
         }
     }
     

@@ -26,7 +26,7 @@ class CalculatorViewController: UIViewController {
     private let inputTextView = SInputTextView(frame: .zero, keyboard: keyboard)
     private lazy var inputScrollView = ContainerScrollView(wrapping: inputTextView)
     
-    // MARK: View Lifecycle Methods
+    // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,13 @@ class CalculatorViewController: UIViewController {
         inputTextView.becomeFirstResponder()
     }
     
-    // MARK: Private Methods
+    // MARK: Public Functions
+    public override func becomeFirstResponder() -> Bool {
+        inputTextView.becomeFirstResponder()
+        return true
+    }
+    
+    // MARK: Private Setups
     private func setupProperties() {
         
         // Result Text View
@@ -80,12 +86,13 @@ class CalculatorViewController: UIViewController {
     private func setupLayout() {
         
         // Main UI -> Result
+        view.addSubview(resultScrollView)
+        
         resultTextView.leadingAnchor
             .constraint(equalTo: resultScrollView.contentLayoutGuide.leadingAnchor, constant: scaled(16)).isActive = true
         resultTextView.trailingAnchor
             .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: scaled(-16)).isActive = true
         
-        view.addSubview(resultScrollView)
         resultScrollView.topAnchor
             .constraint(equalTo: view.topAnchor, constant: scaled(56)).isActive = true
         resultScrollView.leadingAnchor
@@ -98,16 +105,6 @@ class CalculatorViewController: UIViewController {
         
         // Main UI -> Input
         view.addSubview(inputScrollView)
-        inputScrollView.bottomAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
-            -keyboard.bounds.height - unitSelector.bounds.height - 8
-        ).isActive = true
-        inputScrollView.leadingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        inputScrollView.trailingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        inputScrollView.heightAnchor
-            .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
         
         inputTextView.leadingAnchor
             .constraint(greaterThanOrEqualTo: inputScrollView.leadingAnchor, constant: scaled(16)).isActive = true
@@ -115,8 +112,20 @@ class CalculatorViewController: UIViewController {
             .constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: scaled(-16)).isActive = true
         inputTextView.trailingAnchor
             .constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
+        
+        inputScrollView.bottomAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
+                -keyboard.bounds.height - unitSelector.bounds.height - 8
+            ).isActive = true
+        inputScrollView.leadingAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        inputScrollView.trailingAnchor
+            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        inputScrollView.heightAnchor
+            .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
     }
     
+    // MARK: Selector Function
     @objc private func resultLongPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             UIPasteboard.general.string = resultTextView.textStorage.string

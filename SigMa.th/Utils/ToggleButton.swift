@@ -54,7 +54,7 @@ class ToggleButton: UIButton {
     @objc private func buttonToggled() {
         darkenTimer?.invalidate()
     
-        SSettings.shared[keyPath: propertyPath] = !SSettings.shared[keyPath: propertyPath]
+        SSettings.shared[keyPath: propertyPath].toggle()
         
         CATransaction.flush()
         CATransaction.begin()

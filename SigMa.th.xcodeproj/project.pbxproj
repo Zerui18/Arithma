@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0128C77120BE9614005C5EF2 /* PolynomialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128C77020BE9614005C5EF2 /* PolynomialCell.swift */; };
+		011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */; };
+		0128C77120BE9614005C5EF2 /* PolynomialInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */; };
+		0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147A2A220DA722F0074B525 /* SeperatorCell.swift */; };
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B33D2720BD254B004E2310 /* UILabel+Extension.swift */; };
 		01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
 		01C050D320BC096900B7A09B /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */; };
+		01C34F7720D6286400A89BFF /* PolynomialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */; };
 		01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46420B936A70022A871 /* AppDelegate.swift */; };
 		01C5E46E20B936A80022A871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E46720B936A70022A871 /* Assets.xcassets */; };
 		01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46820B936A70022A871 /* CalculatorViewController.swift */; };
@@ -179,9 +182,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0128C77020BE9614005C5EF2 /* PolynomialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialCell.swift; sourceTree = "<group>"; };
+		0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialInputCell.swift; sourceTree = "<group>"; };
+		0147A2A220DA722F0074B525 /* SeperatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperatorCell.swift; sourceTree = "<group>"; };
 		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultCell.swift; sourceTree = "<group>"; };
+		01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultViewController.swift; sourceTree = "<group>"; };
 		01C5E44F20B936550022A871 /* SigMa.th.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SigMa.th.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C5E45E20B936560022A871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01C5E46420B936A70022A871 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -348,6 +354,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011AE50620D6A85D00DF7186 /* Polynomial Result */ = {
+			isa = PBXGroup;
+			children = (
+				0147A2A220DA722F0074B525 /* SeperatorCell.swift */,
+				01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */,
+				01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */,
+			);
+			path = "Polynomial Result";
+			sourceTree = "<group>";
+		};
+		011AE50720D6A86C00DF7186 /* Polynomial Input */ = {
+			isa = PBXGroup;
+			children = (
+				0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */,
+				01E118D420BD5AF7005B1BE9 /* PolynomialViewController.swift */,
+			);
+			path = "Polynomial Input";
+			sourceTree = "<group>";
+		};
 		01C5E44620B936550022A871 = {
 			isa = PBXGroup;
 			children = (
@@ -383,13 +408,10 @@
 			children = (
 				01C5E46420B936A70022A871 /* AppDelegate.swift */,
 				01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */,
-				01E118D420BD5AF7005B1BE9 /* PolynomialViewController.swift */,
-				0128C77020BE9614005C5EF2 /* PolynomialCell.swift */,
 				01C5E46820B936A70022A871 /* CalculatorViewController.swift */,
-				01B33D2720BD254B004E2310 /* UILabel+Extension.swift */,
-				01C5E46920B936A70022A871 /* ToggleButton.swift */,
-				01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */,
-				01C5E46520B936A70022A871 /* ContainerScrollView.swift */,
+				011AE50720D6A86C00DF7186 /* Polynomial Input */,
+				011AE50620D6A85D00DF7186 /* Polynomial Result */,
+				01E0A7FE20CF9DD30021634C /* Utils */,
 				01C5E5A420B983C60022A871 /* Others */,
 			);
 			path = SigMa.th;
@@ -608,6 +630,17 @@
 				01C5E54420B93A0F0022A871 /* Info.plist */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		01E0A7FE20CF9DD30021634C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				01B33D2720BD254B004E2310 /* UILabel+Extension.swift */,
+				01C5E46920B936A70022A871 /* ToggleButton.swift */,
+				01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */,
+				01C5E46520B936A70022A871 /* ContainerScrollView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		01E5BAFD20BACE7F00FEE362 /* HPAKitTests */ = {
@@ -928,9 +961,12 @@
 				01C050D320BC096900B7A09B /* UIView+Constraints.swift in Sources */,
 				01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */,
 				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
+				011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */,
+				01C34F7720D6286400A89BFF /* PolynomialResultCell.swift in Sources */,
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,
 				01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */,
-				0128C77120BE9614005C5EF2 /* PolynomialCell.swift in Sources */,
+				0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */,
+				0128C77120BE9614005C5EF2 /* PolynomialInputCell.swift in Sources */,
 				01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

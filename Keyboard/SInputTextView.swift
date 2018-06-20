@@ -12,10 +12,11 @@ import Engine
 // MARK: Callback Types
 public typealias SResultUpdateHandler = (SValue?, Error?) -> Void
 public typealias STextChangedHandler = () -> Void
+public typealias SEmptyBackspaceHandler = ()-> Void
 
 // MARK: SInputTextView
 /// Custom UITextView subclass which integrates with SEvaluator to automatically evaluate its text content as mathematical expressions and public its results with the registered callbacks.
-public class SInputTextView: UITextView, UITextViewDelegate {
+open class SInputTextView: UITextView, UITextViewDelegate {
     
     // MARK: Public Properties
     /// The name of the variable that the text view assignes its results to. Currently variable evaluation is unsuable.
@@ -24,10 +25,12 @@ public class SInputTextView: UITextView, UITextViewDelegate {
     /// Callback when text changes. This block is executed before the new text is evaluated.
     public var onTextChange: STextChangedHandler?
     
+    public var onEmptyBackspace: SEmptyBackspaceHandler?
+    
 //    /// Callback when evaluation completes with result.
 //    public var onResultUpdate: SResultUpdateHandler?
     
-    override public var text: String! {
+    override open var text: String! {
         didSet {
             onTextChange?()
             textDidChange()
@@ -47,14 +50,14 @@ public class SInputTextView: UITextView, UITextViewDelegate {
     
     private weak var resultTextView: UITextView?
     private var resultFontSize: CGFloat?
-    
+        
     /// Helper function to update the state of the exponent key of the associated keyboard.
     public func updateIndentationKey() {
         keyboard.setIsIndenting(typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
     }
     
     /// Overrided to update exponent key of associated keyboard whenever selection changes.
-    public override var selectedTextRange: UITextRange? {
+    open override var selectedTextRange: UITextRange? {
         didSet {
             updateIndentationKey()
         }
@@ -85,8 +88,13 @@ public class SInputTextView: UITextView, UITextViewDelegate {
     }
     
     /// Only selectAll is allowed in menu.
-    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return action == #selector(selectAll(_:)) || action == #selector(paste(_:))
+    }
+    
+    open override func didMoveToWindow() {
+        super.didMoveToWindow()
+        becomeFirstResponder()
     }
     
     // MARK: TextView Delegate
@@ -119,7 +127,7 @@ public class SInputTextView: UITextView, UITextViewDelegate {
             }
             
             // blank-out label if it's empty input
-            guard !textView.text.isEmpty else {
+            guard !text.isEmpty else {
                 resultTextView?.attributedText = nil
                 return
             }
@@ -165,6 +173,7 @@ extension SInputTextView {
             typingAttributes = Dictionary(uniqueKeysWithValues: attributesToSet.map{($0.rawValue, $1)})
         case .delete:
             guard selectedTextRange!.end != beginningOfDocument else {
+                onEmptyBackspace?()
                 return
             }
             
