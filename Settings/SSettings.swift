@@ -1,6 +1,6 @@
 //
-//  SSettings.swift
-//  NumCode
+//  AMSettings.swift
+//  Arithma
 //
 //  Created by Chen Zerui on 30/3/18.
 //  Copyright © 2018 Chen Zerui. All rights reserved.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class SSettings {
+public class AMSettings {
     
-    public static let shared = SSettings()
+    public static let shared = AMSettings()
     
     private init() {}
     

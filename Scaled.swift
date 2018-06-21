@@ -1,6 +1,6 @@
 //
 //  Double+Scaled.swift
-//  NumCodeBackend
+//  ArithmaBackend
 //
 //  Created by Chen Zerui on 20/4/18.
 //  Copyright © 2018 Chen Zerui. All rights reserved.

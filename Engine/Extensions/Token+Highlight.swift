@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension SLexer.Token {
+extension AMLexer.Token {
     
     var syntaxColor: UIColor {
         switch self {

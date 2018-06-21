@@ -45,7 +45,7 @@ extension HPAReal: HPANumeric, Comparable{
     // MARK: Description
     public func description(sf: Int32)-> String {
         var str = String(cString:
-            xpr_asprint(self, SSettings.shared.isScientificMode ? 1:0, 0, sf)
+            xpr_asprint(self, AMSettings.shared.isScientificMode ? 1:0, 0, sf)
         )
         
         if str.contains("e") || str.contains(".") {

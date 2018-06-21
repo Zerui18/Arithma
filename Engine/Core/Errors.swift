@@ -8,13 +8,13 @@
 
 import Foundation
 
-public protocol SError: Error {
+public protocol AMError: Error {
     var description: String {get}
 }
 
-extension SInterpreter {
+extension AMInterpreter {
     
-    public enum ParseError: SError {
+    public enum ParseError: Error {
         case expectedNumber, expectedCharacter(Character), expectedExpression, unknownOperator(Character), expectedOperator, unknownSymbol(String), duplicateDeclaration(String), unexpectedUnit, expectedInteger
         
         public var description: String {
@@ -43,10 +43,10 @@ extension SInterpreter {
     
 }
 
-extension SValue {
+extension AMValue {
     
-    public enum OperationError: SError {
-        case unitConversionFailed(SCompoundUnit, SCompoundUnit), unexpectedUnit
+    public enum OperationError: Error {
+        case unitConversionFailed(AMCompoundUnit, AMCompoundUnit), unexpectedUnit
         
         public var description: String {
             switch self {

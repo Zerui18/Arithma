@@ -1,6 +1,6 @@
 //
 //  Notifications.swift
-//  NumCodeSettings
+//  ArithmaSettings
 //
 //  Created by Chen Zerui on 31/3/18.
 //  Copyright © 2018 Chen Zerui. All rights reserved.
