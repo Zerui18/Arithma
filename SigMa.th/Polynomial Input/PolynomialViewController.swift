@@ -68,25 +68,25 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         view.addSubview(addDegreeButton)
         addDegreeButton.widthAnchor.constraint(equalToConstant: scaled(38)).isActive = true
         addDegreeButton.heightAnchor.constraint(equalToConstant: scaled(38)).isActive = true
-        addDegreeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(30)).isActive = true
-        addDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(-36)).isActive = true
+        addDegreeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: scaled(74)).isActive = true
+        addDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(-38)).isActive = true
         
         view.addSubview(removeDegreeButton)
         removeDegreeButton.widthAnchor.constraint(equalToConstant: scaled(38)).isActive = true
         removeDegreeButton.heightAnchor.constraint(equalToConstant: scaled(38)).isActive = true
-        removeDegreeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(30)).isActive = true
-        removeDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(36)).isActive = true
+        removeDegreeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: scaled(74)).isActive = true
+        removeDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(38)).isActive = true
         
         view.addSubview(pgScrollView)
         pgScrollView.topAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                        constant: scaled(84)).isActive = true
+            .constraint(equalTo: addDegreeButton.bottomAnchor,
+                        constant: scaled(20)).isActive = true
         pgScrollView.leadingAnchor
             .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
         pgScrollView.centerXAnchor
             .constraint(equalTo: view.centerXAnchor).isActive = true
         pgScrollView.heightAnchor
-            .constraint(equalToConstant: scaled(50)).isActive = true
+            .constraint(greaterThanOrEqualToConstant: scaled(50)).isActive = true
         
         pgCollectionView.leadingAnchor
             .constraint(equalTo: pgScrollView.leadingAnchor).isActive = true
@@ -157,6 +157,11 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         let cell = cells.removeFirst()
         pgCollectionView.removeArrangedSubview(cell)
         cell.removeFromSuperview()
+        
+        // activate first cell when the active cell is deleted
+        if PolynomialInputCell.currentActive === cell {
+            cells.first!.beginEditing(nil)
+        }
     }
     
     private func solvePolynomial() {
@@ -164,10 +169,11 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         coefficients.reserveCapacity(cells.count)
         for cell in cells.reversed() {
             guard let value = cell.linkedInputView.currentResult?.value else {
-                BaseViewController.shared.displayMessage("Empty Coefficient(s)")
+                cell.beginEditing(nil)
                 return
             }
             guard value.isReal else {
+                cell.beginEditing(nil)
                 BaseViewController.shared.displayMessage("Only Real Coefficients")
                 return
             }

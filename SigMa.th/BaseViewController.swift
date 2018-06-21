@@ -107,7 +107,7 @@ class BaseViewController: UIViewController {
         
         view.addSubview(messageLabel)
         messageLabel.topAnchor
-            .constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            .constraint(equalTo: view.topAnchor, constant: scaled(36)).isActive = true
         messageLabel.centerXAnchor
             .constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         

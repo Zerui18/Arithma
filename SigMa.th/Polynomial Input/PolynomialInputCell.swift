@@ -103,6 +103,8 @@ class PolynomialInputCell: UIView {
         linkedInputView.layer.cornerRadius = scaled(14)
         linkedInputView.tintColor = .lightGray
         linkedInputView.writeResult(to: coefficientLabel, fontSize: scaled(34))
+        
+        coefficientLabel.textContainer.lineFragmentPadding = 0
 
         inputScrollView.translatesAutoresizingMaskIntoConstraints = false
         inputScrollView.tag = -999
@@ -148,7 +150,7 @@ class PolynomialInputCell: UIView {
         coefficientLabel.widthAnchor
             .constraint(greaterThanOrEqualToConstant: scaled(120)).isActive = true
         coefficientLabel.heightAnchor
-            .constraint(equalToConstant: 50).isActive = true
+            .constraint(greaterThanOrEqualToConstant: scaled(50)).isActive = true
 
         addSubview(degreeLabel)
         degreeLabel.leadingAnchor
@@ -159,7 +161,7 @@ class PolynomialInputCell: UIView {
         degreeLabel.trailingAnchor
             .constraint(equalTo: trailingAnchor).isActive = true
         degreeLabel.heightAnchor
-            .constraint(equalToConstant: 50).isActive = true
+            .constraint(greaterThanOrEqualToConstant: scaled(50)).isActive = true
     }
 
     @objc func beginEditing(_ sender: Any?) {
