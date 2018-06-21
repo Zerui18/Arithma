@@ -94,7 +94,7 @@ class CalculatorViewController: UIViewController {
             .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: scaled(-16)).isActive = true
         
         resultScrollView.topAnchor
-            .constraint(equalTo: view.topAnchor, constant: scaled(56)).isActive = true
+            .constraint(equalTo: view.topAnchor, constant: scaled(62)).isActive = true
         resultScrollView.leadingAnchor
             .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         resultScrollView.trailingAnchor

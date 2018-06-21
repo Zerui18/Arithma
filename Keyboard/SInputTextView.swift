@@ -24,9 +24,7 @@ open class SInputTextView: UITextView, UITextViewDelegate {
     
     /// Callback when text changes. This block is executed before the new text is evaluated.
     public var onTextChange: STextChangedHandler?
-    
-    public var onEmptyBackspace: SEmptyBackspaceHandler?
-    
+        
 //    /// Callback when evaluation completes with result.
 //    public var onResultUpdate: SResultUpdateHandler?
     
@@ -173,7 +171,6 @@ extension SInputTextView {
             typingAttributes = Dictionary(uniqueKeysWithValues: attributesToSet.map{($0.rawValue, $1)})
         case .delete:
             guard selectedTextRange!.end != beginningOfDocument else {
-                onEmptyBackspace?()
                 return
             }
             

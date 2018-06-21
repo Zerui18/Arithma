@@ -96,6 +96,10 @@ extension HPAPolynomial {
         
         str.append(NSAttributedString(string: "=0", attributes: baseAttrs))
         str.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.2392156863, green: 0.6745098039, blue: 0.968627451, alpha: 1), range: NSRange(location: str.length-1, length: 1))
+        
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        str.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: str.length))
         return str
     }
     

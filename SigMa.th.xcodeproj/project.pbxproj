@@ -13,7 +13,6 @@
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B33D2720BD254B004E2310 /* UILabel+Extension.swift */; };
 		01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
-		01C050D320BC096900B7A09B /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */; };
 		01C34F7720D6286400A89BFF /* PolynomialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */; };
 		01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46420B936A70022A871 /* AppDelegate.swift */; };
 		01C5E46E20B936A80022A871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E46720B936A70022A871 /* Assets.xcassets */; };
@@ -116,6 +115,7 @@
 		01E5BAFF20BACE7F00FEE362 /* HPAKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BAFE20BACE7F00FEE362 /* HPAKitTests.swift */; };
 		01E5BB0120BACE7F00FEE362 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
 		01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */; };
+		01F7FC7020DB1B56007C32E1 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,7 +185,6 @@
 		0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialInputCell.swift; sourceTree = "<group>"; };
 		0147A2A220DA722F0074B525 /* SeperatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperatorCell.swift; sourceTree = "<group>"; };
 		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
-		01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultCell.swift; sourceTree = "<group>"; };
 		01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultViewController.swift; sourceTree = "<group>"; };
 		01C5E44F20B936550022A871 /* SigMa.th.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SigMa.th.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +338,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F7FC7020DB1B56007C32E1 /* Settings.framework in Frameworks */,
 				01C5E5A020B955A30022A871 /* HPA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,7 +532,6 @@
 		01C5E5A420B983C60022A871 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				01C050D120BBFA0F00B7A09B /* UIView+Constraints.swift */,
 				01C5E46720B936A70022A871 /* Assets.xcassets */,
 				01C5E59620B947DF0022A871 /* LaunchScreen.storyboard */,
 				01C5E45E20B936560022A871 /* Info.plist */,
@@ -958,7 +957,6 @@
 				01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */,
 				01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */,
 				01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */,
-				01C050D320BC096900B7A09B /* UIView+Constraints.swift in Sources */,
 				01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */,
 				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
 				011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */,

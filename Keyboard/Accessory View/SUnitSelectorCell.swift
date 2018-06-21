@@ -23,7 +23,7 @@ class SUnitSelectorCell: UICollectionViewCell {
         
         contentView.addSubview(label)
         layer.cornerRadius = scaled(10)
-        backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
         
     }
     
@@ -34,13 +34,13 @@ class SUnitSelectorCell: UICollectionViewCell {
     func showHighlighted() {
         UIView.animate(withDuration: 0.2) {
             self.backgroundColor = #colorLiteral(red: 0.8376573464, green: 0.8459509835, blue: 0.8459509835, alpha: 1)
-            self.label.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+            self.label.textColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
         }
     }
     
     func showNormal() {
         UIView.animate(withDuration: 0.2) {
-            self.backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+            self.backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
             self.label.textColor = .white
         }
     }

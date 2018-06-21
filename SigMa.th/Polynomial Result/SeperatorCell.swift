@@ -40,7 +40,7 @@ class SeperatorCell: UITableViewCell {
         label.backgroundColor = .black
         
         contentView.addSubview(label)
-        label.widthAnchor.constraint(equalToConstant: scaled(120)).isActive = true
+        label.widthAnchor.constraint(equalToConstant: scaled(80)).isActive = true
         label.heightAnchor.constraint(equalToConstant: scaled(60)).isActive = true
         label.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true

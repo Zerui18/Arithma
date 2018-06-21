@@ -118,7 +118,7 @@ public class SLexer {
         textStorage.addAttributes([.foregroundColor: token.syntaxColor], range: NSRange(location: index ?? self.index.encodedOffset, length: count))
     }
     
-    private func advanceToNextToken(_ willBeFirst: Bool = false) -> SLexer.Token? {
+    private func advanceToNextToken() -> SLexer.Token? {
 
         if currentChar?.isSpace ?? false {
             advanceIndex()

@@ -20,12 +20,13 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
     static let shared = PolynomialViewController()
 
     // MARK: Private Properties
-    lazy var pgScrollView = ContainerScrollView(wrapping: pgCollectionView)
-    lazy var pgCollectionView = UIStackView(arrangedSubviews: cells)
+    private let addDegreeButton = UIButton()
+    private let removeDegreeButton = UIButton()
+    private lazy var pgScrollView = ContainerScrollView(wrapping: pgCollectionView)
+    private lazy var pgCollectionView = UIStackView(arrangedSubviews: cells)
     private lazy var cells: [PolynomialInputCell] = (0...2).map { index in
         let cell = PolynomialInputCell(frame: .zero)
         cell.degree = UInt(2-index)
-        cell.linkedInputView.onEmptyBackspace = self.onEmptyBackspace
         return cell
     }
 
@@ -49,18 +50,37 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         keyboard.delegate = self
         view.backgroundColor = .black
         
+        addDegreeButton.setBackgroundImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+        addDegreeButton.translatesAutoresizingMaskIntoConstraints = false
+        addDegreeButton.addTarget(self, action: #selector(addDegree), for: .touchUpInside)
+        
+        removeDegreeButton.setBackgroundImage(#imageLiteral(resourceName: "ic_remove"), for: .normal)
+        removeDegreeButton.translatesAutoresizingMaskIntoConstraints = false
+        removeDegreeButton.addTarget(self, action: #selector(removeDegree), for: .touchUpInside)
+        
         pgCollectionView.spacing = 8
         
         pgScrollView.translatesAutoresizingMaskIntoConstraints = false
         pgScrollView.showsHorizontalScrollIndicator = false
-        pgScrollView.delegate = self
     }
 
     private func setupLayout() {
+        view.addSubview(addDegreeButton)
+        addDegreeButton.widthAnchor.constraint(equalToConstant: scaled(38)).isActive = true
+        addDegreeButton.heightAnchor.constraint(equalToConstant: scaled(38)).isActive = true
+        addDegreeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(30)).isActive = true
+        addDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(-36)).isActive = true
+        
+        view.addSubview(removeDegreeButton)
+        removeDegreeButton.widthAnchor.constraint(equalToConstant: scaled(38)).isActive = true
+        removeDegreeButton.heightAnchor.constraint(equalToConstant: scaled(38)).isActive = true
+        removeDegreeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(30)).isActive = true
+        removeDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(36)).isActive = true
+        
         view.addSubview(pgScrollView)
         pgScrollView.topAnchor
             .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                        constant: scaled(56)).isActive = true
+                        constant: scaled(84)).isActive = true
         pgScrollView.leadingAnchor
             .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
         pgScrollView.centerXAnchor
@@ -76,7 +96,7 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
 
     func presentInputView(_ inputView: SInputTextView) {
         pgScrollView.scrollRectToVisible(
-            pgScrollView.convert(PolynomialInputCell.currentActive!.frame, from: PolynomialInputCell.currentActive!),
+            PolynomialInputCell.currentActive!.frame,
             animated: true)
 
         // remove last containerView
@@ -102,7 +122,18 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
             .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
     }
     
-    fileprivate func addDegree() {
+    @objc fileprivate func addDegree() {
+        if cells.count == 10 {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            return
+        }
+        // show 'disabled' if will reach limit
+        else if cells.count == 9 {
+            addDegreeButton.alpha = 0.7
+        }
+        
+        removeDegreeButton.alpha = 1
+        
         let newCell = PolynomialInputCell()
         newCell.degree = UInt(cells.count)
         cells.insert(newCell, at: 0)
@@ -111,16 +142,33 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         newCell.beginEditing(nil)
     }
     
+    @objc fileprivate func removeDegree() {
+        if cells.count == 2 {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            return
+        }
+        // show 'disabled' if will reach limit
+        else if cells.count == 3 {
+            removeDegreeButton.alpha = 0.7
+        }
+        
+        addDegreeButton.alpha = 1
+        
+        let cell = cells.removeFirst()
+        pgCollectionView.removeArrangedSubview(cell)
+        cell.removeFromSuperview()
+    }
+    
     private func solvePolynomial() {
         var coefficients = [HPAReal]()
         coefficients.reserveCapacity(cells.count)
         for cell in cells.reversed() {
             guard let value = cell.linkedInputView.currentResult?.value else {
-                BaseViewController.shared.displayMessage("Incomplete")
+                BaseViewController.shared.displayMessage("Empty Coefficient(s)")
                 return
             }
             guard value.isReal else {
-                BaseViewController.shared.displayMessage("Error")
+                BaseViewController.shared.displayMessage("Only Real Coefficients")
                 return
             }
             coefficients.append(value.re)
@@ -128,22 +176,6 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         let polynomial = HPAPolynomial(coefficients)
         let resultVC = PolynomialResultViewController(for: polynomial)
         present(resultVC, animated: true)
-    }
-    
-    private func onEmptyBackspace() {
-        let currentIndex = cells.count - Int(PolynomialInputCell.currentActive!.degree) - 1
-        if currentIndex > 0 {
-            // move to next degree
-            cells[currentIndex-1].beginEditing(nil)
-        }
-        else {
-            // delete current cell
-            if cells.count == 2 { return }
-            let cell = cells.remove(at: currentIndex)
-            pgCollectionView.removeArrangedSubview(cell)
-            cell.removeFromSuperview()
-            cells.first!.beginEditing(nil)
-        }
     }
 
     // MARK: SKeyboardViewDelegate Conformance
@@ -161,22 +193,6 @@ class PolynomialViewController: UIViewController, SKeyboardViewDelegate {
         }
     }
 
-}
-
-fileprivate let maxOffset = -scaled(50)
-
-extension PolynomialViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x >= maxOffset || scrollView.panGestureRecognizer.velocity(in: nil).x > 0 {
-            return
-        }
-        if cells.count == 7 {
-            UINotificationFeedbackGenerator().notificationOccurred(.error)
-            return
-        }
-        scrollView.setContentOffset(.zero, animated: true)
-        addDegree()
-    }
 }
 
 extension PolynomialInputCell {

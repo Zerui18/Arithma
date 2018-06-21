@@ -16,7 +16,7 @@ class PolynomialResultViewController: UIViewController {
     
     private let equationContainerView = UIView()
     private let equationView = UITextView()
-    private let rootsContainerView = UIScrollView()
+    private let rootsContainerView = UIView()
     private let rootsTable = UITableView()
     
     
@@ -25,6 +25,7 @@ class PolynomialResultViewController: UIViewController {
         self.roots = polynomial.roots()
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overCurrentContext
+        modalTransitionStyle = .crossDissolve
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,25 +47,22 @@ class PolynomialResultViewController: UIViewController {
         equationContainerView.backgroundColor = .black
         equationContainerView.layer.cornerRadius = scaled(24)
         
-        equationView.translatesAutoresizingMaskIntoConstraints = false
         equationView.backgroundColor = .black
         equationView.layer.cornerRadius = scaled(24)
-        equationView.isScrollEnabled = false
-        equationView.attributedText = polynomial.formatted(fontSize: scaled(28))
+        equationView.attributedText = polynomial.formatted(fontSize: scaled(32))
         
         rootsContainerView.backgroundColor = .black
         rootsContainerView.layer.cornerRadius = scaled(24)
         
-        rootsTable.translatesAutoresizingMaskIntoConstraints = false
         rootsTable.backgroundColor = nil
         rootsTable.tableFooterView = UIView()
         rootsTable.separatorColor = .clear
-        rootsTable.allowsSelection = false
-        rootsTable.isScrollEnabled = false
+        rootsTable.bounces = false
         
         rootsTable.register(PolynomialResultCell.self, forCellReuseIdentifier: "cell")
         rootsTable.register(SeperatorCell.self, forCellReuseIdentifier: "seperator")
         rootsTable.dataSource = self
+        rootsTable.delegate = self
     }
     
     private func setupLayout() {
@@ -73,26 +71,32 @@ class PolynomialResultViewController: UIViewController {
         view.addSubview(blurView)
         
         let margin = scaled(30)
+        let width = view.bounds.width-margin*2
         let containerView = blurView.contentView
         
-        equationContainerView.frame = CGRect(x: margin, y: scaled(80),
-                                             width: view.bounds.width-margin*2, height: scaled(60))
-        rootsContainerView.frame = CGRect(x: margin, y: scaled(220),
-                                          width: view.bounds.width-margin*2, height: (view.bounds.height - scaled(220)) * 0.85)
+        let verticalSpace = view.bounds.height
+        let outerSpace = verticalSpace * 0.06
+        let innerSpace = verticalSpace * 0.03
+        let equationHeight = verticalSpace * 0.28
+        let rootsHeight = verticalSpace * 0.57
+        
+        
+        equationContainerView.frame = CGRect(x: margin, y: outerSpace,
+                                             width: width, height: equationHeight)
+        rootsContainerView.frame = CGRect(x: margin, y: equationContainerView.frame.maxY + innerSpace,
+                                          width: width, height: rootsHeight)
         
         containerView.addSubview(equationContainerView)
         containerView.addSubview(rootsContainerView)
         
-        equationContainerView.addSubview(equationView)
-        equationView.leadingAnchor.constraint(greaterThanOrEqualTo: equationContainerView.leadingAnchor, constant: scaled(30)).isActive = true
-        equationView.centerXAnchor.constraint(equalTo: equationContainerView.centerXAnchor).isActive = true
-        equationView.centerYAnchor.constraint(equalTo: equationContainerView.centerYAnchor).isActive = true
+        let innerMargin = scaled(8)
+        let innerWidth = width - 2 * innerMargin
         
+        equationView.frame = CGRect(x: innerMargin, y: innerMargin, width: innerWidth, height: equationHeight - 2*innerMargin)
+        equationContainerView.addSubview(equationView)
+        
+        rootsTable.frame = CGRect(x: innerMargin, y: innerMargin, width: innerWidth, height: rootsHeight - 2*innerMargin)
         rootsContainerView.addSubview(rootsTable)
-        rootsTable.leadingAnchor.constraint(equalTo: rootsContainerView.leadingAnchor, constant: scaled(12)).isActive = true
-        rootsTable.topAnchor.constraint(equalTo: rootsContainerView.topAnchor, constant: scaled(12)).isActive = true
-        rootsTable.centerXAnchor.constraint(equalTo: rootsContainerView.centerXAnchor).isActive = true
-        rootsTable.centerYAnchor.constraint(equalTo: rootsContainerView.centerYAnchor).isActive = true
     }
     
     @objc private func viewTapped() {
@@ -102,7 +106,7 @@ class PolynomialResultViewController: UIViewController {
 }
 
 // MARK: UITableViewDataSource
-extension PolynomialResultViewController: UITableViewDataSource {
+extension PolynomialResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return roots.count * 2
@@ -122,6 +126,16 @@ extension PolynomialResultViewController: UITableViewDataSource {
             cell.result = roots[actualIndex]
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        // disable selection of 'seperator's
+        return indexPath.row % 2 == 1 ? indexPath:nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = (indexPath.row - 1) / 2
+        UIPasteboard.general.string = roots![index].description(sf: 7)
     }
     
 }
