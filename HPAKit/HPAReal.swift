@@ -47,12 +47,24 @@ extension HPAReal: HPANumeric, Comparable{
         var str = String(cString:
             xpr_asprint(self, SSettings.shared.isScientificMode ? 1:0, 0, sf)
         )
-        if str != "0" {
-            while str.last == "0" {
-                str.removeLast()
+        
+        if str.contains("e") || str.contains(".") {
+            var index: String.Index
+            if str.contains("e") {
+                index = str.firstIndex(of: "e")!
             }
-            if str.last == "." {
-                str.removeLast()
+            else {
+                index = str.endIndex
+            }
+            
+            index = str.index(before: index)
+            
+            while index >= str.startIndex, str[index] == "0" {
+                str.remove(at: index)
+                index = str.index(before: index)
+            }
+            if str[index] == "." {
+                str.remove(at: index)
             }
         }
         return str
