@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		011A622F20DC98B50091C527 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
+		011A623220DC9C520091C527 /* UITextView+Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A623120DC9C520091C527 /* UITextView+Patch.swift */; };
 		011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */; };
 		011D93D420DC93BA00C1A72A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
 		011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D520DC942F00C1A72A /* SafeArea.swift */; };
@@ -185,10 +186,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		011A623120DC9C520091C527 /* UITextView+Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Patch.swift"; sourceTree = "<group>"; };
 		011D93D320DC93BA00C1A72A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		011D93D520DC942F00C1A72A /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
 		0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialInputCell.swift; sourceTree = "<group>"; };
 		0147A2A220DA722F0074B525 /* SeperatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperatorCell.swift; sourceTree = "<group>"; };
+		01601BB620DD21C700065401 /* Arithma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Arithma.entitlements; sourceTree = "<group>"; };
 		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultCell.swift; sourceTree = "<group>"; };
 		01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultViewController.swift; sourceTree = "<group>"; };
@@ -413,7 +416,9 @@
 		01C5E45120B936550022A871 /* Arithma */ = {
 			isa = PBXGroup;
 			children = (
+				01601BB620DD21C700065401 /* Arithma.entitlements */,
 				01C5E46420B936A70022A871 /* AppDelegate.swift */,
+				011A623120DC9C520091C527 /* UITextView+Patch.swift */,
 				01E118D220BD5AC9005B1BE9 /* BaseViewController.swift */,
 				01C5E46820B936A70022A871 /* CalculatorViewController.swift */,
 				011AE50720D6A86C00DF7186 /* Polynomial Input */,
@@ -518,7 +523,6 @@
 		01C5E59520B947AE0022A871 /* Keyboard View */ = {
 			isa = PBXGroup;
 			children = (
-				01C5E53320B939F60022A871 /* Assets.xcassets */,
 				01C5E58920B947A20022A871 /* AMKeyDescription.swift */,
 				01C5E58D20B947A20022A871 /* AMKeyboardKey.swift */,
 				01C5E58E20B947A20022A871 /* AMKeyViewNormal.swift */,
@@ -623,6 +627,7 @@
 		01C5E5A920B9843B0022A871 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				01C5E53320B939F60022A871 /* Assets.xcassets */,
 				01C5E52820B939E20022A871 /* Keyboard.h */,
 				01C5E52920B939E20022A871 /* Info.plist */,
 			);
@@ -851,6 +856,14 @@
 					01C5E44E20B936550022A871 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+						};
 					};
 					01C5E47620B9373B0022A871 = {
 						CreatedOnToolsVersion = 9.4;
@@ -970,6 +983,7 @@
 				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
 				011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */,
 				01C34F7720D6286400A89BFF /* PolynomialResultCell.swift in Sources */,
+				011A623220DC9C520091C527 /* UITextView+Patch.swift in Sources */,
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,
 				01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */,
 				0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */,

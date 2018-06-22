@@ -16,7 +16,7 @@ protocol OperationRepresentable {
 
 extension AMValue {
     enum Operator: Character, OperationRepresentable {
-        case add = "+", subtract = "-", multiply = "×", divide = "÷", exponentiate = "^"
+        case add = "+", subtract = "-", multiply = "×", divide = "÷", exponentiate = "^", exponentiate10 = "e"
         
         func run(on values: [HPAComplex]) -> HPAComplex {
             switch self {
@@ -30,6 +30,8 @@ extension AMValue {
                 return values[0]/values[1]
             case .exponentiate:
                 return values[0].pow(e: values[1])
+            case .exponentiate10:
+                return values[0] * (10 as HPAComplex).pow(e: values[1])
             }
         }
     }
@@ -117,7 +119,15 @@ extension AMValue {
                 operand2DoubleValue = operand2Value.value
                 
                 finalUnit = operand1Value.unit.multipying(by: Int(operand2DoubleValue.abs.toDouble))
+            case .exponentiate10:
+                guard !operand2Value.hasUnit else {
+                    throw OperationError.unexpectedUnit
+                }
                 
+                operand1DoubleValue = operand1Value.value
+                operand2DoubleValue = operand2Value.value
+                
+                finalUnit = operand1Value.unit
             }
             
             let value = `operator`.run(on: [operand1DoubleValue, operand2DoubleValue])

@@ -29,12 +29,12 @@ class ToggleButton: UIButton {
         super.init(frame: .zero)
         alpha = 0.65
         borderLayer.frame = layer.bounds
-        borderLayer.cornerRadius = 8
-        borderLayer.borderWidth = 2
+        borderLayer.cornerRadius = scaled(8)
+        borderLayer.borderWidth = scaled(2)
         borderLayer.borderColor = getTintColor().cgColor
         layer.addSublayer(borderLayer)
         
-        titleLabel?.font = UIFont.systemFont(ofSize: 28)
+        titleLabel?.font = UIFont.systemFont(ofSize: scaled(28))
         setTitle(getTitle(), for: UIControlState())
         setTitleColor(getTintColor(), for: UIControlState())
         
@@ -54,7 +54,7 @@ class ToggleButton: UIButton {
     @objc private func buttonToggled() {
         darkenTimer?.invalidate()
     
-        AMSettings.shared[keyPath: propertyPath].toggle()
+        AMSettings.shared[keyPath: propertyPath] = !AMSettings.shared[keyPath: propertyPath]
         
         CATransaction.flush()
         CATransaction.begin()

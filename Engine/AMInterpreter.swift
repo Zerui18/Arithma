@@ -48,7 +48,8 @@ public class AMInterpreter: NSObject {
         .subtract : 20,
         .multiply : 40,
         .divide : 40,
-        .exponentiate : 60
+        .exponentiate : 60,
+        .exponentiate10: 80
     ]
     
     // MARK: Private Computed-properties

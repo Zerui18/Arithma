@@ -82,12 +82,12 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         interpreter = AMInterpreter()
         interpreter.delegate = self
         typingAttributes = [NSAttributedStringKey.font.rawValue: normalFont]
-        textContainer.lineBreakMode = .byWordWrapping
+        addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinched(_:))))
     }
     
-    /// Only selectAll is allowed in menu.
+    /// Only paste is allowed in menu.
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(selectAll(_:)) || action == #selector(paste(_:))
+        return action == #selector(paste(_:))
     }
     
     open override func didMoveToWindow() {
@@ -134,6 +134,14 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
             textView.textStorage
                 .addAttribute(.foregroundColor, value: UIColor.darkGray,
                               range: NSRange(location: 0, length: textView.textStorage.length))
+        }
+    }
+    
+    // MARK: Selector Functions
+    @objc private func pinched(_ sender: UIPinchGestureRecognizer) {
+        if sender.state == .began {
+            self.replace(textRange(from: beginningOfDocument, to: endOfDocument)!, withText: String())
+            updateIndentationKey()
         }
     }
 

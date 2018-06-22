@@ -51,7 +51,9 @@ extension HPAReal: HPANumeric, Comparable{
         if str.contains("e") || str.contains(".") {
             var index: String.Index
             if str.contains("e") {
-                index = str.firstIndex(of: "e")!
+                // fallback to older swift
+                index = str.index(of: "e")!
+//                index = str.firstIndex(of: "e")!
             }
             else {
                 index = str.endIndex

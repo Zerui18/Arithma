@@ -79,21 +79,22 @@ class BaseViewController: UIViewController {
         trigoModeButton.translatesAutoresizingMaskIntoConstraints = false
         
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.font = .systemFont(ofSize: 16)
+        messageLabel.font = .systemFont(ofSize: scaled(16))
         messageLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         messageLabel.text = "Hello"
         messageLabel.alpha = 0
         
         // Toggle Buttons
+        let buttonDim = scaled(36)
         view.addSubview(scientificModeButton)
         scientificModeButton.topAnchor
             .constraint(equalTo: view.topAnchor, constant: scaled(16)).isActive = true
         scientificModeButton.leadingAnchor
             .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
         scientificModeButton.widthAnchor
-            .constraint(equalToConstant: 36).isActive = true
+            .constraint(equalToConstant: buttonDim).isActive = true
         scientificModeButton.heightAnchor
-            .constraint(equalToConstant: 36).isActive = true
+            .constraint(equalToConstant: buttonDim).isActive = true
         
         view.addSubview(trigoModeButton)
         trigoModeButton.topAnchor
@@ -101,9 +102,9 @@ class BaseViewController: UIViewController {
         trigoModeButton.trailingAnchor
             .constraint(equalTo: view.trailingAnchor, constant: scaled(-16)).isActive = true
         trigoModeButton.widthAnchor
-            .constraint(equalToConstant: 36).isActive = true
+            .constraint(equalToConstant: buttonDim).isActive = true
         trigoModeButton.heightAnchor
-            .constraint(equalToConstant: 36).isActive = true
+            .constraint(equalToConstant: buttonDim).isActive = true
         
         view.addSubview(messageLabel)
         messageLabel.topAnchor

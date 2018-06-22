@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var hasSetupUnits = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UITextView.patch()
         AMInterpreter.setup()
         UITextView.appearance().tintColor = .white
         setupWindow()

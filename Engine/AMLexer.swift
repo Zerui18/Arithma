@@ -105,7 +105,8 @@ public class AMLexer {
         if cChar.isAlpha {
             readLetters()
             
-            guard postInsertBlock == nil else {
+            // "e" is counted as an operator
+            guard postInsertBlock == nil && str != "e" else {
                 return str
             }
         }
@@ -153,6 +154,10 @@ public class AMLexer {
                 
             else if let unit = AMBasicUnit.getUnit(for: str) {
                 token = .unit(unit)
+            }
+            
+            else if  str == "e" {
+                token = .operator(.exponentiate10)
             }
 
             else {
