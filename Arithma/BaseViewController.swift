@@ -99,7 +99,7 @@ class BaseViewController: UIViewController {
         trigoModeButton.topAnchor
             .constraint(equalTo: scientificModeButton.topAnchor).isActive = true
         trigoModeButton.trailingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: scaled(-16)).isActive = true
+            .constraint(equalTo: view.trailingAnchor, constant: scaled(-16)).isActive = true
         trigoModeButton.widthAnchor
             .constraint(equalToConstant: 36).isActive = true
         trigoModeButton.heightAnchor
@@ -109,7 +109,7 @@ class BaseViewController: UIViewController {
         messageLabel.topAnchor
             .constraint(equalTo: view.topAnchor, constant: scaled(36)).isActive = true
         messageLabel.centerXAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+            .constraint(equalTo: view.centerXAnchor).isActive = true
         
     }
     

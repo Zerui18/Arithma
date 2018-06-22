@@ -115,9 +115,9 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
             .constraint(equalTo: view.bottomAnchor,
                         constant: -keyboard.bounds.height).isActive = true
         containerView.leadingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            .constraint(equalTo: view.leadingAnchor).isActive = true
         containerView.trailingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+            .constraint(equalTo: view.trailingAnchor).isActive = true
         containerView.heightAnchor
             .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
     }
@@ -190,7 +190,10 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
     }
 
     var bottomInset: CGFloat {
-        return view.safeAreaInsets.bottom
+        if #available(iOS 11, *) {
+            return view.safeAreaInsets.bottom
+        }
+        return 0
     }
 
     func didReceive(customKey symbol: String) {

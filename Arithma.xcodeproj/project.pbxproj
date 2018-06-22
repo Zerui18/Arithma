@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011A622F20DC98B50091C527 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
 		011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */; };
+		011D93D420DC93BA00C1A72A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
+		011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D520DC942F00C1A72A /* SafeArea.swift */; };
 		0128C77120BE9614005C5EF2 /* PolynomialInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */; };
 		0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147A2A220DA722F0074B525 /* SeperatorCell.swift */; };
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
@@ -182,6 +185,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		011D93D320DC93BA00C1A72A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		011D93D520DC942F00C1A72A /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
 		0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialInputCell.swift; sourceTree = "<group>"; };
 		0147A2A220DA722F0074B525 /* SeperatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperatorCell.swift; sourceTree = "<group>"; };
 		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -377,6 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				01C5E53520B939F70022A871 /* Scaled.swift */,
+				011D93D320DC93BA00C1A72A /* Haptics.swift */,
+				011D93D520DC942F00C1A72A /* SafeArea.swift */,
 				01C5E45120B936550022A871 /* Arithma */,
 				01C5E52720B939E20022A871 /* Keyboard */,
 				01C5E47820B9373B0022A871 /* Engine */,
@@ -884,9 +891,9 @@
 			targets = (
 				01C5E44E20B936550022A871 /* Arithma */,
 				01C5E47620B9373B0022A871 /* Engine */,
-				01C5E49020B937BA0022A871 /* HPA */,
 				01C5E52520B939E20022A871 /* Keyboard */,
 				01C5E54020B93A0F0022A871 /* Settings */,
+				01C5E49020B937BA0022A871 /* HPA */,
 				01C5E55520B93C320022A871 /* HPAKit */,
 				01E5BAFB20BACE7F00FEE362 /* HPAKitTests */,
 			);
@@ -953,9 +960,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011D93D420DC93BA00C1A72A /* Haptics.swift in Sources */,
 				01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */,
 				01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */,
 				01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */,
+				011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */,
 				01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */,
 				01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */,
 				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
@@ -1039,6 +1048,7 @@
 			files = (
 				01C5E53A20B939F70022A871 /* Scaled.swift in Sources */,
 				01C5E53720B939F70022A871 /* AMInputTextView.swift in Sources */,
+				011A622F20DC98B50091C527 /* Haptics.swift in Sources */,
 				01C5E58720B947620022A871 /* AMUnitSelectorCell.swift in Sources */,
 				01C5E59120B947A20022A871 /* AMKeyboardGridView.swift in Sources */,
 				01C5E58F20B947A20022A871 /* AMKeyDescription.swift in Sources */,
@@ -1240,12 +1250,12 @@
 				DEVELOPMENT_TEAM = 789MW96BQB;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/Arithma/Others/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Zerui.SigMa-th";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Arithma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1262,12 +1272,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 789MW96BQB;
 				INFOPLIST_FILE = "$(SRCROOT)/Arithma/Others/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Zerui.SigMa-th";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Arithma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1289,7 +1299,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/Engine/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1320,7 +1330,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Engine/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1350,7 +1360,7 @@
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = HPA/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1381,7 +1391,7 @@
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = HPA/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1412,7 +1422,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Keyboard/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1443,7 +1453,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Keyboard/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1473,7 +1483,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Settings/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1504,7 +1514,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Settings/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1535,7 +1545,7 @@
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = "$(SRCROOT)/HPAKit/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1568,7 +1578,7 @@
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = "$(SRCROOT)/HPAKit/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -139,9 +139,6 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
 
 }
 
-fileprivate let selectionFeedBack = UISelectionFeedbackGenerator()
-fileprivate let notificationFeedBack = UINotificationFeedbackGenerator()
-
 extension AMInputTextView {
     
     /// Process input key sent from the keyboard.
@@ -151,13 +148,13 @@ extension AMInputTextView {
         case .operator where key.symbol == "^":
             
             guard selectedTextRange!.end != beginningOfDocument else {
-                notificationFeedBack.notificationOccurred(.warning)
+                warningFeedback()
                 let cell = keyboard!.pages[0].cellForItem(at: IndexPath(item: 18, section: 0)) as! AMKeyViewNormal
                 cell.animateDeselection(force: true)
                 return
             }
 
-            selectionFeedBack.selectionChanged()
+            selectionFeedback()
             let attributesToSet: [NSAttributedStringKey: Any]
             
             if typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double == 0.0 {

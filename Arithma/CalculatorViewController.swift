@@ -88,17 +88,18 @@ class CalculatorViewController: UIViewController {
         // Main UI -> Result
         view.addSubview(resultScrollView)
         
+        // contentLayoutGuide
         resultTextView.leadingAnchor
-            .constraint(equalTo: resultScrollView.contentLayoutGuide.leadingAnchor, constant: scaled(16)).isActive = true
+            .constraint(equalTo: resultScrollView.leadingAnchor, constant: scaled(16)).isActive = true
         resultTextView.trailingAnchor
             .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: scaled(-16)).isActive = true
         
         resultScrollView.topAnchor
             .constraint(equalTo: view.topAnchor, constant: scaled(62)).isActive = true
         resultScrollView.leadingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            .constraint(equalTo: view.leadingAnchor).isActive = true
         resultScrollView.trailingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+            .constraint(equalTo: view.trailingAnchor).isActive = true
         resultScrollView.heightAnchor
             .constraint(greaterThanOrEqualToConstant: scaled(74)).isActive = true
         
@@ -114,13 +115,13 @@ class CalculatorViewController: UIViewController {
             .constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
         
         inputScrollView.bottomAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant:
+            .constraint(equalTo: view.bottomSAAnchor, constant:
                 -keyboard.bounds.height - unitSelector.bounds.height - 8
             ).isActive = true
         inputScrollView.leadingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            .constraint(equalTo: view.leadingAnchor).isActive = true
         inputScrollView.trailingAnchor
-            .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+            .constraint(equalTo: view.trailingAnchor).isActive = true
         inputScrollView.heightAnchor
             .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
     }
@@ -143,7 +144,10 @@ extension CalculatorViewController: AMKeyboardViewDelegate {
     }
     
     var bottomInset: CGFloat {
-        return view.safeAreaInsets.bottom
+        if #available(iOS 11, *) {
+            return view.safeAreaInsets.bottom
+        }
+        return 0
     }
     
     func didReceive(customKey symbol: String) {}
