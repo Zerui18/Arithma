@@ -61,6 +61,8 @@ class BaseViewController: UIViewController {
         containerScrollView.isPagingEnabled = true
         containerScrollView.bounces = false
         containerScrollView.delegate = self
+        containerScrollView.showsHorizontalScrollIndicator = false
+        containerScrollView.showsVerticalScrollIndicator = false
         containerScrollView.contentSize = CGSize(width: 2*containerScrollView.bounds.width, height: containerScrollView.bounds.height)
         containerScrollView.contentOffset = CGPoint(x: containerScrollView.bounds.width, y: 0)
         view.addSubview(containerScrollView)

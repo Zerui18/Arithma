@@ -14,15 +14,21 @@ class PolynomialResultCell: UITableViewCell {
     
     var result: HPAComplex! {
         didSet {
-            resultLabel.attributedText = result.formatted(customFontSize: scaled(34))
+            resultLabel.attributedText = result.formatted(sf: 9, customFontSize: scaled(34))
         }
     }
     let resultLabel = UITextView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+
         backgroundColor = nil
         contentView.backgroundColor = nil
+        
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
+        view.layer.cornerRadius = scaled(8)
+        selectedBackgroundView = view
         
         resultLabel.backgroundColor = nil
         resultLabel.isScrollEnabled = false
@@ -41,3 +47,4 @@ class PolynomialResultCell: UITableViewCell {
     }
     
 }
+

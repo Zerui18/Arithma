@@ -13,12 +13,12 @@
 		011D93D420DC93BA00C1A72A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
 		011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D520DC942F00C1A72A /* SafeArea.swift */; };
 		0128C77120BE9614005C5EF2 /* PolynomialInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */; };
+		0141EC9720DD41ED006AF365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46420B936A70022A871 /* AppDelegate.swift */; };
 		0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147A2A220DA722F0074B525 /* SeperatorCell.swift */; };
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B33D2720BD254B004E2310 /* UILabel+Extension.swift */; };
 		01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
 		01C34F7720D6286400A89BFF /* PolynomialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */; };
-		01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46420B936A70022A871 /* AppDelegate.swift */; };
 		01C5E46E20B936A80022A871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E46720B936A70022A871 /* Assets.xcassets */; };
 		01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46820B936A70022A871 /* CalculatorViewController.swift */; };
 		01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46920B936A70022A871 /* ToggleButton.swift */; };
@@ -978,10 +978,10 @@
 				01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */,
 				01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */,
 				011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */,
-				01C5E46B20B936A80022A871 /* AppDelegate.swift in Sources */,
 				01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */,
 				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
 				011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */,
+				0141EC9720DD41ED006AF365 /* AppDelegate.swift in Sources */,
 				01C34F7720D6286400A89BFF /* PolynomialResultCell.swift in Sources */,
 				011A623220DC9C520091C527 /* UITextView+Patch.swift in Sources */,
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,

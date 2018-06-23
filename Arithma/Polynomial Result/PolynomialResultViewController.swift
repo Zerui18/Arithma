@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Engine
 import HPAKit
 
 class PolynomialResultViewController: UIViewController {
@@ -39,9 +40,9 @@ class PolynomialResultViewController: UIViewController {
     }
     
     private func setupProperties() {
-        view.addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        )
+        let tapGetsure = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        tapGetsure.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGetsure)
         view.backgroundColor = nil
         
         equationContainerView.backgroundColor = .black
@@ -50,6 +51,7 @@ class PolynomialResultViewController: UIViewController {
         equationView.backgroundColor = .black
         equationView.layer.cornerRadius = scaled(24)
         equationView.attributedText = polynomial.formatted(fontSize: scaled(32))
+        equationView.isEditable = false
         
         rootsContainerView.backgroundColor = .black
         rootsContainerView.layer.cornerRadius = scaled(24)
@@ -135,7 +137,8 @@ extension PolynomialResultViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = (indexPath.row - 1) / 2
-        UIPasteboard.general.string = roots![index].description(sf: 7)
+        AMValue(value: roots![index]).copyAttributedDescription()
+        dismiss(animated: true)
     }
     
 }

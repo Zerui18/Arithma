@@ -1,6 +1,5 @@
 //
-//  ViewController.swift
-//  Numi
+//  CalculatorViewController.swift
 //
 //  Created by Chen Zerui on 27/1/18.
 //  Copyright © 2018 Chen Zerui. All rights reserved.
@@ -90,9 +89,11 @@ class CalculatorViewController: UIViewController {
         
         // contentLayoutGuide
         resultTextView.leadingAnchor
-            .constraint(equalTo: resultScrollView.leadingAnchor, constant: scaled(16)).isActive = true
+            .constraint(equalTo: resultScrollView.leadingAnchor,
+                        constant: scaled(16)).isActive = true
         resultTextView.trailingAnchor
-            .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor, constant: scaled(-16)).isActive = true
+            .constraint(lessThanOrEqualTo: resultScrollView.trailingAnchor,
+                        constant: scaled(-16)).isActive = true
         
         resultScrollView.topAnchor
             .constraint(equalTo: view.topAnchor, constant: scaled(62)).isActive = true
@@ -108,11 +109,15 @@ class CalculatorViewController: UIViewController {
         view.addSubview(inputScrollView)
         
         inputTextView.leadingAnchor
-            .constraint(greaterThanOrEqualTo: inputScrollView.leadingAnchor, constant: scaled(16)).isActive = true
+            .constraint(greaterThanOrEqualTo: inputScrollView.leadingAnchor,
+                        constant: scaled(16)).isActive = true
         inputTextView.trailingAnchor
-            .constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: scaled(-16)).isActive = true
+            .constraint(greaterThanOrEqualTo: view.trailingAnchor,
+                        constant: scaled(-16)).isActive = true
         inputTextView.trailingAnchor
             .constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
+        inputTextView.widthAnchor
+            .constraint(greaterThanOrEqualToConstant: scaled(100)).isActive = true
         
         inputScrollView.bottomAnchor
             .constraint(equalTo: view.bottomSAAnchor, constant:
@@ -128,8 +133,8 @@ class CalculatorViewController: UIViewController {
     
     // MARK: Selector Function
     @objc private func resultLongPressed(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
-            UIPasteboard.general.string = resultTextView.textStorage.string
+        if sender.state == .began, let result = inputTextView.currentResult {
+            result.copyAttributedDescription()
             BaseViewController.shared.displayMessage("Copied")
         }
     }

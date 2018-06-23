@@ -38,8 +38,11 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
 
     // MARK: Public Function
     public override func becomeFirstResponder() -> Bool {
-        if let cell = cells.first {
+        if let cell = PolynomialInputCell.currentActive {
             cell.beginEditing(nil)
+        }
+        else {
+            cells[0].beginEditing(nil)
         }
         return true
     }
@@ -62,6 +65,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
         
         pgScrollView.translatesAutoresizingMaskIntoConstraints = false
         pgScrollView.showsHorizontalScrollIndicator = false
+        pgScrollView.bounces = false
     }
 
     private func setupLayout() {

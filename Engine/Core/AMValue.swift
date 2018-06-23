@@ -9,6 +9,7 @@
 import UIKit
 import HPAKit
 import Settings
+import MobileCoreServices
 
 public class AMValue: Equatable, CustomStringConvertible {
     
@@ -79,6 +80,19 @@ public class AMValue: Equatable, CustomStringConvertible {
         let str = value.formatted(customFontSize: fontSize)
         unit.addUnitDescription(to: str)
         return str
+    }
+    
+    /**
+     Copies the attributed description (not the same as the property with the same name) into the app's clipboard. The font size is adjusted to match that of the AMInputTextView.
+     */
+    public func copyAttributedDescription() {
+        var value = valueInBaseUnit()
+        let str = value.formatted(customFontSize: scaled(52))
+        unit.addUnitDescription(to: str)
+        
+        let rtfData = try! str.data(from: NSRange(location: 0, length: str.length), documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf])
+        let item = [kUTTypeRTF as String: rtfData, kUTTypeUTF8PlainText as String: str.string] as [String: Any]
+        UIPasteboard.general.setItems([item])
     }
 
 }

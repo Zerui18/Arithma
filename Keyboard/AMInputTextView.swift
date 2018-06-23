@@ -19,6 +19,8 @@ public typealias AMEmptyBackspaceHandler = ()-> Void
 open class AMInputTextView: UITextView, UITextViewDelegate {
     
     // MARK: Public Properties
+    /// Whether the Lexers used by this textView will parse unit symbols.
+    public var allowUnits = true
     /// The name of the variable that the text view assignes its results to. Currently variable evaluation is unsuable.
     public var variableName: String?
     
@@ -82,6 +84,7 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         interpreter = AMInterpreter()
         interpreter.delegate = self
         typingAttributes = [NSAttributedStringKey.font.rawValue: normalFont]
+        allowsEditingTextAttributes = true
         addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinched(_:))))
     }
     
@@ -109,8 +112,17 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
     /// Performs the necessary updates & evaluations when text changes.
     func textDidChange() {
         
-        let lexer = AMLexer(textStorage: textStorage, variableName: variableName)
+        let lexer = AMLexer(textStorage: textStorage,
+                            allowUnits: allowUnits,
+                            variableName: variableName)
         let expression = lexer.lex()
+        
+        if let scrollView = superview as? UIScrollView {
+            scrollView.layoutIfNeeded()
+            scrollView.scrollRectToVisible(
+                caretRect(for: selectedTextRange!.start),
+                animated: false)
+        }
         
         do {
             let result = try interpreter.evaluate(expression)

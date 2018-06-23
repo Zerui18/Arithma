@@ -20,6 +20,7 @@ public class AMLexer {
     private let textStorage: NSTextStorage
     private var index: String.Index
     private let endIndex: String.Index
+    private let allowUnits: Bool
     
     private var newVariableName: String?
     
@@ -47,10 +48,11 @@ public class AMLexer {
     }
     
     // MARK: Init
-    public init(textStorage: NSTextStorage, variableName: String?) {
+    public init(textStorage: NSTextStorage, allowUnits: Bool = true, variableName: String?) {
         self.textStorage = textStorage
         self.index = textStorage.string.startIndex
         self.endIndex = textStorage.string.endIndex
+        self.allowUnits = allowUnits
         self.newVariableName = variableName
     }
     
@@ -152,7 +154,7 @@ public class AMLexer {
                 token = .function(function)
             }
                 
-            else if let unit = AMBasicUnit.getUnit(for: str) {
+            else if allowUnits, let unit = AMBasicUnit.getUnit(for: str) {
                 token = .unit(unit)
             }
             

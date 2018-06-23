@@ -94,6 +94,7 @@ class PolynomialInputCell: UIView {
 
     private func setupProperties() {
         
+        linkedInputView.allowUnits = false
         linkedInputView.translatesAutoresizingMaskIntoConstraints = false
         linkedInputView.backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
         linkedInputView.inputView = PolynomialInputCell.keyboardView
@@ -102,6 +103,7 @@ class PolynomialInputCell: UIView {
         linkedInputView.layer.borderWidth = 3
         linkedInputView.layer.cornerRadius = scaled(14)
         linkedInputView.tintColor = .lightGray
+        linkedInputView.textAlignment = .right
         linkedInputView.writeResult(to: coefficientLabel, fontSize: scaled(34))
         
         coefficientLabel.textContainer.lineFragmentPadding = 0

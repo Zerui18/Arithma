@@ -15,6 +15,8 @@ class ContainerScrollView: UIScrollView {
     // MARK: Init
     convenience init(wrapping childView: UIView) {
         self.init(frame: .zero)
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
         
         childView.translatesAutoresizingMaskIntoConstraints = false
         

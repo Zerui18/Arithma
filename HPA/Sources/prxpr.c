@@ -292,16 +292,13 @@ xpr_asprint (struct xpr u, int sc_not, int sign, int lim)
             /* Now has come the moment to print */
             if (m > XMAX_10EX)
                 xsprintfmt (buffer, "Inf");
-            else if ((sc_not) || m>4)
+            else if ((sc_not) || m>6 || m<-6)
             {
                 xsprintfmt (buffer, "%c.", '0' + *p++);
                 for (k = 1; k < lim-1; ++k)
                     xstrputc ('0' + *p++, buffer);
                 if(m != 0) {
-                    if (m > 0)
-                        xsprintfmt (buffer, "e%d", m);
-                    else
-                        xsprintfmt (buffer, "e%d", m);
+                    xsprintfmt (buffer, "e%d", m);
                 }
             }
             else

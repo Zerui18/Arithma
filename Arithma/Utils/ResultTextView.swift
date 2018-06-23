@@ -24,7 +24,7 @@ class ResultTextView: UITextView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        layer.backgroundColor = #colorLiteral(red: 0.2071908116, green: 0.2071908116, blue: 0.2071908116, alpha: 1)
+        layer.backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
