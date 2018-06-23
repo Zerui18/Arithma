@@ -20,6 +20,14 @@ public protocol HPANumeric: Equatable, ExpressibleByFloatLiteral, ExpressibleByI
     var acos: Self {get}
     var atan: Self {get}
     
+    var sinh: Self {get}
+    var cosh: Self {get}
+    var tanh: Self {get}
+    
+    var asinh: Self {get}
+    var acosh: Self {get}
+    var atanh: Self {get}
+    
     var lg: Self {get}
     var ln: Self {get}
     var exp: Self {get}

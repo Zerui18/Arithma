@@ -1,5 +1,5 @@
 //
-//  AMDeleteKeyView.swift
+//  AMKeyViewDelete.swift
 //  ArithmaKeyboard
 //
 //  Created by Chen Zerui on 20/5/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AMKeyViewImage: UICollectionViewCell, AMKeyboardKey{
+class AMKeyViewDelete: UICollectionViewCell, AMKeyboardKey{
     
     var keyDescription: AMKeyDescription! {
         didSet {
@@ -18,11 +18,12 @@ class AMKeyViewImage: UICollectionViewCell, AMKeyboardKey{
             
             let imageName: String = "ic_key_delete"
             
-            imageView.image = UIImage(named: imageName,
-                                      in: Bundle(for: AMKeyViewImage.self),
-                                      compatibleWith: nil)!
-            
             backgroundColor = nil
+            
+            // setup imageView
+            imageView.image = UIImage(named: imageName,
+                                      in: Bundle(for: AMKeyViewDelete.self),
+                                      compatibleWith: nil)!
             imageView.tintColor = .white
             imageView.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(imageView)
@@ -31,16 +32,31 @@ class AMKeyViewImage: UICollectionViewCell, AMKeyboardKey{
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
             imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
             
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(_:)))
+            longPress.minimumPressDuration = 1
+            longPress.cancelsTouchesInView = false
+            addGestureRecognizer(longPress)
+            
             setupRings()
         }
     }
     
     lazy private var imageView = UIImageView(frame: bounds)
-    let innerRingLayer = CAShapeLayer()
-    let outerRingLayer = CAShapeLayer()
+    private let innerRingLayer = CAShapeLayer()
+    private let outerRingLayer = CAShapeLayer()
     
-    private var isBeingTouched = false
+    private var isBeingTouched = false {
+        didSet {
+            if !isBeingTouched {
+                repeatTimer.pause()
+            }
+        }
+    }
+    
     private var isAnimating = false
+    private lazy var repeatTimer = Repeater.every(.seconds(0.12), queue: .main) { _ in
+        (self.superview as! AMKeyboardGridView).keyboard?.didPress(self.keyDescription)
+    }
     
     private func setupRings() {
         let factor: CGFloat = 2
@@ -56,7 +72,6 @@ class AMKeyViewImage: UICollectionViewCell, AMKeyboardKey{
         outerRingLayer.frame = CGRect(x: origin2, y: origin2, width: outerDiameter, height: outerDiameter)
         outerRingLayer.cornerRadius = outerDiameter / factor
         outerRingLayer.borderColor = keyDescription.style.highlightedCircleColor.cgColor
-        
         
         layer.addSublayer(innerRingLayer)
         layer.addSublayer(outerRingLayer)
@@ -122,5 +137,11 @@ class AMKeyViewImage: UICollectionViewCell, AMKeyboardKey{
         outerRingLayer.borderWidth = 0
         
         CATransaction.commit()
+    }
+    
+    @objc private func longPressed(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            repeatTimer.start()
+        }
     }
 }

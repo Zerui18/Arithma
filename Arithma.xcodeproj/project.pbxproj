@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0101054220DE86B300C5F8F1 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0101054120DE86B300C5F8F1 /* Debouncer.swift */; };
+		0101054420DE86CB00C5F8F1 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0101054320DE86CB00C5F8F1 /* Repeat.swift */; };
+		0101054520DE883100C5F8F1 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0101054320DE86CB00C5F8F1 /* Repeat.swift */; };
 		011A622F20DC98B50091C527 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
 		011A623220DC9C520091C527 /* UITextView+Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A623120DC9C520091C527 /* UITextView+Patch.swift */; };
 		011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */; };
@@ -97,7 +100,7 @@
 		01C5E58620B947620022A871 /* AMUnitSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58420B947620022A871 /* AMUnitSelectorView.swift */; };
 		01C5E58720B947620022A871 /* AMUnitSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58520B947620022A871 /* AMUnitSelectorCell.swift */; };
 		01C5E58F20B947A20022A871 /* AMKeyDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58920B947A20022A871 /* AMKeyDescription.swift */; };
-		01C5E59020B947A20022A871 /* AMKeyViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58A20B947A20022A871 /* AMKeyViewImage.swift */; };
+		01C5E59020B947A20022A871 /* AMKeyViewDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58A20B947A20022A871 /* AMKeyViewDelete.swift */; };
 		01C5E59120B947A20022A871 /* AMKeyboardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58B20B947A20022A871 /* AMKeyboardGridView.swift */; };
 		01C5E59220B947A20022A871 /* AMKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58C20B947A20022A871 /* AMKeyboardView.swift */; };
 		01C5E59320B947A20022A871 /* AMKeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E58D20B947A20022A871 /* AMKeyboardKey.swift */; };
@@ -186,6 +189,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0101054120DE86B300C5F8F1 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		0101054320DE86CB00C5F8F1 /* Repeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repeat.swift; sourceTree = "<group>"; };
 		011A623120DC9C520091C527 /* UITextView+Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Patch.swift"; sourceTree = "<group>"; };
 		011D93D320DC93BA00C1A72A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		011D93D520DC942F00C1A72A /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
@@ -277,7 +282,7 @@
 		01C5E58420B947620022A871 /* AMUnitSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMUnitSelectorView.swift; sourceTree = "<group>"; };
 		01C5E58520B947620022A871 /* AMUnitSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMUnitSelectorCell.swift; sourceTree = "<group>"; };
 		01C5E58920B947A20022A871 /* AMKeyDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMKeyDescription.swift; sourceTree = "<group>"; };
-		01C5E58A20B947A20022A871 /* AMKeyViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMKeyViewImage.swift; sourceTree = "<group>"; };
+		01C5E58A20B947A20022A871 /* AMKeyViewDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMKeyViewDelete.swift; sourceTree = "<group>"; };
 		01C5E58B20B947A20022A871 /* AMKeyboardGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMKeyboardGridView.swift; sourceTree = "<group>"; };
 		01C5E58C20B947A20022A871 /* AMKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMKeyboardView.swift; sourceTree = "<group>"; };
 		01C5E58D20B947A20022A871 /* AMKeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMKeyboardKey.swift; sourceTree = "<group>"; };
@@ -385,6 +390,8 @@
 			isa = PBXGroup;
 			children = (
 				01C5E53520B939F70022A871 /* Scaled.swift */,
+				0101054320DE86CB00C5F8F1 /* Repeat.swift */,
+				0101054120DE86B300C5F8F1 /* Debouncer.swift */,
 				011D93D320DC93BA00C1A72A /* Haptics.swift */,
 				011D93D520DC942F00C1A72A /* SafeArea.swift */,
 				01C5E45120B936550022A871 /* Arithma */,
@@ -526,7 +533,7 @@
 				01C5E58920B947A20022A871 /* AMKeyDescription.swift */,
 				01C5E58D20B947A20022A871 /* AMKeyboardKey.swift */,
 				01C5E58E20B947A20022A871 /* AMKeyViewNormal.swift */,
-				01C5E58A20B947A20022A871 /* AMKeyViewImage.swift */,
+				01C5E58A20B947A20022A871 /* AMKeyViewDelete.swift */,
 				01C5E58B20B947A20022A871 /* AMKeyboardGridView.swift */,
 				01C5E58C20B947A20022A871 /* AMKeyboardView.swift */,
 			);
@@ -977,6 +984,7 @@
 				01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */,
 				01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */,
 				01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */,
+				0101054420DE86CB00C5F8F1 /* Repeat.swift in Sources */,
 				011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */,
 				01E118D320BD5AC9005B1BE9 /* BaseViewController.swift in Sources */,
 				01E118D520BD5AF7005B1BE9 /* PolynomialViewController.swift in Sources */,
@@ -987,6 +995,7 @@
 				01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */,
 				01C5E59E20B9555B0022A871 /* Scaled.swift in Sources */,
 				0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */,
+				0101054220DE86B300C5F8F1 /* Debouncer.swift in Sources */,
 				0128C77120BE9614005C5EF2 /* PolynomialInputCell.swift in Sources */,
 				01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */,
 			);
@@ -1064,12 +1073,13 @@
 				01C5E53720B939F70022A871 /* AMInputTextView.swift in Sources */,
 				011A622F20DC98B50091C527 /* Haptics.swift in Sources */,
 				01C5E58720B947620022A871 /* AMUnitSelectorCell.swift in Sources */,
+				0101054520DE883100C5F8F1 /* Repeat.swift in Sources */,
 				01C5E59120B947A20022A871 /* AMKeyboardGridView.swift in Sources */,
 				01C5E58F20B947A20022A871 /* AMKeyDescription.swift in Sources */,
 				01C5E59320B947A20022A871 /* AMKeyboardKey.swift in Sources */,
 				01C5E59220B947A20022A871 /* AMKeyboardView.swift in Sources */,
 				01C5E58620B947620022A871 /* AMUnitSelectorView.swift in Sources */,
-				01C5E59020B947A20022A871 /* AMKeyViewImage.swift in Sources */,
+				01C5E59020B947A20022A871 /* AMKeyViewDelete.swift in Sources */,
 				01C5E59420B947A20022A871 /* AMKeyViewNormal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

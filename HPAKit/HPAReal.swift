@@ -115,6 +115,30 @@ extension HPAReal: HPANumeric, Comparable{
         return xatan(self)
     }
     
+    public var sinh: HPAReal {
+        return xsinh(self)
+    }
+    
+    public var cosh: HPAReal {
+        return xcosh(self)
+    }
+    
+    public var tanh: HPAReal {
+        return xtanh(self)
+    }
+    
+    public var asinh: HPAReal {
+        return xasinh(self)
+    }
+    
+    public var acosh: HPAReal {
+        return xacosh(self)
+    }
+    
+    public var atanh: HPAReal {
+        return xatanh(self)
+    }
+    
     public var lg: HPAReal {
         return xlog10(self)
     }
@@ -147,6 +171,9 @@ extension HPAReal: HPANumeric, Comparable{
         }
         return xpow(self, e)
     }
+    
+    public static let e = xEe
+    public static let pi = xPi
 }
 
 // MARK: Operator Overloads

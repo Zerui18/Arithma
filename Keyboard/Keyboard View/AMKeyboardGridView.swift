@@ -53,7 +53,7 @@ class AMKeyboardGridView: UICollectionView, UICollectionViewDataSource, UICollec
         backgroundColor = nil
         
         register(AMKeyViewNormal.self, forCellWithReuseIdentifier: "normalKey")
-        register(AMKeyViewImage.self, forCellWithReuseIdentifier: "imageKey")
+        register(AMKeyViewDelete.self, forCellWithReuseIdentifier: "imageKey")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,7 +67,7 @@ class AMKeyboardGridView: UICollectionView, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let description = keys[indexPath.item]
         if description.style == .delete {
-            let cell = dequeueReusableCell(withReuseIdentifier: "imageKey", for: indexPath) as! AMKeyViewImage
+            let cell = dequeueReusableCell(withReuseIdentifier: "imageKey", for: indexPath) as! AMKeyViewDelete
             cell.keyDescription = description
             return cell
         }

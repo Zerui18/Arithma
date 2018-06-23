@@ -77,6 +77,30 @@ extension HPAComplex: HPANumeric {
         return cxatan(self)
     }
     
+    public var sinh: HPAComplex {
+        return cxsinh(self)
+    }
+    
+    public var cosh: HPAComplex {
+        return cxcosh(self)
+    }
+    
+    public var tanh: HPAComplex {
+        return cxtanh(self)
+    }
+    
+    public var asinh: HPAComplex {
+        return cxasinh(self)
+    }
+    
+    public var acosh: HPAComplex {
+        return cxacosh(self)
+    }
+    
+    public var atanh: HPAComplex {
+        return cxatanh(self)
+    }
+    
     public var lg: HPAComplex {
         return cxlog10(self)
     }
@@ -99,6 +123,10 @@ extension HPAComplex: HPANumeric {
     
     public var floor: HPAComplex {
         return cxfloor(self)
+    }
+    
+    public var ceil: HPAComplex {
+        return cxceil(self)
     }
     
     public func pow(e: HPAComplex)-> HPAComplex {

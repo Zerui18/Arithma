@@ -33,7 +33,8 @@ public class AMLexer {
         "(": .parensOpen, ")": .parensClose,
         "+": .operator(.add), "-": .operator(.subtract),
         "×": .operator(.multiply), "÷": .operator(.divide),
-        "^": .operator(.exponentiate), "i": .imaginaryUnit
+        "^": .operator(.exponentiate), "i": .imaginaryUnit,
+        "℮": .value(.e), "π": .value(.pi)
     ]
     
     // MARK: Private Computed-properties

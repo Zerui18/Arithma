@@ -1,5 +1,5 @@
 //
-//  AMNormalKeyView.swift
+//  AMKeyViewNormal.swift
 //  ArithmaKeyboard
 //
 //  Created by Chen Zerui on 10/3/18.

@@ -37,7 +37,7 @@ extension AMValue {
     }
     
     enum Function: String, OperationRepresentable {
-        case sin, cos, tan, asin, acos, atan, ln, lg, sqrt, exp, abs
+        case sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh, ln, lg, sqrt, exp, abs, floor, ceil
         
         func run(on values: [HPAComplex])-> HPAComplex {
             let value = values[0]
@@ -55,6 +55,18 @@ extension AMValue {
                 return value.acos
             case .atan:
                 return value.atan
+            case .sinh:
+                return value.sinh
+            case .cosh:
+                return value.cosh
+            case .tanh:
+                return value.tanh
+            case .asinh:
+                return value.asinh
+            case .acosh:
+                return value.acosh
+            case .atanh:
+                return value.atanh
             case .ln:
                 return value.ln
             case .lg:
@@ -64,7 +76,11 @@ extension AMValue {
             case .exp:
                 return value.exp
             case .abs:
-                return HPAComplex(re: value.abs, im: 0)
+                return value.abs.toComplex
+            case .floor:
+                return value.floor
+            case .ceil:
+                return value.ceil
             }
         }
     }
@@ -139,10 +155,10 @@ extension AMValue {
             let value: HPAComplex
             
             switch function {
-            case .sin, .cos, .tan:
+            case .sin, .cos, .tan, .sinh, .cosh, .tanh:
                 let input = AMSettings.shared.isDegreeMode ? operand1Value.value.toRadian:operand1Value.value
                 value = function.run(on: [input])
-            case .asin, .acos, .atan:
+            case .asin, .acos, .atan, .asinh, .acosh, .atanh:
                 let output = function.run(on: [operand1Value.value])
                 value = AMSettings.shared.isDegreeMode ? output.toDegree:output
             default:

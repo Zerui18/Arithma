@@ -13,7 +13,11 @@ import Settings
 class ToggleButton: UIButton {
     
     // MARK: Private Properties
-    private var darkenTimer: Timer?
+    private lazy var darkenTimer = Debouncer(.seconds(2)) {
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 0.65
+        }
+    }
     private let borderLayer = CALayer()
     private let colors: (UIColor, UIColor)
     private let labels: (String, String)
@@ -51,9 +55,7 @@ class ToggleButton: UIButton {
         borderLayer.frame = layer.bounds
     }
     
-    @objc private func buttonToggled() {
-        darkenTimer?.invalidate()
-    
+    @objc private func buttonToggled() {    
         AMSettings.shared[keyPath: propertyPath] = !AMSettings.shared[keyPath: propertyPath]
         
         CATransaction.flush()
@@ -76,11 +78,7 @@ class ToggleButton: UIButton {
             }
         }
         
-        darkenTimer = Timer.scheduledTimer(withTimeInterval: 0.3+2, repeats: false) {_ in
-            UIView.animate(withDuration: 0.3) {
-                self.alpha = 0.65
-            }
-        }
+        darkenTimer.call()
     }
     
     // Private functions

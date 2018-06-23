@@ -32,6 +32,7 @@ public class AMKeyboardView: UIView {
         
         let main: AMKeyboardGridView
         let functions = AMKeyboardGridView(keys: functionKeys, columns: 3, size: size)
+        let extras = AMKeyboardGridView(keys: extraKeys, columns: 3, size: size)
         
         if useImaginary {
             main = AMKeyboardGridView(keys: mainKeys, columns: 4, size: size)
@@ -42,7 +43,7 @@ public class AMKeyboardView: UIView {
             main = AMKeyboardGridView(keys: newGrid, columns: 4, size: size)
         }
         
-        self.pages = [main, functions]
+        self.pages = [extras, main, functions]
         
         super.init(frame: CGRect(origin: .zero, size: size))
         
@@ -50,7 +51,7 @@ public class AMKeyboardView: UIView {
         
         scrollView.backgroundColor = nil
         scrollView.frame = main.bounds
-        scrollView.contentSize = CGSize(width: size.width*2, height: size.height)
+        scrollView.contentSize = CGSize(width: size.width*3, height: size.height)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(scrollView)
@@ -72,7 +73,9 @@ public class AMKeyboardView: UIView {
             $1.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             self.scrollView.addSubview($1)
         }
-    
+        
+        // scroll to main keys
+        scrollView.contentOffset = CGPoint(x: size.width, y: 0)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -125,6 +128,15 @@ extension AMKeyboardView: UIInputViewAudioFeedback {
 }
 
 // MARK: Key Arrangements
+fileprivate let extraKeys = zip(["Dl", "℮", "π",
+                                 "abs", "floor", "ceil",
+                                 "sinh", "cosh", "tanh",
+                                 "asinh", "acosh", "atanh"],
+                                [.delete, .constant, .constant,
+                                 .function, .function, .function,
+                                 .function, .function, .function,
+                                 .function, .function, .function])
+                                .map(AMKeyDescription.init)
 fileprivate let mainKeys = zip(["Dl", "(", ")", "+",
                                 "7", "8", "9", "-",
                                 "4", "5", "6", "×",
@@ -136,8 +148,8 @@ fileprivate let mainKeys = zip(["Dl", "(", ")", "+",
                     .number, .number, .number, .operator,
                     .number, .number, .operator, .operator])
                     .map(AMKeyDescription.init)
-fileprivate let functionKeys = zip(["Dl", "ln", "lg",
-                                    "abs", "exp", "sqrt",
+fileprivate let functionKeys = zip(["Dl", "sqrt", "cbrt",
+                                    "exp", "ln", "lg",
                                     "sin", "cos", "tan",
                                     "asin", "acos", "atan"],
                        [.delete, .function, .function,
