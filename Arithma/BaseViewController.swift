@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
     private let trigoModeButton = ToggleButton(colors: (#colorLiteral(red: 0.7163728282, green: 0.9372549057, blue: 0.8692806858, alpha: 1), #colorLiteral(red: 0.4371609821, green: 0.5123683887, blue: 0.9686274529, alpha: 1)), labels: ("D", "R"), propertyPath: \AMSettings.isDegreeMode)
     private let scientificModeButton = ToggleButton(colors: (#colorLiteral(red: 0.5568627715, green: 0.4501634074, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), labels: ("S", "N"), propertyPath: \AMSettings.isScientificMode)
     private let messageLabel = UILabel(frame: .zero)
-    private lazy var hideTimer = Debouncer(.seconds(2)) {
+    private lazy var hideTimer = Debouncer(.seconds(2), queue: .main) {
         UIView.animate(withDuration: 0.2) {
             self.messageLabel.alpha = 0
         }
@@ -46,10 +46,8 @@ class BaseViewController: UIViewController {
     }
     
     func displayMessage(_ text: String) {
-        if messageLabel.text != nil {
-            messageLabel.animateText(to: text)
-            hideTimer.call()
-        }
+        messageLabel.animateText(to: text)
+        hideTimer.call()
     }
     
     // MARK: Private Setups

@@ -13,15 +13,12 @@ import Settings
 extension HPAReal {
     public func formatted(sf: Int32 = 7, customFontSize: CGFloat? = nil)-> NSAttributedString {
         let normalFont: UIFont
-        let smallerFont: UIFont
         
         if let size = customFontSize {
             normalFont = resultFont.withSize(size)
-            smallerFont = smallerResultFont.withSize(size * 0.75)
         }
         else {
             normalFont = resultFont
-            smallerFont = smallerResultFont
         }
         
         let base = description(sf: sf)
@@ -29,8 +26,6 @@ extension HPAReal {
         if let symbolIndex = base.index(of: "e") {
             // eleviate exponent
             annotated.addAttributes([.foregroundColor: UIColor.white], range: NSRange(location: symbolIndex.encodedOffset, length: 1))
-            let expStart = base.index(after: symbolIndex)
-            annotated.addAttributes([.font: smallerFont, .baselineOffset: normalFont.pointSize/2], range: NSRange(location: expStart.encodedOffset, length: base.count-expStart.encodedOffset))
         }
         return annotated
     }

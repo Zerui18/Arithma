@@ -13,7 +13,7 @@ import Settings
 class ToggleButton: UIButton {
     
     // MARK: Private Properties
-    private lazy var darkenTimer = Debouncer(.seconds(2)) {
+    private lazy var darkenTimer = Debouncer(.seconds(2), queue: .main) {
         UIView.animate(withDuration: 0.3) {
             self.alpha = 0.65
         }
@@ -55,7 +55,7 @@ class ToggleButton: UIButton {
         borderLayer.frame = layer.bounds
     }
     
-    @objc private func buttonToggled() {    
+    @objc private func buttonToggled() {
         AMSettings.shared[keyPath: propertyPath] = !AMSettings.shared[keyPath: propertyPath]
         
         CATransaction.flush()
