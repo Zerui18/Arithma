@@ -92,7 +92,7 @@ public class AMKeyboardView: UIView {
     
     /// Update the exponent key's appearance. Only call this on the "main" keyboard.
     func setIsIndenting(_ flag: Bool) {
-        guard let cell = pages[0].cellForItem(at: IndexPath(item: 18, section: 0)) as? AMKeyViewNormal
+        guard let cell = pages[1].cellForItem(at: IndexPath(item: 18, section: 0)) as? AMKeyViewNormal
             else {return}
         
         if flag {

@@ -53,7 +53,7 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         
     /// Helper function to update the state of the exponent key of the associated keyboard.
     public func updateIndentationKey() {
-        keyboard.setIsIndenting(typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
+        keyboard.setIsIndenting(typingAttributes[NSAttributedString.Key.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
     }
     
     /// Overrided to update exponent key of associated keyboard whenever selection changes.
@@ -169,7 +169,7 @@ extension AMInputTextView {
             
             guard selectedTextRange!.end != beginningOfDocument else {
                 warningFeedback()
-                let cell = keyboard!.pages[0].cellForItem(at: IndexPath(item: 18, section: 0)) as! AMKeyViewNormal
+                let cell = keyboard!.pages[1].cellForItem(at: IndexPath(item: 18, section: 0)) as! AMKeyViewNormal
                 cell.animateDeselection(force: true)
                 return
             }
