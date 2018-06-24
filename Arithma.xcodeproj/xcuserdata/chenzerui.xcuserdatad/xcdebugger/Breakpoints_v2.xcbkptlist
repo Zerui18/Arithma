@@ -22,49 +22,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Keyboard/AMInputTextView.swift"
-            timestampString = "551508217.1282949"
+            filePath = "Engine/AMLexer.swift"
+            timestampString = "551509887.715458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "updateIndentationKey()"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "lex()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Keyboard.AMInputTextView.updateIndentationKey() -&gt; ()"
-                  moduleName = "Keyboard"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chenzerui/Desktop/Arithma/Keyboard/AMInputTextView.swift"
-                  timestampString = "551508217.934616"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 : @autoclosure () -&gt; Any in Keyboard.AMInputTextView.updateIndentationKey() -&gt; ()"
-                  moduleName = "Keyboard"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chenzerui/Desktop/Arithma/Keyboard/AMInputTextView.swift"
-                  timestampString = "551508217.938875"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

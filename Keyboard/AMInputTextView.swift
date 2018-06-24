@@ -166,26 +166,25 @@ extension AMInputTextView {
         
         switch key.style {
         case .operator where key.symbol == "^":
-            
-            guard selectedTextRange!.end != beginningOfDocument else {
-                warningFeedback()
-                let cell = keyboard!.pages[1].cellForItem(at: IndexPath(item: 18, section: 0)) as! AMKeyViewNormal
-                cell.animateDeselection(force: true)
-                return
-            }
-
             selectionFeedback()
-            let attributesToSet: [NSAttributedStringKey: Any]
             
-            if typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double == 0.0 {
-                attributesToSet = [.font: smallFont, .baselineOffset: Double(scaled(26))]
+            let baselineKey = NSAttributedStringKey.baselineOffset.rawValue
+            
+            let newFont: UIFont
+            let newBaseline: Double
+            
+            if typingAttributes[baselineKey, default: 0.0] as! Double == 0.0 {
+                newFont = smallFont
+                newBaseline = Double(scaled(26))
             }
             else {
-                attributesToSet = [.font: normalFont, .baselineOffset: 0.0]
+                newFont = normalFont
+                newBaseline = 0.0
             }
             
-            textStorage.addAttributes(attributesToSet, range: selectedRange)
-            typingAttributes = Dictionary(uniqueKeysWithValues: attributesToSet.map{($0.rawValue, $1)})
+            textStorage.addAttributes([.font: newFont, .baselineOffset: newBaseline], range: selectedRange)
+            typingAttributes.updateValue(newBaseline, forKey: baselineKey)
+            typingAttributes.updateValue(newFont, forKey: NSAttributedString.Key.font.rawValue)
         case .delete:
             guard selectedTextRange!.end != beginningOfDocument else {
                 return
@@ -219,6 +218,7 @@ extension AMInputTextView {
 extension AMInputTextView: AMInterpreterDelegate {
     
     public func interpreterDidReEvaluate(value: AMValue?, error: Error?) {
+        currentResult = value
         value?.fontSize = resultFontSize
         value?.boundLabel = resultTextView
     }

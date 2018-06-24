@@ -183,6 +183,10 @@ public class AMLexer {
     
     // MARK: Public Methods
     public func lex() -> AMInterpreter.Expression {
+        if currentChar != nil && isIndented {
+            tokens.append(.operator(.exponentiate))
+            tokens.append(.parensOpen)
+        }
         while let token = advanceToNextToken() {
             tokens.append(token)
             
