@@ -118,6 +118,11 @@ extension HPAComplex: HPANumeric {
     }
     
     public var sqrt: HPAComplex {
+        // fix to get accurate sqrt of real
+        if isReal {
+            let val = re.abs.sqrt
+            return re.sign() == .minus ? HPAComplex(re: .zero, im: val):val.toComplex
+        }
         return cxsqrt(self)
     }
     
