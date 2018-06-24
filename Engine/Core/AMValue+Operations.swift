@@ -37,7 +37,7 @@ extension AMValue {
     }
     
     enum Function: String, OperationRepresentable {
-        case sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh, ln, lg, sqrt, exp, abs, floor, ceil
+        case sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh, ln, lg, sqrt, exp, abs, floor, ceil, cbrt
         
         func run(on values: [HPAComplex])-> HPAComplex {
             let value = values[0]
@@ -73,6 +73,8 @@ extension AMValue {
                 return value.lg
             case .sqrt:
                 return value.sqrt
+            case .cbrt:
+                return value.cbrt
             case .exp:
                 return value.exp
             case .abs:
@@ -164,6 +166,7 @@ extension AMValue {
             default:
                 value = function.run(on: [operand1Value.value])
             }
+            
             return AMValue(value: value, unit: operand1Value.unit)
         }
         

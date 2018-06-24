@@ -128,11 +128,11 @@ extension AMKeyboardView: UIInputViewAudioFeedback {
 }
 
 // MARK: Key Arrangements
-fileprivate let extraKeys = zip(["Dl", "℮", "π",
+fileprivate let extraKeys = zip(["Dl", "sqrt", "cbrt",
                                  "abs", "floor", "ceil",
                                  "sinh", "cosh", "tanh",
                                  "asinh", "acosh", "atanh"],
-                                [.delete, .constant, .constant,
+                                [.delete, .function, .function,
                                  .function, .function, .function,
                                  .function, .function, .function,
                                  .function, .function, .function])
@@ -148,11 +148,11 @@ fileprivate let mainKeys = zip(["Dl", "(", ")", "+",
                     .number, .number, .number, .operator,
                     .number, .number, .operator, .operator])
                     .map(AMKeyDescription.init)
-fileprivate let functionKeys = zip(["Dl", "sqrt", "cbrt",
+fileprivate let functionKeys = zip(["Dl", "℮", "π",
                                     "exp", "ln", "lg",
                                     "sin", "cos", "tan",
                                     "asin", "acos", "atan"],
-                       [.delete, .function, .function,
+                       [.delete, .constant, .constant,
                         .function, .function, .function,
                         .function, .function, .function,
                         .function, .function, .function])

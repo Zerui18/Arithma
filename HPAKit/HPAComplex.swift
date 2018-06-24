@@ -37,7 +37,7 @@ extension HPAComplex: HPANumeric {
     }
     
     public var description: String {
-        return description(sf: 100000)
+        return description(sf: 9)
     }
     
     public var debugDescription: String {
@@ -127,6 +127,16 @@ extension HPAComplex: HPANumeric {
     
     public var ceil: HPAComplex {
         return cxceil(self)
+    }
+    
+    // https://socratic.org/precalculus/complex-numbers-in-trigonometric-form/roots-of-complex-numbers
+    public var cbrt: HPAComplex {
+        let arg = cxarg(self)
+        let abs = cxabs(self)
+        let coeff = abs.pow(e: 1/3)
+        let real = coeff * (arg/3).cos
+        let imag = coeff * (arg/3).sin
+        return HPAComplex(re: real, im: imag)
     }
     
     public func pow(e: HPAComplex)-> HPAComplex {

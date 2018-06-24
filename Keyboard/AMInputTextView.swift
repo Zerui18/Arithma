@@ -218,7 +218,10 @@ extension AMInputTextView {
 // MARK: AMInterpreterDelegate Conformance
 extension AMInputTextView: AMInterpreterDelegate {
     
-    public func interpreterDidReEvaluate(value: AMValue?, error: Error?) {}
+    public func interpreterDidReEvaluate(value: AMValue?, error: Error?) {
+        value?.fontSize = resultFontSize
+        value?.boundLabel = resultTextView
+    }
     
 }
 
