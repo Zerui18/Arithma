@@ -16,17 +16,28 @@
 		011D93D420DC93BA00C1A72A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
 		011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D520DC942F00C1A72A /* SafeArea.swift */; };
 		0128C77120BE9614005C5EF2 /* PolynomialInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */; };
+		012A09D320E632C200A1D1A6 /* COSTouchVisualizerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 012A09D220E632C200A1D1A6 /* COSTouchVisualizerWindow.m */; };
+		012A09D620E6331200A1D1A6 /* COSOverlayVisualizerWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 012A09D420E6331200A1D1A6 /* COSOverlayVisualizerWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		012A09D720E6331200A1D1A6 /* COSOverlayVisualizerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 012A09D520E6331200A1D1A6 /* COSOverlayVisualizerWindow.m */; };
+		012A09D820E6333600A1D1A6 /* COSTouchConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 018D8E7420E632840056825D /* COSTouchConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		012A09D920E6333600A1D1A6 /* COSTouchConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D8E7520E632840056825D /* COSTouchConfig.m */; };
+		012A09DA20E6333600A1D1A6 /* COSTouchImageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 018D8E7620E632850056825D /* COSTouchImageFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		012A09DB20E6333600A1D1A6 /* COSTouchImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D8E7B20E632850056825D /* COSTouchImageFactory.m */; };
+		012A09DC20E6333600A1D1A6 /* COSTouchImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 018D8E7720E632850056825D /* COSTouchImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		012A09DD20E6333600A1D1A6 /* COSTouchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 018D8E7820E632850056825D /* COSTouchImageView.m */; };
+		012A09DF20E6333600A1D1A6 /* COSTouchVisualizerWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 018D8E7A20E632850056825D /* COSTouchVisualizerWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0141EC9720DD41ED006AF365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46420B936A70022A871 /* AppDelegate.swift */; };
 		0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147A2A220DA722F0074B525 /* SeperatorCell.swift */; };
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
+		018D8E6C20E6325B0056825D /* Touch.h in Headers */ = {isa = PBXBuildFile; fileRef = 018D8E6A20E6325B0056825D /* Touch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B33D2720BD254B004E2310 /* UILabel+Extension.swift */; };
+		01B7D17220E7B08100CC9652 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
 		01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
 		01C34F7720D6286400A89BFF /* PolynomialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */; };
 		01C5E46E20B936A80022A871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01C5E46720B936A70022A871 /* Assets.xcassets */; };
 		01C5E46F20B936A80022A871 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46820B936A70022A871 /* CalculatorViewController.swift */; };
 		01C5E47020B936A80022A871 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46920B936A70022A871 /* ToggleButton.swift */; };
 		01C5E47B20B9373B0022A871 /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C5E47920B9373B0022A871 /* Engine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		01C5E47E20B9373B0022A871 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
 		01C5E47F20B9373B0022A871 /* Engine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01C5E48820B937610022A871 /* AMLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E48420B937610022A871 /* AMLexer.swift */; };
 		01C5E48920B937610022A871 /* AMInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E48520B937610022A871 /* AMInterpreter.swift */; };
@@ -195,8 +206,21 @@
 		011D93D320DC93BA00C1A72A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		011D93D520DC942F00C1A72A /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
 		0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialInputCell.swift; sourceTree = "<group>"; };
+		012A09D220E632C200A1D1A6 /* COSTouchVisualizerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSTouchVisualizerWindow.m; path = "../../../Downloads/COSTouchVisualizer-master/Classes/COSTouchVisualizerWindow.m"; sourceTree = "<group>"; };
+		012A09D420E6331200A1D1A6 /* COSOverlayVisualizerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSOverlayVisualizerWindow.h; sourceTree = "<group>"; };
+		012A09D520E6331200A1D1A6 /* COSOverlayVisualizerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSOverlayVisualizerWindow.m; sourceTree = "<group>"; };
 		0147A2A220DA722F0074B525 /* SeperatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperatorCell.swift; sourceTree = "<group>"; };
 		01601BB620DD21C700065401 /* Arithma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Arithma.entitlements; sourceTree = "<group>"; };
+		018D8E6820E6325B0056825D /* Touch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Touch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		018D8E6A20E6325B0056825D /* Touch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Touch.h; sourceTree = "<group>"; };
+		018D8E6B20E6325B0056825D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018D8E7420E632840056825D /* COSTouchConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COSTouchConfig.h; sourceTree = "<group>"; };
+		018D8E7520E632840056825D /* COSTouchConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = COSTouchConfig.m; sourceTree = "<group>"; };
+		018D8E7620E632850056825D /* COSTouchImageFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COSTouchImageFactory.h; sourceTree = "<group>"; };
+		018D8E7720E632850056825D /* COSTouchImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COSTouchImageView.h; sourceTree = "<group>"; };
+		018D8E7820E632850056825D /* COSTouchImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = COSTouchImageView.m; sourceTree = "<group>"; };
+		018D8E7A20E632850056825D /* COSTouchVisualizerWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COSTouchVisualizerWindow.h; sourceTree = "<group>"; };
+		018D8E7B20E632850056825D /* COSTouchImageFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = COSTouchImageFactory.m; sourceTree = "<group>"; };
 		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultCell.swift; sourceTree = "<group>"; };
 		01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultViewController.swift; sourceTree = "<group>"; };
@@ -304,14 +328,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		018D8E6520E6325B0056825D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01C5E44C20B936550022A871 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				01C5E55D20B93C320022A871 /* HPAKit.framework in Frameworks */,
 				01C5E49820B937BA0022A871 /* HPA.framework in Frameworks */,
-				01C5E47E20B9373B0022A871 /* Engine.framework in Frameworks */,
 				01C5E54820B93A0F0022A871 /* Settings.framework in Frameworks */,
+				01B7D17220E7B08100CC9652 /* Engine.framework in Frameworks */,
 				01C5E52D20B939E20022A871 /* Keyboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +417,25 @@
 			path = "Polynomial Input";
 			sourceTree = "<group>";
 		};
+		018D8E6920E6325B0056825D /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				018D8E6A20E6325B0056825D /* Touch.h */,
+				012A09D420E6331200A1D1A6 /* COSOverlayVisualizerWindow.h */,
+				012A09D520E6331200A1D1A6 /* COSOverlayVisualizerWindow.m */,
+				018D8E7420E632840056825D /* COSTouchConfig.h */,
+				018D8E7520E632840056825D /* COSTouchConfig.m */,
+				018D8E7620E632850056825D /* COSTouchImageFactory.h */,
+				018D8E7B20E632850056825D /* COSTouchImageFactory.m */,
+				018D8E7720E632850056825D /* COSTouchImageView.h */,
+				018D8E7820E632850056825D /* COSTouchImageView.m */,
+				018D8E7A20E632850056825D /* COSTouchVisualizerWindow.h */,
+				012A09D220E632C200A1D1A6 /* COSTouchVisualizerWindow.m */,
+				018D8E6B20E6325B0056825D /* Info.plist */,
+			);
+			path = Touch;
+			sourceTree = "<group>";
+		};
 		01C5E44620B936550022A871 = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +451,7 @@
 				01C5E49220B937BA0022A871 /* HPA */,
 				01C5E55720B93C320022A871 /* HPAKit */,
 				01E5BAFD20BACE7F00FEE362 /* HPAKitTests */,
+				018D8E6920E6325B0056825D /* Touch */,
 				01C5E45020B936550022A871 /* Products */,
 				01C5E59F20B955A30022A871 /* Frameworks */,
 			);
@@ -416,6 +467,7 @@
 				01C5E54120B93A0F0022A871 /* Settings.framework */,
 				01C5E55620B93C320022A871 /* HPAKit.framework */,
 				01E5BAFC20BACE7F00FEE362 /* HPAKitTests.xctest */,
+				018D8E6820E6325B0056825D /* Touch.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -673,6 +725,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		018D8E6320E6325B0056825D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018D8E6C20E6325B0056825D /* Touch.h in Headers */,
+				012A09DC20E6333600A1D1A6 /* COSTouchImageView.h in Headers */,
+				012A09D620E6331200A1D1A6 /* COSOverlayVisualizerWindow.h in Headers */,
+				012A09D820E6333600A1D1A6 /* COSTouchConfig.h in Headers */,
+				012A09DA20E6333600A1D1A6 /* COSTouchImageFactory.h in Headers */,
+				012A09DF20E6333600A1D1A6 /* COSTouchVisualizerWindow.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01C5E47420B9373B0022A871 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -719,6 +784,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		018D8E6720E6325B0056825D /* Touch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 018D8E7320E6325B0056825D /* Build configuration list for PBXNativeTarget "Touch" */;
+			buildPhases = (
+				018D8E6320E6325B0056825D /* Headers */,
+				018D8E6420E6325B0056825D /* Sources */,
+				018D8E6520E6325B0056825D /* Frameworks */,
+				018D8E6620E6325B0056825D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Touch;
+			productName = Touch;
+			productReference = 018D8E6820E6325B0056825D /* Touch.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		01C5E44E20B936550022A871 /* Arithma */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01C5E46120B936560022A871 /* Build configuration list for PBXNativeTarget "Arithma" */;
@@ -856,10 +939,15 @@
 		01C5E44720B936550022A871 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Chen Zerui";
 				TargetAttributes = {
+					018D8E6720E6325B0056825D = {
+						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
+					};
 					01C5E44E20B936550022A871 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 0940;
@@ -916,11 +1004,19 @@
 				01C5E49020B937BA0022A871 /* HPA */,
 				01C5E55520B93C320022A871 /* HPAKit */,
 				01E5BAFB20BACE7F00FEE362 /* HPAKitTests */,
+				018D8E6720E6325B0056825D /* Touch */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		018D8E6620E6325B0056825D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01C5E44D20B936550022A871 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -976,6 +1072,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		018D8E6420E6325B0056825D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				012A09DD20E6333600A1D1A6 /* COSTouchImageView.m in Sources */,
+				012A09DB20E6333600A1D1A6 /* COSTouchImageFactory.m in Sources */,
+				012A09D920E6333600A1D1A6 /* COSTouchConfig.m in Sources */,
+				012A09D720E6331200A1D1A6 /* COSOverlayVisualizerWindow.m in Sources */,
+				012A09D320E632C200A1D1A6 /* COSTouchVisualizerWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01C5E44B20B936550022A871 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1150,6 +1258,68 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		018D8E7120E6325B0056825D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 789MW96BQB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Touch/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Touch;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		018D8E7220E6325B0056825D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 789MW96BQB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Touch/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Touch;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		01C5E45F20B936560022A871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1659,6 +1829,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		018D8E7320E6325B0056825D /* Build configuration list for PBXNativeTarget "Touch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				018D8E7120E6325B0056825D /* Debug */,
+				018D8E7220E6325B0056825D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		01C5E44A20B936550022A871 /* Build configuration list for PBXProject "Arithma" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

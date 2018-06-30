@@ -53,7 +53,7 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         
     /// Helper function to update the state of the exponent key of the associated keyboard.
     public func updateIndentationKey() {
-        keyboard.setIsIndenting(typingAttributes[NSAttributedString.Key.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
+        keyboard.setIsIndenting(typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
     }
     
     /// Overrided to update exponent key of associated keyboard whenever selection changes.
@@ -86,6 +86,9 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         typingAttributes = [NSAttributedStringKey.font.rawValue: normalFont]
         allowsEditingTextAttributes = true
         addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinched(_:))))
+        if #available(iOS 11, *) {
+            self.textDragInteraction?.isEnabled = false
+        }
     }
     
     /// Only paste is allowed in menu.
@@ -175,7 +178,7 @@ extension AMInputTextView {
             
             if typingAttributes[baselineKey, default: 0.0] as! Double == 0.0 {
                 newFont = smallFont
-                newBaseline = Double(scaled(26))
+                newBaseline = Double(scaled(20))
             }
             else {
                 newFont = normalFont
@@ -184,7 +187,7 @@ extension AMInputTextView {
             
             textStorage.addAttributes([.font: newFont, .baselineOffset: newBaseline], range: selectedRange)
             typingAttributes.updateValue(newBaseline, forKey: baselineKey)
-            typingAttributes.updateValue(newFont, forKey: NSAttributedString.Key.font.rawValue)
+            typingAttributes.updateValue(newFont, forKey: NSAttributedStringKey.font.rawValue)
         case .delete:
             guard selectedTextRange!.end != beginningOfDocument else {
                 return
@@ -234,6 +237,6 @@ extension UITextPosition {
     
 }
 
-fileprivate let normalFont = UIFont(name: "CourierNewPSMT", size: scaled(52))!
-fileprivate let smallFont = normalFont.withSize(scaled(39))
+fileprivate let normalFont = UIFont(name: "CourierNewPSMT", size: scaled(40))!
+fileprivate let smallFont = normalFont.withSize(scaled(30))
 

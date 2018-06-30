@@ -63,7 +63,9 @@ class CalculatorViewController: UIViewController {
         resultScrollView.bounces = false
         resultScrollView.showsVerticalScrollIndicator = false
         
-        resultTextView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(resultLongPressed(_:))))
+        resultTextView.addGestureRecognizer(
+            UILongPressGestureRecognizer(target: self, action: #selector(resultLongPressed(_:)))
+        )
         
         // Input Text View
         inputTextView.backgroundColor = nil
@@ -96,7 +98,7 @@ class CalculatorViewController: UIViewController {
                         constant: scaled(-16)).isActive = true
         
         resultScrollView.topAnchor
-            .constraint(equalTo: view.topAnchor, constant: scaled(62)).isActive = true
+            .constraint(equalTo: view.topAnchor, constant: scaled(72)).isActive = true
         resultScrollView.leadingAnchor
             .constraint(equalTo: view.leadingAnchor).isActive = true
         resultScrollView.trailingAnchor
@@ -117,7 +119,7 @@ class CalculatorViewController: UIViewController {
         inputTextView.trailingAnchor
             .constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
         inputTextView.widthAnchor
-            .constraint(greaterThanOrEqualToConstant: scaled(100)).isActive = true
+            .constraint(greaterThanOrEqualToConstant: view.frame.width-scaled(50)).isActive = true
         
         inputScrollView.bottomAnchor
             .constraint(equalTo: view.bottomSAAnchor, constant:
@@ -128,7 +130,7 @@ class CalculatorViewController: UIViewController {
         inputScrollView.trailingAnchor
             .constraint(equalTo: view.trailingAnchor).isActive = true
         inputScrollView.heightAnchor
-            .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
+            .constraint(greaterThanOrEqualToConstant: scaled(44)).isActive = true
     }
     
     // MARK: Selector Function

@@ -309,6 +309,7 @@ public class AMInterpreter: NSObject {
     public func evaluate(_ expression: Expression) throws -> AMValue {
         
         referencingVariables.removeAll()
+        tokens.removeAll()
         
         self.index = 0
         if lastVariableId != nil {

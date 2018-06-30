@@ -140,7 +140,7 @@ class PolynomialInputCell: UIView {
         linkedInputView.trailingAnchor
             .constraint(equalTo: inputScrollView.trailingAnchor).isActive = true
         linkedInputView.widthAnchor
-            .constraint(greaterThanOrEqualToConstant: scaled(180)).isActive = true
+            .constraint(greaterThanOrEqualToConstant: scaled(200)).isActive = true
         
         addSubview(coefficientLabel)
         coefficientLabel.leadingAnchor
