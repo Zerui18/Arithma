@@ -9,7 +9,7 @@
 #import "COSTouchImageFactory.h"
 #import "COSTouchConfig.h"
 
-static const CGFloat COSTouchImageFactorySideSize = 50.0f;
+static const CGFloat COSTouchImageFactorySideSize = 35.0f;
 
 @implementation COSTouchImageFactory
 
@@ -25,7 +25,7 @@ static const CGFloat COSTouchImageFactorySideSize = 50.0f;
                                       COSTouchImageFactorySideSize / 2.0f);
         
         UIBezierPath *drawPath = [UIBezierPath bezierPathWithArcCenter:center
-                                                                radius:22.0
+                                                                radius:15.0
                                                             startAngle:0
                                                               endAngle:2 * M_PI
                                                              clockwise:YES];

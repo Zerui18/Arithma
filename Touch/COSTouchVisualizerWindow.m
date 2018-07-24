@@ -225,9 +225,9 @@ static const NSTimeInterval COSTouchVisualizerWindowRemoveDelay = 0.2;
         [UIView setAnimationDuration:self.touchContactConfig.fadeDuration];
     }
 
-    touchView.frame = CGRectMake(touchView.center.x - touchView.frame.size.width,
-                                 touchView.center.y - touchView.frame.size.height,
-                                 touchView.frame.size.width * 2, touchView.frame.size.height * 2);
+    touchView.frame = CGRectMake(touchView.center.x - touchView.frame.size.width*0.75,
+                                 touchView.center.y - touchView.frame.size.height*0.75,
+                                 touchView.frame.size.width * 1.5, touchView.frame.size.height * 1.5);
 
     touchView.alpha = 0.0;
 

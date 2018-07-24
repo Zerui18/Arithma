@@ -34,14 +34,14 @@ static const NSTimeInterval COSTouchConfigRippleFadeDuration = 0.2;
 
 -(void)_configureContact {
     self.strokeColor = [UIColor clearColor];
-    self.fillColor = [[UIColor alloc] initWithRed:0.1315293405 green:0.6848516753 blue:0.9381706001 alpha:1];
+    self.fillColor = [[UIColor alloc] initWithRed:0.9 green:0.9 blue:0.9 alpha:0.9];
     self.alpha = COSTouchConfigContactAlpha;
     self.fadeDuration = COSTouchConfigContactFadeDuration;
 }
 
 - (void)_configureRipple {
     self.strokeColor = [UIColor whiteColor];
-    self.fillColor = [[UIColor alloc] initWithRed:0.1315293405 green:0.6848516753 blue:0.9381706001 alpha:1];
+    self.fillColor = [[UIColor alloc] initWithRed:0.9 green:0.9 blue:0.9 alpha:0.9];
     self.alpha = COSTouchConfigRippleAlpha;
     self.fadeDuration = COSTouchConfigRippleFadeDuration;
 }

@@ -87,8 +87,11 @@ public class AMValue: Equatable, CustomStringConvertible {
      */
     public func copyAttributedDescription() {
         var value = valueInBaseUnit()
-        let str = value.formatted(customFontSize: scaled(52))
-        unit.addUnitDescription(to: str)
+        let str = value.formatted(customFontSize: scaled(40))
+        unit.addUnitDescription(to: str, customFontSize: scaled(40))
+        let style = NSMutableParagraphStyle()
+        style.alignment = .right
+        str.addAttributes([.paragraphStyle: style], range: NSRange(location: 0, length: str.length))
         
         let rtfData = try! str.data(from: NSRange(location: 0, length: str.length), documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf])
         let item = [kUTTypeRTF as String: rtfData, kUTTypeUTF8PlainText as String: str.string] as [String: Any]

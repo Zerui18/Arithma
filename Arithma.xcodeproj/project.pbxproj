@@ -10,13 +10,14 @@
 		0101054220DE86B300C5F8F1 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0101054120DE86B300C5F8F1 /* Debouncer.swift */; };
 		0101054420DE86CB00C5F8F1 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0101054320DE86CB00C5F8F1 /* Repeat.swift */; };
 		0101054520DE883100C5F8F1 /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0101054320DE86CB00C5F8F1 /* Repeat.swift */; };
+		01017EBC20E7C46000A5AE6B /* Touch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D8E6820E6325B0056825D /* Touch.framework */; };
+		01017EBD20E7C46000A5AE6B /* Touch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018D8E6820E6325B0056825D /* Touch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		011A622F20DC98B50091C527 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
 		011A623220DC9C520091C527 /* UITextView+Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A623120DC9C520091C527 /* UITextView+Patch.swift */; };
 		011AE50320D6A4E700DF7186 /* PolynomialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */; };
 		011D93D420DC93BA00C1A72A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D320DC93BA00C1A72A /* Haptics.swift */; };
 		011D93D620DC942F00C1A72A /* SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D93D520DC942F00C1A72A /* SafeArea.swift */; };
 		0128C77120BE9614005C5EF2 /* PolynomialInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */; };
-		012A09D320E632C200A1D1A6 /* COSTouchVisualizerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 012A09D220E632C200A1D1A6 /* COSTouchVisualizerWindow.m */; };
 		012A09D620E6331200A1D1A6 /* COSOverlayVisualizerWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 012A09D420E6331200A1D1A6 /* COSOverlayVisualizerWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012A09D720E6331200A1D1A6 /* COSOverlayVisualizerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 012A09D520E6331200A1D1A6 /* COSOverlayVisualizerWindow.m */; };
 		012A09D820E6333600A1D1A6 /* COSTouchConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 018D8E7420E632840056825D /* COSTouchConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +31,7 @@
 		0147A2A320DA722F0074B525 /* SeperatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147A2A220DA722F0074B525 /* SeperatorCell.swift */; };
 		01688D1120BAA31800EB9C4A /* Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E53520B939F70022A871 /* Scaled.swift */; };
 		018D8E6C20E6325B0056825D /* Touch.h in Headers */ = {isa = PBXBuildFile; fileRef = 018D8E6A20E6325B0056825D /* Touch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01940EAB20EAEBB900DBEE01 /* COSTouchVisualizerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01940EAA20EAEBB900DBEE01 /* COSTouchVisualizerWindow.m */; };
 		01B33D2820BD254B004E2310 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B33D2720BD254B004E2310 /* UILabel+Extension.swift */; };
 		01B7D17220E7B08100CC9652 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E47720B9373B0022A871 /* Engine.framework */; };
 		01C050D020BBF16200B7A09B /* ContainerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E46520B936A70022A871 /* ContainerScrollView.swift */; };
@@ -137,6 +139,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		01017EBE20E7C46000A5AE6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01C5E44720B936550022A871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 018D8E6720E6325B0056825D;
+			remoteInfo = Touch;
+		};
 		01C5E47C20B9373B0022A871 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 01C5E44720B936550022A871 /* Project object */;
@@ -190,6 +199,7 @@
 			files = (
 				01C5E55E20B93C320022A871 /* HPAKit.framework in Embed Frameworks */,
 				01C5E49920B937BA0022A871 /* HPA.framework in Embed Frameworks */,
+				01017EBD20E7C46000A5AE6B /* Touch.framework in Embed Frameworks */,
 				01C5E47F20B9373B0022A871 /* Engine.framework in Embed Frameworks */,
 				01C5E54920B93A0F0022A871 /* Settings.framework in Embed Frameworks */,
 				01C5E52E20B939E20022A871 /* Keyboard.framework in Embed Frameworks */,
@@ -206,7 +216,6 @@
 		011D93D320DC93BA00C1A72A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		011D93D520DC942F00C1A72A /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
 		0128C77020BE9614005C5EF2 /* PolynomialInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialInputCell.swift; sourceTree = "<group>"; };
-		012A09D220E632C200A1D1A6 /* COSTouchVisualizerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSTouchVisualizerWindow.m; path = "../../../Downloads/COSTouchVisualizer-master/Classes/COSTouchVisualizerWindow.m"; sourceTree = "<group>"; };
 		012A09D420E6331200A1D1A6 /* COSOverlayVisualizerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSOverlayVisualizerWindow.h; sourceTree = "<group>"; };
 		012A09D520E6331200A1D1A6 /* COSOverlayVisualizerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSOverlayVisualizerWindow.m; sourceTree = "<group>"; };
 		0147A2A220DA722F0074B525 /* SeperatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperatorCell.swift; sourceTree = "<group>"; };
@@ -221,6 +230,7 @@
 		018D8E7820E632850056825D /* COSTouchImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = COSTouchImageView.m; sourceTree = "<group>"; };
 		018D8E7A20E632850056825D /* COSTouchVisualizerWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COSTouchVisualizerWindow.h; sourceTree = "<group>"; };
 		018D8E7B20E632850056825D /* COSTouchImageFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = COSTouchImageFactory.m; sourceTree = "<group>"; };
+		01940EAA20EAEBB900DBEE01 /* COSTouchVisualizerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSTouchVisualizerWindow.m; sourceTree = "<group>"; };
 		01B33D2720BD254B004E2310 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		01C34F7620D6286400A89BFF /* PolynomialResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultCell.swift; sourceTree = "<group>"; };
 		01C34F7820D63CAA00A89BFF /* PolynomialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolynomialResultViewController.swift; sourceTree = "<group>"; };
@@ -341,6 +351,7 @@
 			files = (
 				01C5E55D20B93C320022A871 /* HPAKit.framework in Frameworks */,
 				01C5E49820B937BA0022A871 /* HPA.framework in Frameworks */,
+				01017EBC20E7C46000A5AE6B /* Touch.framework in Frameworks */,
 				01C5E54820B93A0F0022A871 /* Settings.framework in Frameworks */,
 				01B7D17220E7B08100CC9652 /* Engine.framework in Frameworks */,
 				01C5E52D20B939E20022A871 /* Keyboard.framework in Frameworks */,
@@ -430,7 +441,7 @@
 				018D8E7720E632850056825D /* COSTouchImageView.h */,
 				018D8E7820E632850056825D /* COSTouchImageView.m */,
 				018D8E7A20E632850056825D /* COSTouchVisualizerWindow.h */,
-				012A09D220E632C200A1D1A6 /* COSTouchVisualizerWindow.m */,
+				01940EAA20EAEBB900DBEE01 /* COSTouchVisualizerWindow.m */,
 				018D8E6B20E6325B0056825D /* Info.plist */,
 			);
 			path = Touch;
@@ -819,6 +830,7 @@
 				01C5E52C20B939E20022A871 /* PBXTargetDependency */,
 				01C5E54720B93A0F0022A871 /* PBXTargetDependency */,
 				01C5E55C20B93C320022A871 /* PBXTargetDependency */,
+				01017EBF20E7C46000A5AE6B /* PBXTargetDependency */,
 			);
 			name = Arithma;
 			productName = SigMa.th;
@@ -1079,8 +1091,8 @@
 				012A09DD20E6333600A1D1A6 /* COSTouchImageView.m in Sources */,
 				012A09DB20E6333600A1D1A6 /* COSTouchImageFactory.m in Sources */,
 				012A09D920E6333600A1D1A6 /* COSTouchConfig.m in Sources */,
+				01940EAB20EAEBB900DBEE01 /* COSTouchVisualizerWindow.m in Sources */,
 				012A09D720E6331200A1D1A6 /* COSOverlayVisualizerWindow.m in Sources */,
-				012A09D320E632C200A1D1A6 /* COSTouchVisualizerWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1225,6 +1237,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		01017EBF20E7C46000A5AE6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 018D8E6720E6325B0056825D /* Touch */;
+			targetProxy = 01017EBE20E7C46000A5AE6B /* PBXContainerItemProxy */;
+		};
 		01C5E47D20B9373B0022A871 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 01C5E47620B9373B0022A871 /* Engine */;

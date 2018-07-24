@@ -171,7 +171,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
     private func solvePolynomial() {
         var coefficients = [HPAReal]()
         coefficients.reserveCapacity(cells.count)
-        for cell in cells.reversed() {
+        for cell in cells {
             guard let value = cell.linkedInputView.currentResult?.value else {
                 cell.beginEditing(nil)
                 return
@@ -181,7 +181,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
                 BaseViewController.shared.displayMessage("Only Real Coefficients")
                 return
             }
-            coefficients.append(value.re)
+            coefficients.insert(value.re, at: 0)
         }
         let polynomial = HPAPolynomial(coefficients)
         let resultVC = PolynomialResultViewController(for: polynomial)

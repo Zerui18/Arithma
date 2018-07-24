@@ -9,11 +9,12 @@
 import UIKit
 import Engine
 import HPAKit
+import Touch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow? = UIWindow(frame: .zero)
+    var window: UIWindow? = COSTouchVisualizerWindow(frame: .zero, morphEnabled: false, touchVisibility: .remoteAndLocal, contactConfig: nil, rippleConfig: nil)
     private var hasSetupUnits = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -40,10 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = +>"m" ~~ ("mm", 1e-3) ~~ ("cm", 1e-2) ~~ ("km", 1e3)
         _ = +>"s" ~~ ("min", 60) ~~ ("hr", 3600) ~~ ("day", 3600*24)
         _ = +>"kg" ~~ ("mg", 1e-6) ~~ ("g", 1e-3) ~~ ("ton", 1e3)
-    }
-    
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return .portrait
     }
 
 }
