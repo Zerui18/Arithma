@@ -17,6 +17,7 @@ class AMUnitSelectorCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         label.textAlignment = .center
         label.font = unitLabelFont
         label.textColor = .white
@@ -24,7 +25,6 @@ class AMUnitSelectorCell: UICollectionViewCell {
         contentView.addSubview(label)
         layer.cornerRadius = scaled(10)
         backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,19 +47,16 @@ class AMUnitSelectorCell: UICollectionViewCell {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
         showHighlighted()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        
         showNormal()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-        
         showNormal()
     }
     

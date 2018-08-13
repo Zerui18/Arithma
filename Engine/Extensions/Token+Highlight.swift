@@ -12,6 +12,8 @@ extension AMLexer.Token {
     
     var syntaxColor: UIColor {
         switch self {
+        case .link:
+            return #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         case .function:
             return #colorLiteral(red: 0.4478083688, green: 0.2266379278, blue: 1, alpha: 1)
         case .`operator`:
@@ -22,8 +24,8 @@ extension AMLexer.Token {
             return #colorLiteral(red: 0.2392156863, green: 0.6745098039, blue: 0.968627451, alpha: 1)
         case .unit:
             return #colorLiteral(red: 0.1829208135, green: 0.5398121641, blue: 0.831140706, alpha: 1)
-        case .identifier:
-            return #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        case .identifier: // not usable currently
+            return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         }
     }
     

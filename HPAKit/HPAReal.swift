@@ -176,6 +176,41 @@ extension HPAReal: HPANumeric, Comparable{
     public static let pi = xPi
 }
 
+// MARK: Codable
+extension HPAReal {
+    
+    enum CodingKeys: CodingKey {
+        case data
+    }
+    
+    var data: [UInt16] {
+        get {
+            var copy = nmm
+            return withUnsafeBytes(of: &copy) { (tuplePointer) in
+                let elementPointer = tuplePointer.baseAddress!.assumingMemoryBound(to: UInt16.self)
+                return Array(UnsafeBufferPointer(start: elementPointer, count: Int(XDIM+1)))
+            }
+        }
+        set {
+            withUnsafeMutableBytes(of: &nmm) { (tuplePointer) in
+                let elementPointer = tuplePointer.baseAddress!.assumingMemoryBound(to: UInt16.self)
+                elementPointer.assign(from: newValue, count: Int(XDIM+1))
+            }
+        }
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.init()
+        self.data = try container.decode([UInt16].self, forKey: .data)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(data, forKey: .data)
+    }
+}
+
 // MARK: Operator Overloads
 @inline(__always)
 public func == (lhs: xpr, rhs: xpr) -> Bool {

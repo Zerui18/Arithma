@@ -12,16 +12,26 @@ import Engine
 public class AMUnitSelectorView: UICollectionView {
     
     // MARK: Displayed Units
-    fileprivate var unitIds: [String] = ["m", "s", "kg"]
-    fileprivate let unitToPrefixed: [[String]] = [["mm", "cm", "m", "km"],
-                                                  ["s", "min", "hr", "day"],
-                                                  ["mg", "g", "kg", "ton"]]
+    fileprivate var unitIds: [String] = ["m", "s", "kg", "A", "K", "mol"]
+    fileprivate let unitToPrefixed: [[[String]]] = [[["mm", "cm", "m", "km"],
+                                                     ["s", "min", "hr", "day"],
+                                                     ["mg", "g", "kg", "ton"]],
+                                                    [["µA", "mA", "A", "kA"],
+                                                     ["µK", "mK", "K", "kK"],
+                                                     ["mmol", "mol", "kmol"]]]
     
     /// If user has long pressed - triggering prefix selection for the unit. Chanegs to this will update the tableView.
     fileprivate var isChoosingPrefix = false {
         didSet {
             performBatchUpdates({
-                self.reloadSections([0])
+                if isChoosingPrefix {
+                    deleteSections([1])
+                    reloadSections([0])
+                }
+                else {
+                    reloadSections([0])
+                    insertSections([1])
+                }
             }) { _ in
                 self.visibleCells.forEach {
                     $0.isUserInteractionEnabled = !self.isChoosingPrefix
@@ -31,9 +41,9 @@ public class AMUnitSelectorView: UICollectionView {
     }
     
     /// The index of the selected unit.
-    fileprivate var selectedUnitIndex: Int?
+    fileprivate var selectedUnitIndex: IndexPath?
     /// The index of the selected prefix.
-    fileprivate var selectedPrefixIndex: Int? {
+    fileprivate var selectedPrefixIndex: IndexPath? {
         didSet {
             guard oldValue != selectedPrefixIndex else {
                 return
@@ -41,12 +51,12 @@ public class AMUnitSelectorView: UICollectionView {
             
             if let index = oldValue {
                 // De-highlight previously selected.
-                (cellForItem(at: IndexPath(item: index, section: 0)) as! AMUnitSelectorCell).showNormal()
+                (cellForItem(at: index) as! AMUnitSelectorCell).showNormal()
             }
             
             if let index = selectedPrefixIndex {
                 // Highlight new cell.
-                (cellForItem(at: IndexPath(item: index, section: 0)) as! AMUnitSelectorCell).showHighlighted()
+                (cellForItem(at: index) as! AMUnitSelectorCell).showHighlighted()
             }
         }
     }
@@ -56,27 +66,41 @@ public class AMUnitSelectorView: UICollectionView {
     
     // MARK: Setup Methods
     public init(keyboard: AMKeyboardView) {
+        
+        // custom layout init
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        let val = scaled(8)
-        layout.sectionInset = UIEdgeInsets(top: val, left: val, bottom: val, right: val)
+        // pre computed properties
+        let totalWidth = UIScreen.main.bounds.width
+        let totalHeight = scaled(46)
         
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: scaled(46)), collectionViewLayout: layout)
+        // margins all around
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing,
+                                           bottom: spacing, right: spacing)
+        layout.minimumInteritemSpacing = spacing
+        
+        super.init(frame: CGRect(x: 0, y: 0,
+                                 width: totalWidth, height: totalHeight),
+                   collectionViewLayout: layout)
+        
         self.keyboard = keyboard
-        setup()
+        self.setup()
     }
     
     private func setup() {
         register(AMUnitSelectorCell.self, forCellWithReuseIdentifier: "cell")
         
-        isScrollEnabled = false
+        bounces = false
         dataSource = self
         delegate = self
+        isPagingEnabled = true
         
         backgroundColor = .black
         
-        addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:))))
+        addGestureRecognizer(
+            UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
+        )
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -95,17 +119,15 @@ public class AMUnitSelectorView: UICollectionView {
             }
             
             if isChoosingPrefix {
-                selectedPrefixIndex = index.item
+                selectedPrefixIndex = index
             }
             else {
                 (cellForItem(at: index) as! AMUnitSelectorCell).showNormal()
                 
-                selectedUnitIndex = index.item
+                selectedUnitIndex = index
                 isChoosingPrefix = true
                 
-                if let prefixIndex = indexPathForItem(at: sender.location(in: self)) {
-                    selectedPrefixIndex = prefixIndex.item
-                }
+                selectedPrefixIndex = indexPathForItem(at: sender.location(in: self))
             }
             
         case .ended, .cancelled:
@@ -117,11 +139,12 @@ public class AMUnitSelectorView: UICollectionView {
                 isChoosingPrefix = false
             }
             
-            guard let index = selectedPrefixIndex else {
+            let unitIndex = selectedUnitIndex!
+            guard let prefixIndex = selectedPrefixIndex else {
                 return
             }
             
-            keyboard.didPress(AMKeyDescription(symbol: unitToPrefixed[selectedUnitIndex!][index], style: .number))
+            keyboard.didPress(AMKeyDescription(symbol: unitToPrefixed[unitIndex.section][unitIndex.item][prefixIndex.item], style: .number))
             
             selectedPrefixIndex = nil
             
@@ -133,34 +156,43 @@ public class AMUnitSelectorView: UICollectionView {
 
 extension AMUnitSelectorView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return isChoosingPrefix ? 1:2
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isChoosingPrefix ? unitToPrefixed[selectedUnitIndex!].count:unitIds.count
+        return isChoosingPrefix ? unitToPrefixed[selectedUnitIndex!.section][selectedUnitIndex!.item].count:unitIds.count/2
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AMUnitSelectorCell
         if isChoosingPrefix {
-            cell.label.text = unitToPrefixed[selectedUnitIndex!][indexPath.item]
+            cell.label.text = unitToPrefixed[selectedUnitIndex!.section][selectedUnitIndex!.item][indexPath.item]
         }
         else {
-            cell.label.text = unitIds[indexPath.item]
+            cell.label.text = unitIds[indexPath.item + indexPath.section*3]
         }
-        
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        keyboard.didPress(AMKeyDescription(symbol: unitIds[indexPath.item], style: .number))
+        keyboard.didPress(AMKeyDescription(symbol: unitIds[indexPath.item+indexPath.section*3], style: .number))
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let n = CGFloat(numberOfItems(inSection: 0)+1)
-        let width = (bounds.width - n*scaled(10)) / (n-1)
-        return CGSize(width: width, height: scaled(46-2*8))
+        let itemsCount: Int
+        
+        if isChoosingPrefix {
+            itemsCount = numberOfItems(inSection: 0)
+        }
+        else {
+            itemsCount = 3
+        }
+        let itemDim = (collectionView.bounds.width - CGFloat(2+itemsCount) * spacing) / CGFloat(itemsCount)
+        return CGSize(width: itemDim, height: collectionView.bounds.height - 2*spacing)
     }
-    
 }
 
+fileprivate let spacing = scaled(8)

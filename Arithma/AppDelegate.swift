@@ -41,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = +>"m" ~~ ("mm", 1e-3) ~~ ("cm", 1e-2) ~~ ("km", 1e3)
         _ = +>"s" ~~ ("min", 60) ~~ ("hr", 3600) ~~ ("day", 3600*24)
         _ = +>"kg" ~~ ("mg", 1e-6) ~~ ("g", 1e-3) ~~ ("ton", 1e3)
+        _ = +>"A" ~~ ("µA", 1e-6) ~~ ("mA", 1e-3) ~~ ("kA", 1e3)
+        _ = +>"K" ~~ ("µK", 1e-6) ~~ ("mK", 1e-3) ~~ ("kK", 1e3)
+        _ = +>"mol" ~~ ("mmol", 1e-3) ~~ ("kmol", 1e3)
     }
 
 }

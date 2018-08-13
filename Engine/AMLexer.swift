@@ -10,10 +10,10 @@ import UIKit
 import HPAKit
 
 // MARK: AMLexer class
-public class AMLexer {
+public final class AMLexer {
     
     enum Token {
-        case value(HPAReal), unit(AMBasicUnit), parensOpen, parensClose, `operator`(AMValue.Operator), function(AMValue.Function), identifier(String), imaginaryUnit
+        case link(AMValue), value(HPAReal), unit(AMBasicUnit), parensOpen, parensClose, `operator`(AMValue.Operator), function(AMValue.Function), identifier(String), imaginaryUnit
     }
     
     // MARK: Private Properties
@@ -34,7 +34,7 @@ public class AMLexer {
         "+": .operator(.add), "-": .operator(.subtract),
         "×": .operator(.multiply), "÷": .operator(.divide),
         "^": .operator(.exponentiate), "i": .imaginaryUnit,
-        "℮": .value(.e), "π": .value(.pi)
+        "e": .value(.e), "π": .value(.pi)
     ]
     
     // MARK: Private Computed-properties
@@ -58,6 +58,7 @@ public class AMLexer {
     }
     
     // MARK: Private Methods
+    @inline(__always)
     private func advanceIndex() {
         index = textStorage.string.index(after: index)
         
@@ -80,11 +81,13 @@ public class AMLexer {
         lastIndented = isIndented
     }
     
+    @inline(__always)
     private func readNumberOrIdentifier() -> String {
         
         let cChar = currentChar!
         var str = ""
         
+        @inline(__always)
         func readNumber() {
             while let char = currentChar, char.isNumber || char == "." {
                 str.append(char)
@@ -95,6 +98,7 @@ public class AMLexer {
             }
         }
         
+        @inline(__always)
         func readLetters() {
             while let char = currentChar, char.isAlpha {
                 str.append(char)
@@ -118,19 +122,49 @@ public class AMLexer {
         return str
     }
     
+    @inline(__always)
+    private func readLink()-> AMLexer.Token? {
+        var range = NSRange()
+        guard let psuedoLink = textStorage.attribute(.link,
+                                                     at: index.encodedOffset,
+                                                     effectiveRange: &range),
+              let data = Data(base64Encoded: (psuedoLink as! URL).lastPathComponent),
+              let value = try? JSONDecoder().decode(AMValue.self,
+                                                    from: data)
+        else { return nil }
+        
+        let token = Token.link(value)
+        setHighlight(with: token, for: range.length)
+        index = textStorage.string.index(index, offsetBy: range.length)
+        return token
+    }
+    
+    @inline(__always)
     private func setHighlight(with token: AMLexer.Token, for count: Int, starting index: Int? = nil) {
         textStorage.addAttributes([.foregroundColor: token.syntaxColor], range: NSRange(location: index ?? self.index.encodedOffset, length: count))
     }
     
+    @inline(__always)
     private func advanceToNextToken() -> AMLexer.Token? {
-
-        if currentChar?.isSpace ?? false {
+        
+        // If we hit the end of the input, then we're done
+        guard currentChar != nil else {
+            return nil
+        }
+        
+        // skip all spaces / possibly until end
+        while currentChar?.isSpace ?? false {
             advanceIndex()
         }
         
-        // If we hit the end of the input, then we're done
+        // check again if at end
         guard let char = currentChar else {
             return nil
+        }
+        
+        // try to read link before anything
+        if let link = readLink() {
+            return link
         }
         
         // try to match for single-char token
@@ -159,10 +193,10 @@ public class AMLexer {
                 token = .unit(unit)
             }
             
-            else if  str == "e" {
+            else if str == "e" {
                 token = .operator(.exponentiate10)
             }
-
+            
             else {
                 token = .identifier(str)
             }

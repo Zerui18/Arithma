@@ -114,7 +114,7 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
     
     /// Performs the necessary updates & evaluations when text changes.
     func textDidChange() {
-        
+        typingAttributes.removeValue(forKey: NSAttributedString.Key.link.rawValue)
         let lexer = AMLexer(textStorage: textStorage,
                             allowUnits: allowUnits,
                             variableName: variableName)
@@ -130,7 +130,7 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         do {
             let result = try interpreter.evaluate(expression)
             currentResult = result
-            result.fontSize = resultFontSize
+            result.descriptionFontSize = resultFontSize
             result.boundLabel = resultTextView
         }
         catch _{
@@ -222,7 +222,7 @@ extension AMInputTextView: AMInterpreterDelegate {
     
     public func interpreterDidReEvaluate(value: AMValue?, error: Error?) {
         currentResult = value
-        value?.fontSize = resultFontSize
+        value?.descriptionFontSize = resultFontSize
         value?.boundLabel = resultTextView
     }
     

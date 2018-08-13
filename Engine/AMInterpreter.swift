@@ -16,7 +16,7 @@ public protocol AMInterpreterDelegate: class {
 }
 
 // MARK: AMInterpreter class
-public class AMInterpreter: NSObject {
+public final class AMInterpreter: NSObject {
     
     public struct Expression {
         init(tokens: [AMLexer.Token], assigningResultTo variableId: String? = nil) {
@@ -77,6 +77,7 @@ public class AMInterpreter: NSObject {
     }
     
     // MARK: Private Methods
+    @inline(__always)
     private func popCurrentToken()-> AMLexer.Token {
         defer {
             index += 1
@@ -84,6 +85,7 @@ public class AMInterpreter: NSObject {
         return currentToken
     }
     
+    @inline(__always)
     private func interpretValue() throws -> AMValue {
         guard tokensAvailable, case let AMLexer.Token.value(value) = popCurrentToken() else {
             throw ParseError.expectedNumber
@@ -91,6 +93,7 @@ public class AMInterpreter: NSObject {
         return AMValue(value: value.toComplex)
     }
     
+    @inline(__always)
     private func interpretUnit() throws -> AMCompoundUnit {
         guard tokensAvailable, case AMLexer.Token.unit = currentToken else {
             throw ParseError.expectedNumber
@@ -126,6 +129,7 @@ public class AMInterpreter: NSObject {
         return compoundUnit
     }
     
+    @inline(__always)
     private func interpretParentheses() throws -> AMValue {
         guard tokensAvailable, case AMLexer.Token.parensOpen = popCurrentToken() else {
             throw ParseError.expectedCharacter("(")
@@ -145,6 +149,7 @@ public class AMInterpreter: NSObject {
         return exp
     }
     
+    @inline(__always)
     private func interpretFunction() throws -> AMValue {
         
         guard case let AMLexer.Token.function(functionName) = popCurrentToken() else {
@@ -156,12 +161,16 @@ public class AMInterpreter: NSObject {
         return try argument.performing(functionName)
     }
     
+    @inline(__always)
     private func interpretPrimaryTokenType() throws -> AMValue {
         guard tokensAvailable else {
             throw ParseError.expectedExpression
         }
         
         switch currentToken {
+        case .link(let value):
+            index += 1
+            return value
         case .value:
             return try interpretValue()
         case .parensOpen:
@@ -188,6 +197,7 @@ public class AMInterpreter: NSObject {
         }
     }
     
+    @inline(__always)
     private func getCurrentTokenPrecedence() throws -> Int {
         
         guard tokensAvailable, case let AMLexer.Token.operator(op) = currentToken else {
@@ -199,6 +209,7 @@ public class AMInterpreter: NSObject {
         return precedence
     }
     
+    @inline(__always)
     private func interpretBinaryOperation(lhs: AMValue, exprPrecedence: Int = 0) throws -> AMValue {
         
         while true {
@@ -226,6 +237,7 @@ public class AMInterpreter: NSObject {
         }
     }
     
+    @inline(__always)
     private func getVariable(forId id: String) throws -> AMValue {
         referencingVariables.insert(id)
         
@@ -235,6 +247,7 @@ public class AMInterpreter: NSObject {
         return value
     }
     
+    @inline(__always)
     private func interpretCurrentExpression(outerExprPrecedence: Int = 0) throws -> AMValue {
         
         lastValue = nil
@@ -255,7 +268,7 @@ public class AMInterpreter: NSObject {
             case .parensClose:
                 // return upon encountering close parenthesis
                 return currentValue
-            case .unit, .value, .identifier, .function, .parensOpen, .imaginaryUnit:
+            case .link, .unit, .value, .identifier, .function, .parensOpen, .imaginaryUnit:
                 // check if auto-multiply possible
                 guard outerExprPrecedence <= 40 else {
                     return currentValue
@@ -275,10 +288,12 @@ public class AMInterpreter: NSObject {
         return currentValue
     }
     
+    @inline(__always)
     fileprivate func isReferencing(_ id: String)-> Bool {
         return referencingVariables.contains(id)
     }
     
+    @inline(__always)
     fileprivate func reEvaluate() {
         
         self.index = 0

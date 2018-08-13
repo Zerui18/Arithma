@@ -95,7 +95,7 @@
 		01C5E54520B93A0F0022A871 /* Settings.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C5E54320B93A0F0022A871 /* Settings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01C5E54820B93A0F0022A871 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; };
 		01C5E54920B93A0F0022A871 /* Settings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01C5E54F20B93A1B0022A871 /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E54D20B93A1B0022A871 /* SSettings.swift */; };
+		01C5E54F20B93A1B0022A871 /* AMSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E54D20B93A1B0022A871 /* AMSettings.swift */; };
 		01C5E55020B93A1B0022A871 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C5E54E20B93A1B0022A871 /* Notifications.swift */; };
 		01C5E55A20B93C320022A871 /* HPAKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 01C5E55820B93C320022A871 /* HPAKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01C5E55D20B93C320022A871 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
@@ -298,7 +298,7 @@
 		01C5E54120B93A0F0022A871 /* Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C5E54320B93A0F0022A871 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		01C5E54420B93A0F0022A871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01C5E54D20B93A1B0022A871 /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
+		01C5E54D20B93A1B0022A871 /* AMSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMSettings.swift; sourceTree = "<group>"; };
 		01C5E54E20B93A1B0022A871 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		01C5E55620B93C320022A871 /* HPAKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HPAKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01C5E55820B93C320022A871 /* HPAKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPAKit.h; sourceTree = "<group>"; };
@@ -535,7 +535,7 @@
 		01C5E54220B93A0F0022A871 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				01C5E54D20B93A1B0022A871 /* SSettings.swift */,
+				01C5E54D20B93A1B0022A871 /* AMSettings.swift */,
 				01C5E54E20B93A1B0022A871 /* Notifications.swift */,
 				01C5E5AA20B984470022A871 /* Others */,
 			);
@@ -1209,7 +1209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01C5E55020B93A1B0022A871 /* Notifications.swift in Sources */,
-				01C5E54F20B93A1B0022A871 /* SSettings.swift in Sources */,
+				01C5E54F20B93A1B0022A871 /* AMSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

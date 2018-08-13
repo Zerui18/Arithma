@@ -159,6 +159,25 @@ extension HPAComplex: HPANumeric {
     
 }
 
+// MARK: Codable
+extension HPAComplex {
+    public enum CodingKeys: CodingKey {
+        case re, im
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.init(re: try container.decode(HPAReal.self, forKey: .re),
+                  im: try container.decode(HPAReal.self, forKey: .im))
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(re, forKey: .re)
+        try container.encode(im, forKey: .im)
+    }
+}
+
 
 // MARK: Operator Overloads
 

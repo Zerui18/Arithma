@@ -9,7 +9,7 @@
 import Foundation
 import HPAKit
 
-public class AMBasicUnit: AMUnitRepresentable, Hashable {
+public final class AMBasicUnit: AMUnitRepresentable, Hashable {
     
     public let unitId: String
     public var baseUnit: AMBasicUnit!
@@ -62,7 +62,10 @@ public class AMBasicUnit: AMUnitRepresentable, Hashable {
     
 }
 
+// MARK: Codable Conformance
+extension AMBasicUnit: Codable {}
 
+// MARK: Static
 extension AMBasicUnit {
     
     public static var allUnits = Set<AMBasicUnit>()
@@ -72,6 +75,7 @@ extension AMBasicUnit {
     
 }
 
+// MARK: Creating Units
 prefix operator +>
 public prefix func +>(_ unitId: String)-> AMBasicUnit {
     let newBaseUnit = AMBasicUnit(unitId: unitId)

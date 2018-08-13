@@ -6,7 +6,7 @@
 //  Copyright © 2018 Chen Zerui. All rights reserved.
 //
 
-public protocol HPANumeric: Equatable, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, CustomStringConvertible, CustomDebugStringConvertible {
+public protocol HPANumeric: Equatable, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, CustomStringConvertible, CustomDebugStringConvertible, Codable {
     
     func description(sf: Int32)-> String
     

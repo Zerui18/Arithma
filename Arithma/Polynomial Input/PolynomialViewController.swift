@@ -12,11 +12,12 @@ import Keyboard
 
 // MARK: Private Input-components
 fileprivate let keyboard = AMKeyboardView(size:
-    CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.6),
+    CGSize(width: UIScreen.main.bounds.width,
+           height: UIScreen.main.bounds.height*0.6),
                                          useImaginary: false)
 
 class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
-
+    
     static let shared = PolynomialViewController()
 
     // MARK: Private Properties

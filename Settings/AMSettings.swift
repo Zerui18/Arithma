@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class AMSettings {
+public final class AMSettings {
     
     public static let shared = AMSettings()
     
@@ -37,10 +37,11 @@ public class AMSettings {
     
     public var isScientificMode: Bool {
         get {
-            return scientificModeRaw == 0
+            // 0 is default (non scientific)
+            return scientificModeRaw != 0
         }
         set {
-            scientificModeRaw = newValue ? 0:1
+            scientificModeRaw = newValue ? 1:0
         }
     }
     

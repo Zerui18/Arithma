@@ -11,16 +11,27 @@ import HPAKit
 import Settings
 import MobileCoreServices
 
-public class AMValue: Equatable, CustomStringConvertible {
+public final class AMValue: Equatable, CustomStringConvertible {
     
+    // lazily initalised to trigger observe only once
+    private lazy var startObserving: Void = {
+        NotificationCenter.default.addObserver(forName: .displayModeChanged, object: nil, queue: .main) { [weak self] _ in
+            self?.boundLabel?.setValue(self?.attributedDescription, forKey: "attributedText")
+        }
+    }()
+    
+    // MARK: Basic Values
     public var value: HPAComplex
     public var unit: AMCompoundUnit
+    
+    // MARK: UI Related
     public weak var boundLabel: UIView? {
         didSet {
             boundLabel?.setValue(attributedDescription, forKey: "attributedText")
+            _ = startObserving
         }
     }
-    public var fontSize: CGFloat?
+    public var descriptionFontSize: CGFloat?
     
     /**
      Initializes a AMValue instance with a scalar value and a unit
@@ -28,10 +39,6 @@ public class AMValue: Equatable, CustomStringConvertible {
     public init(value: HPAComplex, unit: AMCompoundUnit = .init()) {
         self.value = value
         self.unit = unit
-        
-        NotificationCenter.default.addObserver(forName: .displayModeChanged, object: nil, queue: .main) { [weak self] _ in
-            self?.boundLabel?.setValue(self?.attributedDescription, forKey: "attributedText")
-        }
     }
     
     var hasUnit: Bool {
@@ -77,7 +84,7 @@ public class AMValue: Equatable, CustomStringConvertible {
      */
     public var attributedDescription: NSMutableAttributedString {
         var value = valueInBaseUnit()
-        let str = value.formatted(customFontSize: fontSize)
+        let str = value.formatted(customFontSize: descriptionFontSize)
         unit.addUnitDescription(to: str)
         return str
     }
@@ -91,11 +98,19 @@ public class AMValue: Equatable, CustomStringConvertible {
         unit.addUnitDescription(to: str, customFontSize: scaled(40))
         let style = NSMutableParagraphStyle()
         style.alignment = .right
-        str.addAttributes([.paragraphStyle: style], range: NSRange(location: 0, length: str.length))
+        str.addAttributes([.paragraphStyle: style, .link: "amlblob://data64/"+(try! JSONEncoder().encode(self)).base64EncodedString()], range: NSRange(location: 0, length: str.length))
+        
         
         let rtfData = try! str.data(from: NSRange(location: 0, length: str.length), documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf])
         let item = [kUTTypeRTF as String: rtfData, kUTTypeUTF8PlainText as String: str.string] as [String: Any]
         UIPasteboard.general.setItems([item])
     }
 
+}
+
+// MARK: Codable
+extension AMValue: Codable {
+    public enum CodingKeys: CodingKey {
+        case value, unit
+    }
 }

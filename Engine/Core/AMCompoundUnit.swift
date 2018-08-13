@@ -127,9 +127,12 @@ public struct AMCompoundUnit: AMUnitRepresentable {
         return finalValue
     }
     
-    // MARK: Public Static Methods
+    // MARK: Equatable Conformance
     public static func ==(_ lhs: AMCompoundUnit, _ rhs: AMCompoundUnit)-> Bool {
         return lhs.unitToPower == rhs.unitToPower
     }
     
 }
+
+// MARK: Codable
+extension AMCompoundUnit: Codable {}
