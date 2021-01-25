@@ -110,7 +110,7 @@ class AMKeyViewDelete: UICollectionViewCell, AMKeyboardKey{
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.2)
-        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn))
         
         innerRingLayer.borderWidth = scaled(2)
         outerRingLayer.borderWidth = scaled(3.5)
@@ -131,7 +131,7 @@ class AMKeyViewDelete: UICollectionViewCell, AMKeyboardKey{
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.2)
-        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut))
         
         innerRingLayer.borderWidth = 0
         outerRingLayer.borderWidth = 0

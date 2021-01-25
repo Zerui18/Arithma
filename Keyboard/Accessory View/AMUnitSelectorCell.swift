@@ -62,4 +62,4 @@ class AMUnitSelectorCell: UICollectionViewCell {
     
 }
 
-fileprivate let unitLabelFont = UIFont(name: "CourierNewPSMT", size: scaled(28))!
+fileprivate let unitLabelFont = UIFont(name: "Avenir Next", size: scaled(25))!

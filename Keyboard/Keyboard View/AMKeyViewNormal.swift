@@ -114,7 +114,7 @@ class AMKeyViewNormal: UICollectionViewCell, AMKeyboardKey{
         isAnimating = true
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.2)
-        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn))
         CATransaction.setCompletionBlock {
             self.isAnimating = false
             if !self.isBeingTouched && self.keyDescription.symbol != "^" {
@@ -142,7 +142,7 @@ class AMKeyViewNormal: UICollectionViewCell, AMKeyboardKey{
         
         CATransaction.begin()
         CATransaction.setAnimationDuration(0.2)
-        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut))
         CATransaction.setCompletionBlock {
             self.isAnimating = false
         }
@@ -157,5 +157,5 @@ class AMKeyViewNormal: UICollectionViewCell, AMKeyboardKey{
 }
 
 // MAR: Key Fonts
-fileprivate let keyFont = UIFont(name: "CourierNewPSMT", size: scaled(46))!
-fileprivate let smallerKeyFont = UIFont(name: "CourierNewPSMT", size: scaled(30))!
+fileprivate let keyFont = UIFont(name: "Avenir Next", size: scaled(40))!
+fileprivate let smallerKeyFont = UIFont(name: "Avenir Next", size: scaled(30))!

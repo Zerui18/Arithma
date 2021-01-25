@@ -15,7 +15,7 @@ class ResultTextView: UITextView {
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        layer.cornerRadius = scaled(22)
+        layer.cornerRadius = scaled(10)
     }
     
     required init?(coder aDecoder: NSCoder) {

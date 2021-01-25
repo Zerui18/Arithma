@@ -46,7 +46,7 @@ extension AMInterpreter {
 extension AMValue {
     
     public enum OperationError: Error {
-        case unitConversionFailed(AMCompoundUnit, AMCompoundUnit), unexpectedUnit
+        case unitConversionFailed(AMCompoundUnit, AMCompoundUnit), unexpectedUnit, mathError
         
         public var description: String {
             switch self {
@@ -54,6 +54,8 @@ extension AMValue {
                 return "Can't convert from \(from) to \(to)"
             case .unexpectedUnit:
                 return "Unexpected unit"
+            case .mathError:
+                return "Math Error"
             }
         }
     }

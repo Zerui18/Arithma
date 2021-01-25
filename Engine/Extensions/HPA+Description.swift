@@ -23,9 +23,9 @@ extension HPAReal {
         
         let base = description(sf: sf)
         let annotated = NSMutableAttributedString(string: base, attributes: [.font: normalFont, .foregroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)])
-        if let symbolIndex = base.index(of: "e") {
+        if let symbolIndex = base.firstIndex(of: "e") {
             // eleviate exponent
-            annotated.addAttributes([.foregroundColor: UIColor.white], range: NSRange(location: symbolIndex.encodedOffset, length: 1))
+            annotated.addAttributes([.foregroundColor: UIColor.white], range: NSRange(location: symbolIndex.utf16Offset(in: base), length: 1))
         }
         return annotated
     }
@@ -72,7 +72,7 @@ extension HPAPolynomial {
         let baseFont = resultFont.withSize(fontSize)
         let expoFont = resultFont.withSize(fontSize * 0.75)
         let baseline = fontSize * 0.5
-        let baseAttrs = [NSAttributedStringKey.font: baseFont, .foregroundColor: UIColor.white, .baselineOffset: 0.0] as [NSAttributedStringKey : Any]
+        let baseAttrs = [NSAttributedString.Key.font: baseFont, .foregroundColor: UIColor.white, .baselineOffset: 0.0] as [NSAttributedString.Key : Any]
         
         for (degree, coefficient) in coefficients.enumerated().reversed() {
             // add plus sign if necessary

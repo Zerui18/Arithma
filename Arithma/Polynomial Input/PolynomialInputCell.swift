@@ -19,6 +19,8 @@ class PolynomialInputCell: UIView {
         override public init(frame: CGRect, textContainer: NSTextContainer?) {
             super.init(frame: frame, textContainer: textContainer)
             layer.borderColor = UIColor.lightGray.cgColor
+            textContainerInset = .init(top: 5, left: 5, bottom: 5, right: 5)
+            textContainer?.lineFragmentPadding = 0
         }
 
         required init?(coder aDecoder: NSCoder) {
@@ -35,15 +37,6 @@ class PolynomialInputCell: UIView {
 
         func animateDeselect() {
             layer.borderWidth = 0
-        }
-        
-        override var attributedText: NSAttributedString! {
-            get {
-                return super.attributedText
-            }
-            set {
-                super.attributedText = newValue
-            }
         }
 
     }
@@ -64,7 +57,7 @@ class PolynomialInputCell: UIView {
             let label = NSMutableAttributedString(string: "x",
                                                   attributes: [.font: baseFont, .foregroundColor: UIColor.white])
             label.append(NSAttributedString(string: degree.description,
-                                            attributes: [.font: expoFont, .baselineOffset: scaled(17), .foregroundColor: UIColor.white]))
+                                            attributes: [.font: expoFont, .baselineOffset: scaled(15), .foregroundColor: UIColor.white]))
             degreeLabel.attributedText = label
         }
     }
@@ -96,21 +89,18 @@ class PolynomialInputCell: UIView {
         
         linkedInputView.allowUnits = false
         linkedInputView.translatesAutoresizingMaskIntoConstraints = false
-        linkedInputView.backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
         linkedInputView.inputView = PolynomialInputCell.keyboardView
         linkedInputView.isScrollEnabled = false
-        linkedInputView.layer.borderColor = UIColor.lightGray.cgColor
-        linkedInputView.layer.borderWidth = 3
-        linkedInputView.layer.cornerRadius = scaled(14)
-        linkedInputView.tintColor = .lightGray
+        linkedInputView.layer.cornerRadius = scaled(10)
         linkedInputView.textAlignment = .right
-        linkedInputView.writeResult(to: coefficientLabel, fontSize: scaled(34))
+        linkedInputView.writeResult(to: coefficientLabel, fontSize: scaled(25))
         
         coefficientLabel.textContainer.lineFragmentPadding = 0
 
         inputScrollView.translatesAutoresizingMaskIntoConstraints = false
         inputScrollView.tag = -999
 
+        coefficientLabel.textAlignment = .center
         coefficientLabel.translatesAutoresizingMaskIntoConstraints = false
         coefficientLabel.layer.cornerRadius = scaled(10)
         coefficientLabel.backgroundColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
@@ -150,7 +140,7 @@ class PolynomialInputCell: UIView {
         coefficientLabel.bottomAnchor
             .constraint(equalTo: bottomAnchor).isActive = true
         coefficientLabel.widthAnchor
-            .constraint(greaterThanOrEqualToConstant: scaled(120)).isActive = true
+            .constraint(greaterThanOrEqualToConstant: scaled(30)).isActive = true
         coefficientLabel.heightAnchor
             .constraint(greaterThanOrEqualToConstant: scaled(50)).isActive = true
 
@@ -176,5 +166,5 @@ class PolynomialInputCell: UIView {
 }
 
 
-fileprivate let baseFont = UIFont(name: "CourierNewPSMT", size: scaled(34))!
-fileprivate let expoFont = UIFont(name: "CourierNewPSMT", size: scaled(25.5))!
+fileprivate let baseFont = UIFont(name: "Avenir Next", size: scaled(30))!
+fileprivate let expoFont = UIFont(name: "Avenir Next", size: scaled(25))!

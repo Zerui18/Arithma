@@ -33,14 +33,14 @@ class ToggleButton: UIButton {
         super.init(frame: .zero)
         alpha = 0.65
         borderLayer.frame = layer.bounds
-        borderLayer.cornerRadius = scaled(8)
+        borderLayer.cornerRadius = scaled(10)
         borderLayer.borderWidth = scaled(2)
         borderLayer.borderColor = getTintColor().cgColor
         layer.addSublayer(borderLayer)
         
-        titleLabel?.font = UIFont.systemFont(ofSize: scaled(28))
-        setTitle(getTitle(), for: UIControlState())
-        setTitleColor(getTintColor(), for: UIControlState())
+        titleLabel?.font = UIFont.systemFont(ofSize: scaled(30))
+        setTitle(getTitle(), for: UIControl.State())
+        setTitleColor(getTintColor(), for: UIControl.State())
         
         addTarget(self, action: #selector(buttonToggled), for: .touchUpInside)
     }
@@ -70,8 +70,8 @@ class ToggleButton: UIButton {
         UIView.animate(withDuration: 0.15, animations: {
             self.titleLabel!.alpha = 0
         }) {_ in
-            self.setTitle(self.getTitle(), for: UIControlState())
-            self.setTitleColor(self.getTintColor(), for: UIControlState())
+            self.setTitle(self.getTitle(), for: UIControl.State())
+            self.setTitleColor(self.getTintColor(), for: UIControl.State())
             
             UIView.animate(withDuration: 0.15) {
                 self.titleLabel!.alpha = 1

@@ -73,7 +73,7 @@ public class AMUnitSelectorView: UICollectionView {
         
         // pre computed properties
         let totalWidth = UIScreen.main.bounds.width
-        let totalHeight = scaled(46)
+        let totalHeight = scaled(50)
         
         // margins all around
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing,
@@ -195,4 +195,4 @@ extension AMUnitSelectorView: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-fileprivate let spacing = scaled(8)
+fileprivate let spacing = scaled(10)

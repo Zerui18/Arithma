@@ -44,7 +44,8 @@ public final class AMLexer {
     }
     
     private var isIndented: Bool {
-        let baselineOffset = textStorage.attribute(NSAttributedStringKey.baselineOffset, at: index.encodedOffset, effectiveRange: nil) as? Double ?? 0.0
+        let baselineOffset = textStorage.attribute(.baselineOffset,
+                                                   at: index.encodedOffset, effectiveRange: nil) as? Double ?? 0.0
         return baselineOffset != 0.0
     }
     
@@ -113,7 +114,7 @@ public final class AMLexer {
             readLetters()
             
             // "e" is counted as an operator
-            guard postInsertBlock == nil && str != "e" else {
+            guard postInsertBlock == nil else {
                 return str
             }
         }
@@ -141,7 +142,8 @@ public final class AMLexer {
     
     @inline(__always)
     private func setHighlight(with token: AMLexer.Token, for count: Int, starting index: Int? = nil) {
-        textStorage.addAttributes([.foregroundColor: token.syntaxColor], range: NSRange(location: index ?? self.index.encodedOffset, length: count))
+        let range = NSRange(location: index ?? self.index.encodedOffset, length: count)
+        textStorage.addAttributes([.foregroundColor: token.syntaxColor], range: range)
     }
     
     @inline(__always)
@@ -191,10 +193,6 @@ public final class AMLexer {
                 
             else if allowUnits, let unit = AMBasicUnit.getUnit(for: str) {
                 token = .unit(unit)
-            }
-            
-            else if str == "e" {
-                token = .operator(.exponentiate10)
             }
             
             else {

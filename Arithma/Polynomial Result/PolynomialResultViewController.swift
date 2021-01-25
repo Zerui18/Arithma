@@ -46,15 +46,15 @@ class PolynomialResultViewController: UIViewController {
         view.backgroundColor = nil
         
         equationContainerView.backgroundColor = .black
-        equationContainerView.layer.cornerRadius = scaled(24)
+        equationContainerView.layer.cornerRadius = scaled(10)
         
         equationView.backgroundColor = .black
-        equationView.layer.cornerRadius = scaled(24)
-        equationView.attributedText = polynomial.formatted(fontSize: scaled(32))
+        equationView.layer.cornerRadius = scaled(10)
+        equationView.attributedText = polynomial.formatted(fontSize: scaled(30))
         equationView.isEditable = false
         
         rootsContainerView.backgroundColor = .black
-        rootsContainerView.layer.cornerRadius = scaled(24)
+        rootsContainerView.layer.cornerRadius = scaled(10)
         
         rootsTable.backgroundColor = nil
         rootsTable.tableFooterView = UIView()

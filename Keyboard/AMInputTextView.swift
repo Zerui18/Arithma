@@ -53,7 +53,7 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         
     /// Helper function to update the state of the exponent key of the associated keyboard.
     public func updateIndentationKey() {
-        keyboard.setIsIndenting(typingAttributes[NSAttributedStringKey.baselineOffset.rawValue, default: 0.0] as! Double > 0.0)
+        keyboard.setIsIndenting(typingAttributes[.baselineOffset, default: 0.0] as! Double > 0.0)
     }
     
     /// Overrided to update exponent key of associated keyboard whenever selection changes.
@@ -80,10 +80,11 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         delegate = self
         autocorrectionType = .no
         autocapitalizationType = .none
+        smartInsertDeleteType = .no
         keyboard = keyboardView
         interpreter = AMInterpreter()
         interpreter.delegate = self
-        typingAttributes = [NSAttributedStringKey.font.rawValue: normalFont]
+        typingAttributes = [.font: normalFont]
         allowsEditingTextAttributes = true
         addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinched(_:))))
         if #available(iOS 11, *) {
@@ -114,7 +115,7 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
     
     /// Performs the necessary updates & evaluations when text changes.
     func textDidChange() {
-        typingAttributes.removeValue(forKey: NSAttributedString.Key.link.rawValue)
+        typingAttributes.removeValue(forKey: .link)
         let lexer = AMLexer(textStorage: textStorage,
                             allowUnits: allowUnits,
                             variableName: variableName)
@@ -170,13 +171,11 @@ extension AMInputTextView {
         switch key.style {
         case .operator where key.symbol == "^":
             selectionFeedback()
-            
-            let baselineKey = NSAttributedStringKey.baselineOffset.rawValue
-            
+                        
             let newFont: UIFont
             let newBaseline: Double
             
-            if typingAttributes[baselineKey, default: 0.0] as! Double == 0.0 {
+            if typingAttributes[.baselineOffset, default: 0.0] as! Double == 0.0 {
                 newFont = smallFont
                 newBaseline = Double(scaled(20))
             }
@@ -186,8 +185,9 @@ extension AMInputTextView {
             }
             
             textStorage.addAttributes([.font: newFont, .baselineOffset: newBaseline], range: selectedRange)
-            typingAttributes.updateValue(newBaseline, forKey: baselineKey)
-            typingAttributes.updateValue(newFont, forKey: NSAttributedStringKey.font.rawValue)
+            typingAttributes[.baselineOffset] = newBaseline
+            typingAttributes[.font] = newFont
+            updateIndentationKey()
         case .delete:
             guard selectedTextRange!.end != beginningOfDocument else {
                 return
@@ -202,15 +202,17 @@ extension AMInputTextView {
                 replace(selectedTextRange!, withText: "")
             }
             updateIndentationKey()
-        case .solve: break
-        default:
-            
-            if key.style == .function {
-                replace(selectedTextRange!, withText: key.symbol+"(")
+        case .function:
+            if key.symbol == "×10^" {
+                didReceive(key: .init(symbol: "×10", style: .constant))
+                didReceive(key: .init(symbol: "^", style: .operator))
             }
             else {
-                replace(selectedTextRange!, withText: key.symbol)
+                replace(selectedTextRange!, withText: key.symbol+"(")
             }
+        case .solve: break
+        default:
+            replace(selectedTextRange!, withText: key.symbol)
             updateIndentationKey()
         }
     }
@@ -237,6 +239,5 @@ extension UITextPosition {
     
 }
 
-fileprivate let normalFont = UIFont(name: "CourierNewPSMT", size: scaled(40))!
-fileprivate let smallFont = normalFont.withSize(scaled(30))
-
+fileprivate let normalFont = UIFont(name: "Avenir Next", size: scaled(30))!
+fileprivate let smallFont = normalFont.withSize(scaled(25))

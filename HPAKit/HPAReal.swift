@@ -40,7 +40,7 @@ extension HPAReal: HPANumeric, Comparable{
     
     // MARK: Static Variables
     public static let zero = xZero
-    public static let epsilon: HPAReal = 1e-30
+    public static let epsilon: HPAReal = 1e-100
     
     // MARK: Description
     public func description(sf: Int32)-> String {
@@ -52,7 +52,7 @@ extension HPAReal: HPANumeric, Comparable{
             var index: String.Index
             if str.contains("e") {
                 // fallback to older swift
-                index = str.index(of: "e")!
+                index = str.firstIndex(of: "e")!
 //                index = str.firstIndex(of: "e")!
             }
             else {
@@ -81,7 +81,7 @@ extension HPAReal: HPANumeric, Comparable{
     }
     
     public var isZero: Bool {
-        return xeq(self, .zero) != 0
+        return abs < .epsilon
     }
     
     @inline(__always)

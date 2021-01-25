@@ -93,15 +93,20 @@ public final class AMValue: Equatable, CustomStringConvertible {
      Copies the attributed description (not the same as the property with the same name) into the app's clipboard. The font size is adjusted to match that of the AMInputTextView.
      */
     public func copyAttributedDescription() {
+        let encodedValue = try! JSONEncoder().encode(self).base64EncodedString()
         var value = valueInBaseUnit()
-        let str = value.formatted(customFontSize: scaled(40))
-        unit.addUnitDescription(to: str, customFontSize: scaled(40))
+        let str = value.formatted(customFontSize: scaled(30))
+        unit.addUnitDescription(to: str, customFontSize: scaled(30))
         let style = NSMutableParagraphStyle()
         style.alignment = .right
-        str.addAttributes([.paragraphStyle: style, .link: "amlblob://data64/"+(try! JSONEncoder().encode(self)).base64EncodedString()], range: NSRange(location: 0, length: str.length))
+        str.addAttributes(
+            [.paragraphStyle: style,
+             .link: "amlblob://data64/\(encodedValue)"],
+            range: NSRange(location: 0, length: str.length))
         
         
-        let rtfData = try! str.data(from: NSRange(location: 0, length: str.length), documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf])
+        let rtfData = try! str.data(from: NSRange(location: 0, length: str.length),
+                                    documentAttributes: [.documentType: NSAttributedString.DocumentType.rtf])
         let item = [kUTTypeRTF as String: rtfData, kUTTypeUTF8PlainText as String: str.string] as [String: Any]
         UIPasteboard.general.setItems([item])
     }

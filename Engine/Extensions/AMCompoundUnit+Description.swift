@@ -26,4 +26,4 @@ extension AMCompoundUnit {
     }
 }
 
-let resultFont = UIFont(name: "CourierNewPSMT", size: scaled(62))!
+let resultFont = UIFont(name: "Avenir Next", size: scaled(35))!

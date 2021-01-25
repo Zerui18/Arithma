@@ -136,6 +136,10 @@ extension AMValue {
                 operand1DoubleValue = operand1Value.value
                 operand2DoubleValue = operand2Value.value
                 
+                if operand2DoubleValue.abs.toDouble > Double(Int.max) {
+                    throw OperationError.mathError
+                }
+                
                 finalUnit = operand1Value.unit.multipying(by: Int(operand2DoubleValue.abs.toDouble))
             case .exponentiate10:
                 guard !operand2Value.hasUnit else {

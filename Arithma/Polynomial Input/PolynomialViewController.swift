@@ -85,7 +85,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
         view.addSubview(pgScrollView)
         pgScrollView.topAnchor
             .constraint(equalTo: addDegreeButton.bottomAnchor,
-                        constant: scaled(20)).isActive = true
+                        constant: scaled(30)).isActive = true
         pgScrollView.leadingAnchor
             .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
         pgScrollView.centerXAnchor

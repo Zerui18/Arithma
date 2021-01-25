@@ -149,7 +149,7 @@ fileprivate let mainKeys = zip(["Dl", "(", ")", "+",
                     .number, .number, .operator, .operator])
                     .map(AMKeyDescription.init)
 fileprivate let functionKeys = zip(["Dl", "e", "π",
-                                    "exp", "ln", "lg",
+                                    "×10^", "ln", "lg",
                                     "sin", "cos", "tan",
                                     "asin", "acos", "atan"],
                        [.delete, .constant, .constant,

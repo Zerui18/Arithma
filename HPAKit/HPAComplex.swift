@@ -45,11 +45,11 @@ extension HPAComplex: HPANumeric {
     }
     
     public var isZero: Bool {
-        return cxeq(self, .zero) != 0
+        return im.isZero && re.isZero
     }
     
     public var isReal: Bool {
-        return xeq(im, xZero) != 0
+        return im.isZero
     }
     
     // MARK: Math Functions

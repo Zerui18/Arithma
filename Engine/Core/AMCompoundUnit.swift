@@ -78,7 +78,7 @@ public struct AMCompoundUnit: AMUnitRepresentable {
     }
     
     public func multipying(by factor: Int)-> AMCompoundUnit {
-        return AMCompoundUnit(dictionaryRepresentation: unitToPower.mapValues(factor.unsafeMultiplied))
+        return AMCompoundUnit(dictionaryRepresentation: unitToPower.mapValues { factor * $0 })
     }
     
     public func canConvert<UnitType: AMUnitRepresentable>(to unit: UnitType) -> Bool {
@@ -99,8 +99,13 @@ public struct AMCompoundUnit: AMUnitRepresentable {
                 }
             }
             else {
-                for _ in 1...abs(power) {
-                    finalValue = unit.convertFromBase(value: finalValue)
+                if power == 0 {
+                    // nothing
+                }
+                else {
+                    for _ in 1...abs(power) {
+                        finalValue = unit.convertFromBase(value: finalValue)
+                    }
                 }
             }
         }

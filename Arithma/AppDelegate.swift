@@ -14,10 +14,14 @@ import Touch
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow? = COSTouchVisualizerWindow(frame: .zero, morphEnabled: false, touchVisibility: .remoteAndLocal, contactConfig: nil, rippleConfig: nil)
+    lazy var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+//                                                          morphEnabled: false,
+//                                                          touchVisibility: .remoteAndLocal,
+//                                                          contactConfig: nil,
+//                                                          rippleConfig: nil)
     private var hasSetupUnits = false
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UITextView.patch()
         AMInterpreter.setup()
         UITextView.appearance().tintColor = .white

@@ -66,7 +66,7 @@ class BaseViewController: UIViewController {
     }
     
     private func setupChildren() {
-        viewControllers.forEach(self.addChildViewController)
+        viewControllers.forEach(self.addChild)
         containerScrollView.addSubview(viewControllers[0].view)
         viewControllers[1].view.frame.origin = containerScrollView.contentOffset
         containerScrollView.addSubview(viewControllers[1].view)
@@ -78,7 +78,7 @@ class BaseViewController: UIViewController {
         trigoModeButton.translatesAutoresizingMaskIntoConstraints = false
         
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.font = .systemFont(ofSize: scaled(16))
+        messageLabel.font = .systemFont(ofSize: scaled(15))
         messageLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         messageLabel.text = "Hello"
         messageLabel.alpha = 0
@@ -87,9 +87,9 @@ class BaseViewController: UIViewController {
         let buttonDim = scaled(36)
         view.addSubview(scientificModeButton)
         scientificModeButton.topAnchor
-            .constraint(equalTo: view.topAnchor, constant: scaled(16)).isActive = true
+            .constraint(equalTo: view.topAnchor, constant: scaled(20)).isActive = true
         scientificModeButton.leadingAnchor
-            .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
+            .constraint(equalTo: view.leadingAnchor, constant: scaled(20)).isActive = true
         scientificModeButton.widthAnchor
             .constraint(equalToConstant: buttonDim).isActive = true
         scientificModeButton.heightAnchor
@@ -99,7 +99,7 @@ class BaseViewController: UIViewController {
         trigoModeButton.topAnchor
             .constraint(equalTo: scientificModeButton.topAnchor).isActive = true
         trigoModeButton.trailingAnchor
-            .constraint(equalTo: view.trailingAnchor, constant: scaled(-16)).isActive = true
+            .constraint(equalTo: view.trailingAnchor, constant: scaled(-20)).isActive = true
         trigoModeButton.widthAnchor
             .constraint(equalToConstant: buttonDim).isActive = true
         trigoModeButton.heightAnchor
@@ -107,7 +107,7 @@ class BaseViewController: UIViewController {
         
         view.addSubview(messageLabel)
         messageLabel.topAnchor
-            .constraint(equalTo: view.topAnchor, constant: scaled(36)).isActive = true
+            .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: scaled(10)).isActive = true
         messageLabel.centerXAnchor
             .constraint(equalTo: view.centerXAnchor).isActive = true
         

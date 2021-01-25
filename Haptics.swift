@@ -9,13 +9,9 @@
 import UIKit
 
 func selectionFeedback() {
-    if #available(iOS 10, *) {
-        UISelectionFeedbackGenerator().selectionChanged()
-    }
+    UISelectionFeedbackGenerator().selectionChanged()
 }
 
 func warningFeedback() {
-    if #available(iOS 10, *) {
-        UINotificationFeedbackGenerator().notificationOccurred(.warning)
-    }
+    UINotificationFeedbackGenerator().notificationOccurred(.warning)
 }
