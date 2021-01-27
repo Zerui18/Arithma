@@ -91,6 +91,7 @@ public class AMUnitSelectorView: UICollectionView {
     private func setup() {
         register(AMUnitSelectorCell.self, forCellWithReuseIdentifier: "cell")
         
+        showsHorizontalScrollIndicator = false
         bounces = false
         dataSource = self
         delegate = self
