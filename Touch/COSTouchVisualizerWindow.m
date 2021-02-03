@@ -150,6 +150,8 @@ static const NSTimeInterval COSTouchVisualizerWindowRemoveDelay = 0.2;
                         [self removeFingerTipWithHash:touch.hash animated:YES];
                         break;
                     }
+                    default:
+                        break;
                 }
             }
             

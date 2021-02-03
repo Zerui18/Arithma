@@ -135,6 +135,7 @@
 		01E5BB0120BACE7F00FEE362 /* HPAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E55620B93C320022A871 /* HPAKit.framework */; };
 		01E5BB0820BAEC0800FEE362 /* ResultTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */; };
 		01F7FC7020DB1B56007C32E1 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C5E54120B93A0F0022A871 /* Settings.framework */; };
+		BFEA402625C263470044DC03 /* Int+TryInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA402525C263470044DC03 /* Int+TryInit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +334,7 @@
 		01E5BAFE20BACE7F00FEE362 /* HPAKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPAKitTests.swift; sourceTree = "<group>"; };
 		01E5BB0020BACE7F00FEE362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E5BB0720BAEC0800FEE362 /* ResultTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTextView.swift; sourceTree = "<group>"; };
+		BFEA402525C263470044DC03 /* Int+TryInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TryInit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,7 +501,7 @@
 		01C5E47820B9373B0022A871 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				01C5E58220B945280022A871 /* Extensions */,
+				BFEA402425C263270044DC03 /* Extensions */,
 				01C5E58320B945450022A871 /* Core */,
 				01C5E48420B937610022A871 /* AMLexer.swift */,
 				01C5E48520B937610022A871 /* AMInterpreter.swift */,
@@ -551,18 +553,6 @@
 				01C5E5A520B983D10022A871 /* Others */,
 			);
 			path = HPAKit;
-			sourceTree = "<group>";
-		};
-		01C5E58220B945280022A871 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				01C5E5AC20B985C10022A871 /* HPA+Description.swift */,
-				01C5E5AE20B985C10022A871 /* AMCompoundUnit+Description.swift */,
-				01C5E5AF20B985C10022A871 /* Character+Extension.swift */,
-				01C5E5B020B985C10022A871 /* Token+Highlight.swift */,
-			);
-			name = Extensions;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		01C5E58320B945450022A871 /* Core */ = {
@@ -728,6 +718,18 @@
 				01E5BB0020BACE7F00FEE362 /* Info.plist */,
 			);
 			path = HPAKitTests;
+			sourceTree = "<group>";
+		};
+		BFEA402425C263270044DC03 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				01C5E5AC20B985C10022A871 /* HPA+Description.swift */,
+				01C5E5AE20B985C10022A871 /* AMCompoundUnit+Description.swift */,
+				01C5E5AF20B985C10022A871 /* Character+Extension.swift */,
+				01C5E5B020B985C10022A871 /* Token+Highlight.swift */,
+				BFEA402525C263470044DC03 /* Int+TryInit.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1130,6 +1132,7 @@
 				01C5E5B520B985C10022A871 /* Token+Highlight.swift in Sources */,
 				01C5E58020B945200022A871 /* AMValue+Operations.swift in Sources */,
 				01C5E48920B937610022A871 /* AMInterpreter.swift in Sources */,
+				BFEA402625C263470044DC03 /* Int+TryInit.swift in Sources */,
 				01C5E57E20B945200022A871 /* Errors.swift in Sources */,
 				01C5E57120B945160022A871 /* AMCompoundUnit.swift in Sources */,
 				01C5E56E20B945160022A871 /* AMUnitRepresentable.swift in Sources */,
@@ -1465,7 +1468,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Arithma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1489,7 +1492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Zerui.Arithma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

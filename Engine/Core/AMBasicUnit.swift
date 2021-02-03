@@ -29,10 +29,6 @@ public final class AMBasicUnit: AMUnitRepresentable, Hashable {
         assert((baseUnit != nil && relativeWorth != nil) || (baseUnit == nil && relativeWorth == nil),
                "Setting a base NumiUnit requires both baseUnit & relativeWorth to be non-nil.")
     }
-    
-    public var hashValue: Int {
-        return unitId.hashValue
-    }
         
     public func canConvert<UnitType: AMUnitRepresentable>(to unit: UnitType) -> Bool {
         // base unit can only be converted to abother baseUnit of the same origin
@@ -45,11 +41,11 @@ public final class AMBasicUnit: AMUnitRepresentable, Hashable {
     }
     
     public func convertToBase(value: HPAComplex) -> HPAComplex {
-        return HPAComplex(floatLiteral: relativeWorth) * value
+        return HPAComplex(relativeWorth) * value
     }
     
     public func convertFromBase(value: HPAComplex) -> HPAComplex {
-        return  value / HPAComplex(floatLiteral: relativeWorth)
+        return  value / HPAComplex(relativeWorth)
     }
     
     public static func ==(_ lhs: AMBasicUnit, _ rhs: AMBasicUnit)-> Bool {
@@ -58,6 +54,10 @@ public final class AMBasicUnit: AMUnitRepresentable, Hashable {
     
     public var description: String {
         return unitId
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(unitId)
     }
     
 }

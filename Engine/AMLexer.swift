@@ -45,7 +45,8 @@ public final class AMLexer {
     
     private var isIndented: Bool {
         let baselineOffset = textStorage.attribute(.baselineOffset,
-                                                   at: index.encodedOffset, effectiveRange: nil) as? Double ?? 0.0
+                                                   at: index.utf16Offset(in: textStorage.string),
+                                                   effectiveRange: nil) as? Double ?? 0.0
         return baselineOffset != 0.0
     }
     
@@ -127,7 +128,7 @@ public final class AMLexer {
     private func readLink()-> AMLexer.Token? {
         var range = NSRange()
         guard let psuedoLink = textStorage.attribute(.link,
-                                                     at: index.encodedOffset,
+                                                     at: index.utf16Offset(in: textStorage.string),
                                                      effectiveRange: &range),
               let data = Data(base64Encoded: (psuedoLink as! URL).lastPathComponent),
               let value = try? JSONDecoder().decode(AMValue.self,
@@ -142,7 +143,7 @@ public final class AMLexer {
     
     @inline(__always)
     private func setHighlight(with token: AMLexer.Token, for count: Int, starting index: Int? = nil) {
-        let range = NSRange(location: index ?? self.index.encodedOffset, length: count)
+        let range = NSRange(location: index ?? self.index.utf16Offset(in: textStorage.string), length: count)
         textStorage.addAttributes([.foregroundColor: token.syntaxColor], range: range)
     }
     
@@ -178,7 +179,7 @@ public final class AMLexer {
         
         // parse all kinds of other expressions
         if char.isAlphanumeric {
-            let startIndex = index.encodedOffset
+            let startIndex = index.utf16Offset(in: textStorage.string)
             
             let str = readNumberOrIdentifier()
             let token: AMLexer.Token

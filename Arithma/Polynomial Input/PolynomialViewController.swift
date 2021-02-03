@@ -71,23 +71,23 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
 
     private func setupLayout() {
         view.addSubview(addDegreeButton)
-        addDegreeButton.widthAnchor.constraint(equalToConstant: scaled(38)).isActive = true
-        addDegreeButton.heightAnchor.constraint(equalToConstant: scaled(38)).isActive = true
-        addDegreeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: scaled(74)).isActive = true
-        addDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(-38)).isActive = true
+        addDegreeButton.widthAnchor.constraint(equalToConstant: scaled(40)).isActive = true
+        addDegreeButton.heightAnchor.constraint(equalToConstant: scaled(40)).isActive = true
+        addDegreeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: scaled(80)).isActive = true
+        addDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(-50)).isActive = true
         
         view.addSubview(removeDegreeButton)
-        removeDegreeButton.widthAnchor.constraint(equalToConstant: scaled(38)).isActive = true
-        removeDegreeButton.heightAnchor.constraint(equalToConstant: scaled(38)).isActive = true
-        removeDegreeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: scaled(74)).isActive = true
-        removeDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(38)).isActive = true
+        removeDegreeButton.widthAnchor.constraint(equalToConstant: scaled(40)).isActive = true
+        removeDegreeButton.heightAnchor.constraint(equalToConstant: scaled(40)).isActive = true
+        removeDegreeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: scaled(80)).isActive = true
+        removeDegreeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: scaled(50)).isActive = true
         
         view.addSubview(pgScrollView)
         pgScrollView.topAnchor
             .constraint(equalTo: addDegreeButton.bottomAnchor,
                         constant: scaled(30)).isActive = true
         pgScrollView.leadingAnchor
-            .constraint(equalTo: view.leadingAnchor, constant: scaled(16)).isActive = true
+            .constraint(equalTo: view.leadingAnchor, constant: scaled(10)).isActive = true
         pgScrollView.centerXAnchor
             .constraint(equalTo: view.centerXAnchor).isActive = true
         pgScrollView.heightAnchor
@@ -113,7 +113,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
         // right-extendable behaviour
         inputView.trailingAnchor
             .constraint(greaterThanOrEqualTo: view.trailingAnchor,
-                        constant: scaled(-16)).isActive = true
+                        constant: scaled(-10)).isActive = true
 
         // positions inputView above keyboard
         containerView.bottomAnchor
@@ -124,7 +124,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
         containerView.trailingAnchor
             .constraint(equalTo: view.trailingAnchor).isActive = true
         containerView.heightAnchor
-            .constraint(greaterThanOrEqualToConstant: scaled(54)).isActive = true
+            .constraint(greaterThanOrEqualToConstant: scaled(60)).isActive = true
     }
     
     @objc fileprivate func addDegree() {
@@ -182,7 +182,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
                 BaseViewController.shared.displayMessage("Only Real Coefficients")
                 return
             }
-            coefficients.insert(value.re, at: 0)
+            coefficients.append(value.re)
         }
         let polynomial = HPAPolynomial(coefficients)
         let resultVC = PolynomialResultViewController(for: polynomial)
@@ -191,14 +191,11 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
 
     // MARK: AMKeyboardViewDelegate Conformance
     var textViewForInput: AMInputTextView? {
-        return PolynomialInputCell.currentActive?.linkedInputView
+        PolynomialInputCell.currentActive?.linkedInputView
     }
 
     var bottomInset: CGFloat {
-        if #available(iOS 11, *) {
-            return view.safeAreaInsets.bottom
-        }
-        return 0
+        view.safeAreaInsets.bottom
     }
 
     func didReceive(customKey symbol: String) {
@@ -212,7 +209,7 @@ class PolynomialViewController: UIViewController, AMKeyboardViewDelegate {
 extension PolynomialInputCell {
 
     static var keyboardView: AMKeyboardView {
-        return keyboard
+        keyboard
     }
 
 }

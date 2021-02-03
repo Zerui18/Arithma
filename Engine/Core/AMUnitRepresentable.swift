@@ -13,8 +13,14 @@ public protocol AMUnitRepresentable: Equatable, CustomStringConvertible {
     
     func canConvert(to unit: Self) -> Bool
     
+    /**
+        Convert a value of this unit to a new value in the base units.
+     */
     func convertToBase(value: HPAComplex) -> HPAComplex
     
+    /**
+        Convert a value in the base units to a value of this unit.
+     */
     func convertFromBase(value: HPAComplex) -> HPAComplex
     
 }

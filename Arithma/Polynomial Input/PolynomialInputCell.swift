@@ -32,11 +32,16 @@ class PolynomialInputCell: UIView {
         }
 
         func animateSelect() {
-            layer.borderWidth = 2
+            UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve) {
+                self.layer.borderWidth = 2
+            }
+
         }
 
         func animateDeselect() {
-            layer.borderWidth = 0
+            UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve) {
+                self.layer.borderWidth = 0
+            }
         }
 
     }
@@ -56,6 +61,7 @@ class PolynomialInputCell: UIView {
         didSet {
             let label = NSMutableAttributedString(string: "x",
                                                   attributes: [.font: baseFont, .foregroundColor: UIColor.white])
+            // add degree even if it's not conventional to keep text baseline aligned
             label.append(NSAttributedString(string: degree.description,
                                             attributes: [.font: expoFont, .baselineOffset: scaled(15), .foregroundColor: UIColor.white]))
             degreeLabel.attributedText = label

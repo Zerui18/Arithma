@@ -44,6 +44,11 @@ extension HPAReal: HPANumeric, Comparable{
     
     // MARK: Description
     public func description(sf: Int32)-> String {
+        // Check if it's just zero (or approximately).
+        guard !isZero else {
+            return "0"
+        }
+        
         var str = String(cString:
             xpr_asprint(self, AMSettings.shared.isScientificMode ? 1:0, 0, sf)
         )
@@ -53,7 +58,6 @@ extension HPAReal: HPANumeric, Comparable{
             if str.contains("e") {
                 // fallback to older swift
                 index = str.firstIndex(of: "e")!
-//                index = str.firstIndex(of: "e")!
             }
             else {
                 index = str.endIndex

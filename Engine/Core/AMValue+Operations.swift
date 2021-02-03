@@ -140,7 +140,7 @@ extension AMValue {
                     throw OperationError.mathError
                 }
                 
-                finalUnit = operand1Value.unit.multipying(by: Int(operand2DoubleValue.abs.toDouble))
+                finalUnit = operand1Value.unit.multipying(by: try Int(safelyWith: operand2DoubleValue.abs.toDouble))
             case .exponentiate10:
                 guard !operand2Value.hasUnit else {
                     throw OperationError.unexpectedUnit

@@ -81,15 +81,14 @@ open class AMInputTextView: UITextView, UITextViewDelegate {
         autocorrectionType = .no
         autocapitalizationType = .none
         smartInsertDeleteType = .no
+        backgroundColor = nil
         keyboard = keyboardView
         interpreter = AMInterpreter()
         interpreter.delegate = self
         typingAttributes = [.font: normalFont]
         allowsEditingTextAttributes = true
         addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinched(_:))))
-        if #available(iOS 11, *) {
-            self.textDragInteraction?.isEnabled = false
-        }
+        textDragInteraction?.isEnabled = false
     }
     
     /// Only paste is allowed in menu.

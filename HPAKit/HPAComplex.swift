@@ -16,12 +16,20 @@ extension HPAComplex: HPANumeric {
     public typealias IntegerLiteralType = Int
     public typealias FloatLiteralType = Double
     
-    public init(integerLiteral value: Int) {
+    public init(_ value: Int) {
         self = cxpr(re: inttox(value), im: .zero)
     }
     
-    public init(floatLiteral value: Double) {
+    public init(_ value: Double) {
         self = cxpr(re: dbltox(value), im: .zero)
+    }
+    
+    public init(integerLiteral value: Int) {
+        self = HPAComplex(value)
+    }
+    
+    public init(floatLiteral value: Double) {
+        self = HPAComplex(value)
     }
     
     // MARK: Static Variables

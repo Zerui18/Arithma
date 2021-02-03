@@ -74,7 +74,8 @@ extension HPAPolynomial {
         let baseline = fontSize * 0.5
         let baseAttrs = [NSAttributedString.Key.font: baseFont, .foregroundColor: UIColor.white, .baselineOffset: 0.0] as [NSAttributedString.Key : Any]
         
-        for (degree, coefficient) in coefficients.enumerated().reversed() {
+        // coeffecients are in decreasing power
+        for (degree, coefficient) in zip((0...coefficients.count-1).reversed(), coefficients) {
             // add plus sign if necessary
             if degree < coefficients.count-1 && coefficient.sign() == .plus {
                 str.append(NSAttributedString(string: "+", attributes: baseAttrs))
@@ -82,7 +83,11 @@ extension HPAPolynomial {
             // add coefficient
             str.append(coefficient.formatted(sf: 4, customFontSize: fontSize))
             
-            if degree > 0 {
+            if degree == 1 {
+                let substr = NSMutableAttributedString(string: "x", attributes: baseAttrs)
+                str.append(substr)
+            }
+            else if degree > 0 {
                 // add degree (x^n)
                 let substr = NSMutableAttributedString(string: "x\(degree)", attributes: baseAttrs)
                 substr.addAttributes([.font: expoFont, .baselineOffset: baseline, .foregroundColor: #colorLiteral(red: 0.2392156863, green: 0.6745098039, blue: 0.968627451, alpha: 1)], range: NSRange(location: 1, length: 1))

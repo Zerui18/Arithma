@@ -118,7 +118,7 @@ public final class AMInterpreter: NSObject {
                     throw ParseError.expectedInteger
                 }
                 
-                compoundUnit = compoundUnit.adding(other: unit, by: Int(power.re.toDouble))
+                compoundUnit = compoundUnit.adding(other: unit, by: try Int(safelyWith: power.re.toDouble))
             }
             else {
                 compoundUnit = compoundUnit.adding(other: unit)

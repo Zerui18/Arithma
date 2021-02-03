@@ -13,11 +13,14 @@ public struct AMCompoundUnit: AMUnitRepresentable {
     
     // MARK: Internal Properties
     var unitToPower = [AMBasicUnit: Int]()
+    /// An equivalent representation of this unit composed using base units.
     var baseUnitToPower: [AMBasicUnit: Int] {
         var dict = [AMBasicUnit: Int]()
         
         for (unit, power) in unitToPower {
             dict[unit.baseUnit, default: 0] += power
+            
+            // Clear up unused units.
             if dict[unit.baseUnit] == 0 {
                 dict[unit.baseUnit] = nil
             }
@@ -32,7 +35,7 @@ public struct AMCompoundUnit: AMUnitRepresentable {
     // MARK: Init
     public init() {}
     
-    public init(containingBaseUnit unit: AMBasicUnit, ofPower power: Int = 1) {
+    public init(withBaseUnit unit: AMBasicUnit, ofPower power: Int = 1) {
         unitToPower[unit] = power
     }
     
@@ -45,36 +48,19 @@ public struct AMCompoundUnit: AMUnitRepresentable {
         var copy = self
         
         guard let compoundUnit = unit as? AMCompoundUnit else {
-            copy.unitToPower[unit as! AMBasicUnit, default: 0] += factor
+            let unit = unit as! AMBasicUnit
+            copy.unitToPower[unit, default: 0] += factor
             return copy
         }
         
         for (unit, power) in compoundUnit.unitToPower {
             copy.unitToPower[unit, default: 0] += power * factor
-            
-            if copy.unitToPower[unit] == 0 {
-                copy.unitToPower[unit] = nil
-            }
         }
         return copy
     }
     
     public func subtracting<UnitType: AMUnitRepresentable>(other unit: UnitType, by factor: Int = 1)-> AMCompoundUnit {
-        var copy = self
-        
-        guard let compoundUnit = unit as? AMCompoundUnit else {
-            copy.unitToPower[unit as! AMBasicUnit, default: 0] -= factor
-            return copy
-        }
-        
-        for (unit, power) in compoundUnit.unitToPower {
-            copy.unitToPower[unit, default: 0] -= power * factor
-            
-            if copy.unitToPower[unit] == 0 {
-                copy.unitToPower[unit] = nil
-            }
-        }
-        return copy
+        return adding(other: unit, by: -1)
     }
     
     public func multipying(by factor: Int)-> AMCompoundUnit {
@@ -92,22 +78,8 @@ public struct AMCompoundUnit: AMUnitRepresentable {
     public func convertToBase(value: HPAComplex) -> HPAComplex {
         var finalValue = value
         
-        for (unit, power) in unitToPower {
-            if power > 0 {
-                for _ in 1...power {
-                    finalValue = unit.convertToBase(value: finalValue)
-                }
-            }
-            else {
-                if power == 0 {
-                    // nothing
-                }
-                else {
-                    for _ in 1...abs(power) {
-                        finalValue = unit.convertFromBase(value: finalValue)
-                    }
-                }
-            }
+        for (unit, power) in unitToPower where power != 0 {
+            finalValue = finalValue * HPAComplex(unit.relativeWorth).pow(e: HPAComplex(power))
         }
         
         return finalValue
@@ -116,17 +88,8 @@ public struct AMCompoundUnit: AMUnitRepresentable {
     public func convertFromBase(value: HPAComplex) -> HPAComplex {
         var finalValue = value
         
-        for (unit, power) in unitToPower {
-            if power > 0 {
-                for _ in 1...power {
-                    finalValue = unit.convertFromBase(value: finalValue)
-                }
-            }
-            else {
-                for _ in 1...power {
-                    finalValue = unit.convertToBase(value: finalValue)
-                }
-            }
+        for (unit, power) in unitToPower where power != 0 {
+            finalValue = finalValue / HPAComplex(unit.relativeWorth).pow(e: HPAComplex(power))
         }
         
         return finalValue
